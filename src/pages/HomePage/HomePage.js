@@ -1,5 +1,4 @@
 import React from "react";
-import { CentralisingContainer } from "../pagesStyles";
 import { BigTitle, Container, Text } from "./homePageStyles";
 
 
