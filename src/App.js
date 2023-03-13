@@ -1,12 +1,12 @@
 import './App.css';
-import { GlobalStyle } from './pages/HomePage/styles';
+import HomePage from './pages/HomePage/HomePage';
+import { GlobalStyle } from './pages/pagesStyles';
+
 function App() {
   return (
     <>
       <GlobalStyle />
-      <div className="App">
-        hi joel
-      </div>
+      <HomePage />
     </>
 
   );
