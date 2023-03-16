@@ -17,10 +17,16 @@ export const FontStyles = createGlobalStyle`
   src:  url(${Unbounded}) format('ttf');
 }
 
+::-webkit-scrollbar {
+  display: none;
+}
+
 body {
   cursor: default;
   overflow-x: hidden;
 }
+
+
 
 `
 
