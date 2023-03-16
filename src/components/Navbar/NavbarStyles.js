@@ -5,6 +5,8 @@ text-decoration: none;
 font-size: 1.2rem;
 color: white;
 font-family: "Inter";
+margin: 0 0.5rem 0 0.5rem;
+
 
 `
 export const NavLinksContainer = styled.div`
