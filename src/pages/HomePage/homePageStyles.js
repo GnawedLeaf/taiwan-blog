@@ -9,33 +9,43 @@ font-family: "Jost";
 
 `
 export const CoverPictureContainer = styled.div`
-height: 100vh;
-width:100%;
+
+
 background-image: url(${(props) => props.backgroundSrc});
 background-color: #C6C6C6;
 background-blend-mode: multiply;
-background-position: center;
+background-position: top center;
 background-size: cover;
 background-repeat: no-repeat;
-background-position-y: -30vh;
+background-position-y: 30%;
 background-attachment: fixed;
 color:white;
 
-@media (max-width: 767px) {
-    height: 100vw;
-  }
 
-@media only screen and (max-width: 1159px){
+height: 100vh;
+width:100%;
+min-width: 100%;
+min-height:100vh;
+@media (prefers-color-scheme: not(light)) {
+    background-color: #C6C6C6;
 }
+
 
 `
 export const BigTitle = styled.div`
-font-size: 69px;
+font-size: 4.5rem;
+
+@media only screen and (max-width: 650px){
+ font-size:2.3rem;
+}
 `
 
 
 export const Text = styled.div`
-font-size: 1.1rem;
+font-size: 1.6rem;
 justify-content: center;
+@media only screen and (max-width: 650px){
+    font-size: 1rem;
+   }
 
 `
