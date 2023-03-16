@@ -1,22 +1,32 @@
 import { createGlobalStyle } from "styled-components";
 import styled from "styled-components";
-export const GlobalStyle = createGlobalStyle`
-body{
-    font-family: 'Caveat', cursive;
 
+import Outfit from '../../src/fonts/Outfit.ttf';
+import Unbounded from '../../src/fonts/Unbounded.ttf';
+
+export const FontStyles = createGlobalStyle`
+@font-face {
+  font-family: 'Outfit';
+  url(${Outfit}) format('ttf');
+  font-weight: 300;
+  font-style: normal;
 }
 
-@keyframes example {
-    from {background-color: red;}
-    to {background-color: yellow;}
-  }
+@font-face {
+  font-family: 'Unbounded';
+  src:  url(${Unbounded}) format('ttf');
+}
+
+body {
+  cursor: default;
+  overflow-x: hidden;
+}
+
 `
 
 export const CentralisingContainer = styled.div`
-display: flex;
-justify-content: center;
-align-items: center;
-height: auto;
-width: auto;
-flex-direction: column;
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
 `

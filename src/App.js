@@ -1,11 +1,11 @@
 import './App.css';
 import HomePage from './pages/HomePage/HomePage';
-import { GlobalStyle } from './pages/pagesStyles';
+import Navbar from './components/Navbar/NavbarIndex';
 
 function App() {
   return (
     <>
-      <GlobalStyle />
+      <Navbar />
       <HomePage />
     </>
 

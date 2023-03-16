@@ -1,20 +1,38 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
+font-size: 1rem;
 color:black;
-background:red;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-animation: whackybox 5s linear 2s infinite alternate;
-@keyframes whackybox {
-    0%   {background-color:red; left:0px; top:0px;}
-    25%  {background-color:yellow; left:50%; top:0px;180deg;}
-    50%  {background-color:blue; left:50%; top:50%;rotate: }
-    75%  {background-color:green; left:0px; top:50%;}
-    100% {background-color:red; left:0px; top:0px; rotate: 360deg;}
+background: CadetBlue;
+text-align: center;
+font-family: "Jost";
+
+`
+export const CoverPictureContainer = styled.div`
+height: 100vh;
+width:100%;
+background-image: url(${(props) => props.backgroundSrc});
+background-color: #C6C6C6;
+background-blend-mode: multiply;
+background-position: top;
+background-size: cover;
+background-repeat: no-repeat;
+background-position-y: -30vh;
+
+background-attachment: fixed;
+
+&::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 20.5); /* Change this value to adjust the tint */
+    z-index: -1;
   }
 
+color:white;
 `
 export const BigTitle = styled.div`
 font-size: 69px;
@@ -22,6 +40,7 @@ font-size: 69px;
 
 
 export const Text = styled.div`
-font-size: 16px;
+font-size: 1.1rem;
 justify-content: center;
+
 `
