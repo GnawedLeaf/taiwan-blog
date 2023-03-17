@@ -9,6 +9,7 @@ const Navbar = () => {
     useEffect(() => {
         console.log(NavbarItems.length)
     }, [])
+
     return (
         <NavbarContainer>
             <NavLinksContainer gridCount={NavbarItems.length}>
@@ -21,6 +22,7 @@ const Navbar = () => {
                 })}
             </NavLinksContainer>
         </NavbarContainer>
+
     )
 }
 

@@ -63,3 +63,19 @@ font-size: 5.5rem;
     font-size:2.3rem;
    }
 `
+
+export const CountdownContainer = styled.div`
+display: flex;
+justify-content: space-evenly;
+flex-wrap: nowrap;
+flex-direction: row;
+`
+export const Days = styled.div``
+export const Hours = styled.div``
+export const Minutes = styled.div``
+export const Seconds = styled.div``
+
+export const CountdownSection = styled.div`
+height: 50vh;
+background: pink;
+`
