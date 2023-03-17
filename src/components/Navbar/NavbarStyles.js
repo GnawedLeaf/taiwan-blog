@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const NavLink = styled.a`
 text-decoration: none;
 font-size: 1.2rem;
-color: white;
+color: black;
 font-family: "Lato";
 margin: 0 0.5rem 0 0.5rem;
 

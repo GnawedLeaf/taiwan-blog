@@ -4,11 +4,15 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { FontStyles } from './pages/pagesStyles';
+import Layout from './layout';
+
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <>
     <FontStyles />
+    <Layout />
     <App />
   </>
 

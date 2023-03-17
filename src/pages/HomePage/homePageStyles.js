@@ -27,7 +27,7 @@ width:100%;
 min-width: 100%;
 min-height:100vh;
 @media (prefers-color-scheme: not(light)) {
-    background-color: #C6C6C6;
+    background-color: white;
 }
 
 
@@ -48,4 +48,18 @@ justify-content: center;
     font-size: 1rem;
    }
 
+`
+
+
+export const LatestBlogContainer = styled.div`
+height: 90vh;
+background: ;
+color: white;
+`
+export const LatestBlogBigTitle = styled.div`
+font-size: 5.5rem;
+
+@media only screen and (max-width: 650px){
+    font-size:2.3rem;
+   }
 `

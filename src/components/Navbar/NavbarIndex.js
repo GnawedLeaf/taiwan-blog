@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { NavbarItems } from "./NavbarItems";
 import { NavLink, NavLinksContainer, NavbarContainer } from "./NavbarStyles";
+import { BrowserRouter, Route, Link } from "react-router-dom";
 
 
 const Navbar = () => {

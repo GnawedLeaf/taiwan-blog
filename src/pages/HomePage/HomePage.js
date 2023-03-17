@@ -1,6 +1,6 @@
 import { React, useEffect, useState } from "react";
 import { CentralisingContainer } from "../pagesStyles";
-import { BigTitle, Container, Text, CoverPictureContainer } from "./HomePageStyles";
+import { BigTitle, Container, Text, CoverPictureContainer, LatestBlogContainer, LatestBlogBigTitle } from "./HomePageStyles";
 import coverPictureDesktop from './pictures/hualien_scenery_1.jpg';
 import coverPictureMobile from
     './pictures/hualien_scenery_1_mobile.jpg'
@@ -17,6 +17,7 @@ const HomePage = () => {
             };
 
             window.addEventListener('resize', handleWindowResize);
+            //Return is meant to remove the handler after its done
             return () => window.removeEventListener('resize', handleWindowResize);
         }, []);
 
@@ -27,18 +28,16 @@ const HomePage = () => {
 
     return (
         <Container>
-            <CoverPictureContainer backgroundSrc={coverPictureDesktop} >
+            <CoverPictureContainer backgroundSrc={coverPicture} >
                 <CentralisingContainer>
                     <BigTitle>Taiwan Number 1</BigTitle>
-                    <Text>I love Taiwan so much </Text>
+                    <Text>I love Taiwan </Text>
                 </CentralisingContainer>
             </CoverPictureContainer>
 
-            <div style={{ height: "200vh" }}>
-                <BigTitle>let me show you the noods </BigTitle>
-
-
-            </div>
+            <LatestBlogContainer>
+                <LatestBlogBigTitle>Latest Blog </LatestBlogBigTitle>
+            </LatestBlogContainer>
 
 
         </Container >

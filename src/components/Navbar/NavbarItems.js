@@ -1,16 +1,16 @@
 export const NavbarItems = [
     {
         title: "Home",
-        url: "#",
+        url: "/",
     }, {
         title: "Food",
-        url: "#"
+        url: "/food"
     }, {
         title: "Blogs",
-        url: "#"
+        url: "/blogs"
     }, {
         title: "About",
-        url: "#"
+        url: "/about"
     }
 
 
