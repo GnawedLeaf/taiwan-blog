@@ -24,6 +24,7 @@ export const FontStyles = createGlobalStyle`
 body {
   cursor: default;
   overflow-x: hidden;
+  background: #f5f5f5;
 }
 
 
@@ -37,7 +38,4 @@ left: 50%;
 transform: translate(-50%, -50%);
 `
 
-export const CentralisingContainerNonAbsolute = styled.div`
 
-
-`

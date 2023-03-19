@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const NavLink = styled.a`
 text-decoration: none;
 font-size: 1.2rem;
-color: black;
+color: white;
 font-family: "Lato";
 margin: 0 0.5rem 0 0.5rem;
 
@@ -21,8 +21,9 @@ position: fixed;
 width: 100%;
 padding: 1.1rem;
 z-index:99;
-
+background: transparent;
 display: inline-flex;
 justify-content: center;
 
 `
+

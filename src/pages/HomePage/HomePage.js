@@ -1,7 +1,7 @@
-import { React, useEffect, useState } from "react";
+import { React, useEffect, useState, useRef } from "react";
 import { BrowserRouter, Route, Link } from "react-router-dom";
 import { CentralisingContainer } from "../pagesStyles";
-import { BigTitle, Container, Text, CoverPictureContainer, LatestBlogContainer, LatestBlogBigTitle, CountdownSection, CountdownContainer, Hours, Minutes, Seconds, Days } from "./HomePageStyles";
+import { BigTitle, Container, CoverPictureContainer, LatestBlogContainer, LatestBlogBigTitle, CountdownSection, CountdownContainer, Hours, Minutes, Seconds, Days, TopDownLayoutContainer, AboutSection, CountdownSectionTitle, BigTitleSubText, AboutText, AboutTextContainer } from "./HomePageStyles";
 import coverPictureDesktop from './pictures/hualien_scenery_1.jpg';
 import coverPictureMobile from
     './pictures/hualien_scenery_1_mobile.jpg'
@@ -54,39 +54,117 @@ const HomePage = () => {
         return () => clearInterval(interval);
     }, []);
 
+    // <-------------------------------------Viewport Checker---------------------------------->
+
+    const [isVisible1, setisVisible1] = useState(false);
+    const [isVisible1Final, setisVisible1Final] = useState(false);
+    const targetRef = useRef(null);
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+
+                setisVisible1(entry.isIntersecting);
+            },
+            {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.9,
+            },
+        );
+
+        if (targetRef.current && !isVisible1) {
+
+            observer.observe(targetRef.current);
+        }
+
+        // Cleanup
+        return () => {
+            if (targetRef.current) {
+                observer.unobserve(targetRef.current);
+            }
+        };
+    }, []);
+
+    //Makes sure animation only runs one time
+    useEffect(() => {
+        if (isVisible1) {
+            setisVisible1Final(true);
+        }
+    }, [isVisible1])
+
+
+
+
     //<------------------------------------------------------------------------------------------------------------------>
+
 
     return (
         <Container>
-            <CoverPictureContainer backgroundSrc={coverPicture} >
+            <CoverPictureContainer backgroundSrc={coverPictureDesktop} >
                 <CentralisingContainer>
-                    <BigTitle>Taiwan Number 1</BigTitle>
-                    <Text>I love Taiwan </Text>
+                    <BigTitle>Taiwan</BigTitle>
+                    <BigTitleSubText>Marcel's Blog</BigTitleSubText>
                 </CentralisingContainer>
             </CoverPictureContainer>
 
+
+            <AboutSection>
+                <AboutTextContainer>
+                    <AboutText ref={targetRef} isVisible={isVisible1Final}>
+                        Hi.
+                    </AboutText>
+                    <AboutText isVisible={isVisible1Final} style={{ transitionDelay: "1s" }}>
+                        I'm doing an internship in Taiwan.
+                    </AboutText>
+                    <AboutText isVisible={isVisible1Final} style={{ transitionDelay: "2s" }}  >
+                        Since I always procrastinate making a vlog,
+                    </AboutText >
+                    <AboutText isVisible={isVisible1Final} style={{ transitionDelay: "3s" }}>
+                        heres a blog instead.
+                    </AboutText>
+                </AboutTextContainer>
+
+
+            </AboutSection>
+
             <CountdownSection>
-                <h1 style={{ top: '50%' }}>Countdown to Last Day in Taiwan</h1>
+                <CountdownSectionTitle>
+                    Time Left In Taiwan
+                </CountdownSectionTitle>
                 <CountdownContainer>
-                    <Days>
-                        {timeLeft.days} days
-                    </Days>
-                    <Hours>
-                        {timeLeft.hours} hours
-                    </Hours>
-                    <Minutes>
-                        {timeLeft.minutes} minutes
-                    </Minutes>
-                    <Seconds>
-                        {timeLeft.seconds} seconds
-                    </Seconds>
+                    <TopDownLayoutContainer>
+                        <Days>
+                            {(timeLeft.days < 10 ? "0" : "") + timeLeft.days}
+                        </Days>
+                        {(timeLeft.days < 2 ? "Day" : "Days")}
+                    </TopDownLayoutContainer>
+
+                    <TopDownLayoutContainer>
+                        <Hours>
+                            {(timeLeft.hours < 10 ? "0" : "") + timeLeft.hours}
+                        </Hours>
+                        {(timeLeft.hours < 2 ? "Hour" : "Hours")}
+
+                    </TopDownLayoutContainer>
+
+                    <TopDownLayoutContainer>
+                        <Minutes>
+                            {(timeLeft.minutes < 10 ? "0" : "") + timeLeft.minutes}
+                        </Minutes>
+                        {(timeLeft.minutes < 2 ? "Minute" : "Minutes")}
+                    </TopDownLayoutContainer>
+
+                    <TopDownLayoutContainer>
+                        <Seconds>
+                            {(timeLeft.seconds < 10 ? "0" : "") + timeLeft.seconds}
+                        </Seconds>
+                        {(timeLeft.seconds < 2 ? "Second" : "Seconds")}
+                    </TopDownLayoutContainer>
+
                 </CountdownContainer>
             </CountdownSection>
 
-            <LatestBlogContainer>
-                <LatestBlogBigTitle>Latest Blog </LatestBlogBigTitle>
-
-            </LatestBlogContainer>
 
 
 
