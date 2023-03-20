@@ -1,7 +1,7 @@
 import { React, useEffect, useState, useRef } from "react";
 import { BrowserRouter, Route, Link } from "react-router-dom";
 import { CentralisingContainer } from "../pagesStyles";
-import { BigTitle, Container, CoverPictureContainer, LatestBlogContainer, LatestBlogBigTitle, CountdownSection, CountdownContainer, Hours, Minutes, Seconds, Days, TopDownLayoutContainer, AboutSection, CountdownSectionTitle, BigTitleSubText, AboutText, AboutTextContainer } from "./HomePageStyles";
+import { BigTitle, Container, CoverPictureContainer, LatestBlogContainer, LatestBlogBigTitle, CountdownSection, CountdownContainer, Hours, Minutes, Seconds, Days, TopDownLayoutContainer, AboutSection, CountdownSectionTitle, BigTitleSubText, AboutText, AboutTextContainer, QuickLinksSection, FoodLinkContainer, BlogLinkContainer, FoodLink, BlogLink } from "./HomePageStyles";
 import coverPictureDesktop from './pictures/hualien_scenery_1.jpg';
 import coverPictureMobile from
     './pictures/hualien_scenery_1_mobile.jpg'
@@ -68,7 +68,7 @@ const HomePage = () => {
             },
             {
                 root: null,
-                rootMargin: '0px',
+                rootMargin: '0px 0px 0px 0px',
                 threshold: 0.9,
             },
         );
@@ -93,40 +93,54 @@ const HomePage = () => {
         }
     }, [isVisible1])
 
-
-
-
     //<------------------------------------------------------------------------------------------------------------------>
+
+
 
 
     return (
         <Container>
             <CoverPictureContainer backgroundSrc={coverPictureDesktop} >
                 <CentralisingContainer>
-                    <BigTitle>Taiwan</BigTitle>
+                    <BigTitle>Taiwan No. 1</BigTitle>
                     <BigTitleSubText>Marcel's Blog</BigTitleSubText>
                 </CentralisingContainer>
             </CoverPictureContainer>
 
 
+
+
             <AboutSection>
+
+
                 <AboutTextContainer>
-                    <AboutText ref={targetRef} isVisible={isVisible1Final}>
-                        Hi.
+
+                    <AboutText isVisible={isVisible1Final} data-text="Hi." delay={0}> Hi.
+
                     </AboutText>
-                    <AboutText isVisible={isVisible1Final} style={{ transitionDelay: "1s" }}>
+                    <AboutText ref={targetRef} isVisible={isVisible1Final} delay={0.8} data-text="I'm doing an internship in Taiwan.">
                         I'm doing an internship in Taiwan.
                     </AboutText>
-                    <AboutText isVisible={isVisible1Final} style={{ transitionDelay: "2s" }}  >
+                    <AboutText isVisible={isVisible1Final} delay={2.5} data-text="Since I always procrastinate making a vlog," >
                         Since I always procrastinate making a vlog,
                     </AboutText >
-                    <AboutText isVisible={isVisible1Final} style={{ transitionDelay: "3s" }}>
+                    <AboutText isVisible={isVisible1Final} delay={4} data-text="heres a blog instead.">
                         heres a blog instead.
                     </AboutText>
                 </AboutTextContainer>
-
-
             </AboutSection>
+
+            <QuickLinksSection>
+                <BlogLinkContainer>
+                    <BlogLink>Blog</BlogLink>
+                </BlogLinkContainer>
+                <FoodLinkContainer>
+                    <FoodLink>
+                        Food
+                    </FoodLink>
+                </FoodLinkContainer>
+
+            </QuickLinksSection>
 
             <CountdownSection>
                 <CountdownSectionTitle>

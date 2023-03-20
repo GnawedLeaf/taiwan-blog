@@ -19,6 +19,7 @@ background-repeat: no-repeat;
 background-position-y: 30%;
 background-attachment: fixed;
 color:white;
+font-family: 'Bebas Neue', cursive;
 
 
 height: 100vh;
@@ -33,7 +34,7 @@ min-height:100vh;
 `
 export const BigTitle = styled.div`
 font-size: 6.5rem;
-font-family: 'Jost';
+
 
 @media only screen and (max-width: 650px){
  font-size:4.3rem;
@@ -44,7 +45,7 @@ font-family: 'Jost';
 export const BigTitleSubText = styled.div`
 font-size: 1.3rem;
 justify-content: center;
-font-family: 'Jost';
+
 @media only screen and (max-width: 650px){
     font-size: 1rem;
    }
@@ -155,22 +156,45 @@ color: #40798C;
 display: flex;
 justify-content: center;
 margin: 10rem 0 10rem 0;
+min-width: 100%;
+height: 80vh;
+
 
 
 @media only screen and (max-width: 650px){
     margin: 0;
+    height: auto;
 }
 `
 
 export const AboutText = styled.div`
+color: #f5f5f5;
 font-size: 3rem;
 text-align: left;
-margin: 5vh 0 5vh 0;
-opacity: ${(props) => props.isVisible ? "1" : "0"};
-transition-duration: 2s;
-transition-property: opacity;
+margin: 10vh 0 10vh 0;
+position: relative;
+overflow: hidden;
+white-space: nowrap;
+border-right: .15em solid #f5f5f5;
+animation: ${(props) => props.isVisible ? "typing" : ""} 2s steps(40, end) ${(props) => props.delay}s forwards,
+${(props) => props.isVisible ? "blink-caret" : ""}
+ 2s ${(props) => props.delay}s step-end  forwards;
+width: 0%;
+
+@keyframes typing {
+    from { width: 0%; color: #589197; }
+    to { width: 100%; color: #589197; }
+  }
+
+@keyframes blink-caret {
+    0% {border-color: #589197}
+   90% {border-color: #f5f5f5}
+}
+  
+
 @media only screen and (max-width: 650px){
-    font-size:2rem;
+    font-size:1.5rem;
+    white-space: normal;
 }
 
 
@@ -180,3 +204,64 @@ export const AboutTextContainer = styled.div`
 
 padding: 0 2rem 0 2rem;
 `
+
+
+export const QuickLinksSection = styled.div`
+text-align:center;
+color:white;
+`
+
+export const FoodLinkContainer = styled.div`
+
+height:50vh;`
+
+
+
+export const FoodLink = styled.div`
+background: rgb(252,70,107);
+background: linear-gradient(45deg, rgba(252,70,107,1) 0%, rgba(63,94,251,1) 42%, rgba(63,94,251,1) 100%);
+background-size: 1200% 1200%;
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+
+animation: AnimationName2 5s ease infinite;
+@keyframes AnimationName2 {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+
+
+font-size: 15rem;
+@media only screen and (max-width: 650px){
+    font-size:7.5rem;
+}
+
+
+`
+
+export const BlogLinkContainer = styled.div`
+
+`
+
+export const BlogLink = styled.div`
+color: #f5f5f5;
+font-size: 15rem;
+
+background: linear-gradient(-45deg, #ef476f, #f78c6b, #ffd166, #06d6a0, #0cb0a9, #118ab2);
+background-size: 1000% 1000%;
+animation: AnimationName 10s ease infinite;
+@keyframes AnimationName {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent; 
+
+@media only screen and (max-width: 650px){
+    font-size:7.5rem;
+}
+
+`
+
