@@ -1,7 +1,7 @@
 import { React, useEffect, useState, useRef } from "react";
 import { BrowserRouter, Route, Link } from "react-router-dom";
 import { CentralisingContainer } from "../pagesStyles";
-import { BigTitle, Container, CoverPictureContainer, LatestBlogContainer, LatestBlogBigTitle, CountdownSection, CountdownContainer, Hours, Minutes, Seconds, Days, TopDownLayoutContainer, AboutSection, CountdownSectionTitle, BigTitleSubText, AboutText, AboutTextContainer, QuickLinksSection, FoodLinkContainer, BlogLinkContainer, FoodLink, BlogLink, ConveyorBelt, FoodConveyorBelt, FoodConveyorBeltContainer, CountdownSubtitle, FoodConveyorBeltH1, FoodTitle, FoodTitleContainer } from "./HomePageStyles";
+import { BigTitle, Container, CoverPictureContainer, CountdownSection, CountdownContainer, Hours, Minutes, Seconds, Days, TopDownLayoutContainer, AboutSection, CountdownSectionTitle, BigTitleSubText, AboutText, AboutTextContainer, QuickLinksSection, FoodLinkContainer, BlogLinkContainer, FoodLink, BlogLink, FoodConveyorBelt, FoodConveyorBeltContainer, CountdownSubtitle, FoodConveyorBeltH1, FoodTitle, FoodTitleContainer } from "./HomePageStyles";
 import coverPictureDesktop from './pictures/hualien_scenery_1.jpg';
 import coverPictureMobile from './pictures/hualien_scenery_1_mobile.jpg';
 import Navbar from "../../components/Navbar/NavbarIndex";

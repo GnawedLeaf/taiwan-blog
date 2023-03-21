@@ -54,18 +54,6 @@ justify-content: center;
 `
 
 
-export const LatestBlogContainer = styled.div`
-height: 90vh;
-background: ;
-color: white;
-`
-export const LatestBlogBigTitle = styled.div`
-font-size: 5.5rem;
-
-@media only screen and (max-width: 650px){
-    font-size:2.3rem;
-   }
-`
 
 export const CountdownContainer = styled.div`
 display: flex;
@@ -256,34 +244,6 @@ text-decoration:none;
 
 @media only screen and (max-width: 650px){
     font-size:7.5rem;
-}
-
-
-`
-export const ConveyorBelt = styled.div`
-white-space: no-wrap;
-display: inline-flex;
-overflow: hidden;
-overflow-x:auto;
-animation: slider 30s  ease-out infinite;
-@keyframes slider {
-    0%{
-        transform: translateX(0px);
-
-    }
-    50%{
-        transform: translateX(-700px);
-    }
-    100% {
-        transform: translateX(-0px);
-        
-    }
-}
-@media only screen and (max-width: 650px){
-    white-space: normal;
-
-    overflow: hidden;
-    
 }
 `
 
