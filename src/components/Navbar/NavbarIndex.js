@@ -4,19 +4,19 @@ import { NavLink, NavLinksContainer, NavbarContainer } from "./NavbarStyles";
 import { BrowserRouter, Route, Link } from "react-router-dom";
 
 
-const Navbar = () => {
+const Navbar = (props) => {
 
     useEffect(() => {
         console.log(NavbarItems.length)
     }, [])
 
     return (
-        <NavbarContainer>
+        <NavbarContainer colorChange={props.colorChange}>
             <NavLinksContainer gridCount={NavbarItems.length}>
                 {NavbarItems.map((item, index) => {
                     return (
                         <div key={index}>
-                            <NavLink href={item.url}>{item.title}</NavLink>
+                            <NavLink colorChange={props.colorChange} href={item.url}>{item.title}</NavLink>
                         </div>
                     )
                 })}

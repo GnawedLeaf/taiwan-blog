@@ -24,7 +24,7 @@ export const FontStyles = createGlobalStyle`
 body {
   cursor: default;
   overflow-x: hidden;
-  background: #f5f5f5;
+  background: #140726;
 }
 
 
