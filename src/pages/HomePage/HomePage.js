@@ -123,6 +123,9 @@ const HomePage = () => {
 
     const foodItems = ["鍋貼", "Guo tie", "牛肉麵", "Beef Noodles", "炸雞排", "Chicken Cutlet", "蔥抓餅", "Scallion Pancake"];
     const foodItems2 = ["紅油抄手", "Chili Oil Dumplings", "地瓜球", "Sweet Potato Balls", "米血糕", "Blood Cake", "大腸包小腸", "Small Sausage Wrapped in Big Sausage"];
+    const foodItemsEN = ["Guo tie", "Beef Noodles", "Chicken Cutlet", "Scallion Pancake", "Chili Oil Dumplings", "Sweet Potato Balls", "Blood Cake", "Small Sausage Wrapped in Big Sausage"];
+    const foodItemsTW = ["鍋貼", "牛肉麵", "炸雞排", "蔥抓餅", "紅油抄手", "地瓜球", "米血糕", "大腸包小腸",];
+
 
     if (!Array.isArray(foodItems)) {
         return <p>Food items is not an array!</p>;
@@ -194,9 +197,11 @@ const HomePage = () => {
                     </FoodLinkContainer>
 
                     <FoodTitleContainer>
-                        <FoodTitle>
+                        <FoodTitle href="/food">
                             FOOD
                         </FoodTitle>
+
+
                     </FoodTitleContainer>
 
 

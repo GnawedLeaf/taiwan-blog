@@ -5,7 +5,8 @@ font-size: 1rem;
 color:black;
 text-align: center;
 font-family: 'Outfit';
-
+background: #140726;
+margin:0;
 `
 export const CoverPictureContainer = styled.div`
 
@@ -71,7 +72,7 @@ display: flex;
 justify-content: space-evenly;
 flex-wrap: nowrap;
 flex-direction: row;
-border: 0.8rem #FF5E79 solid;
+border: 0.8rem #FD3456 solid;
 background: #140726;
 padding: 1rem 1rem 2rem 1rem;
 margin: 0 5rem 0 5rem;
@@ -90,7 +91,7 @@ margin-bottom:2rem;
 text-align: center;
 
 @media only screen and (max-width: 650px){
-    font-size: 2rem;
+    font-size: 1.6rem;
     margin-bottom:1rem;
     margin-left: 0;
     text-align: center;
@@ -106,7 +107,7 @@ font-family: 'Archivo Black', sans-serif;
     font-size:2rem;
 }
 
-animation:  0.5s linear 0s infinite backwards;
+animation:  upanddown 1s linear 0s infinite backwards;
 
 
 @keyframes upanddown {
@@ -117,7 +118,7 @@ animation:  0.5s linear 0s infinite backwards;
 
     }
     50% {
-        transform: translateY(-10px);
+        transform: translateY(-2px);
     }
     75%{
 
@@ -144,16 +145,17 @@ export const Minutes = styled(CountdownTitles)``
 export const Seconds = styled(CountdownTitles)``
 
 export const CountdownSection = styled.div`
-color: #FF5E79;
-padding: 4rem 0 4rem 0;
+color: #FD3456;
+padding: 4rem 0 15rem 0;
 margin: 5rem 0 5rem 0;
 
 
 @media only screen and (max-width: 650px){
-        display: flex;
+    display: flex;
     flex-direction: column;
     align-content: center;
     flex-wrap: wrap;
+    margin: 1rem 0 1rem 0;
 }
 `
 
@@ -221,6 +223,10 @@ export const QuickLinksSection = styled.div`
 text-align:center;
 color:white;
 margin: 15rem 0 15rem 0;
+
+@media only screen and (max-width: 650px){
+    margin:5rem 0 5rem 0;
+}
 `
 
 
@@ -290,20 +296,24 @@ border-right: none;
 display: flex;
 position: relative;
 width: 100%;
-height: 15rem;
+height: 10rem;
 overflow: hidden;
+
+@media only screen and (max-width: 650px){
+
+}
 `
 
-export const FoodLink = styled.a`
+export const FoodLink = styled.span`
 text-decoration: none;
 color: #29A9FF;
-font-size: 5rem;
+font-size: 4rem;
 margin: 0 1rem 0 1rem;
 text-shadow: 0px 0px grey;
 
 
 @media only screen and (max-width: 650px){
-    font-size:7.5rem;
+    font-size:3.8rem;
 }
 
 
@@ -341,11 +351,55 @@ animation: scrollText 20s  infinite linear;
 `
 
 export const FoodTitleContainer = styled.div`
+margin: 5rem 0 5rem 0;
+
+
 `
-export const FoodTitle = styled.h1`
+export const FoodTitle = styled.a`
 font-size:8rem;
+text-decoration: none;
+color: #f5f5f5;
+font-family: "Prompt", sans-serif;
+font-weight:700;
+
+
+position: relative;
+display: inline-block;
+animation: ani 2s infinite alternate ;
+
+--blue: #1e90ff;
+--white: #ffffff;
+@keyframes ani{
+    0%{
+        transform: translate3d(0,0,0);
+        text-shadow: 0em 0em 0 #29A9FF;
+        color: white;
+    }
+    30%{
+        transform: translate3d(0,0,0);
+        text-shadow: 0em 0em 0 #29A9FF;
+        color: white;
+    }
+    60%{
+        transform: translate3d(0.16em,-0.16em,0);
+        text-shadow: -0.08em 0.08em #29A9FF,;
+        color: white;
+    }
+    100%{
+        transform: translate3d(0.16em,-0.16em,0);
+        text-shadow: -0.08em 0.08em #29A9FF, -0.16em 0.16em #AE29FF, -0.24em 0.24em #D95067;
+        color: white;
+    }
+}
+
 &:hover {
-    transition-duration: 0.3s;
+    transition-duration: 0.8s;
+    transform: translate3d(0.08em,-0.08em,0);
+    text-shadow: -0.08em 0.08em #29A9FF;
+    color: white;
   }
+@media only screen and (max-width: 650px){
+    font-size:5rem;
+}
 `
 
