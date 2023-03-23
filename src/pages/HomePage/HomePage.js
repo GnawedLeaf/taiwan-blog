@@ -1,11 +1,13 @@
 import { React, useEffect, useState, useRef } from "react";
 import { BrowserRouter, Route, Link } from "react-router-dom";
 import { CentralisingContainer } from "../pagesStyles";
-import { BigTitle, Container, CoverPictureContainer, CountdownSection, CountdownContainer, Hours, Minutes, Seconds, Days, TopDownLayoutContainer, AboutSection, CountdownSectionTitle, BigTitleSubText, AboutText, AboutTextContainer, QuickLinksSection, FoodLinkContainer, BlogLinkContainer, FoodLink, BlogLink, FoodConveyorBelt, FoodConveyorBeltContainer, CountdownSubtitle, FoodConveyorBeltH1, FoodTitle, FoodTitleContainer } from "./HomePageStyles";
+import { BigTitle, Container, CoverPictureContainer, CountdownSection, CountdownContainer, Hours, Minutes, Seconds, Days, TopDownLayoutContainer, AboutSection, CountdownSectionTitle, BigTitleSubText, AboutText, AboutTextContainer, QuickLinksSection, FoodLinkContainer, BlogLinkContainer, FoodLink, BlogLink, FoodConveyorBelt, FoodConveyorBeltContainer, CountdownSubtitle, FoodConveyorBeltH1, FoodTitle, FoodTitleContainer, FoodLink2, BlogDecoBox1, BlogDecoBox2, BlogDecoBox3, BlogDecoBox4, BlogDecoBox5, BlogDecoBox6, BlogDecoBox7, BlogDecoBox } from "./HomePageStyles";
 import coverPictureDesktop from './pictures/hualien_scenery_1.jpg';
 import coverPictureMobile from './pictures/hualien_scenery_1_mobile.jpg';
 import Navbar from "../../components/Navbar/NavbarIndex";
-
+import { foodItems, foodItems2, foodItems3, foodItems4 } from "./HomePageItems";
+import Tilt from 'react-parallax-tilt';
+import TiltComponent from "../../components/TiltComponent/TiltComponent";
 
 const HomePage = () => {
 
@@ -119,16 +121,10 @@ const HomePage = () => {
 
     //<------------------------------------------------------------------------------------------------------------------>
 
-
-
-    const foodItems = ["鍋貼", "Guo tie", "牛肉麵", "Beef Noodles", "炸雞排", "Chicken Cutlet", "蔥抓餅", "Scallion Pancake"];
-    const foodItems2 = ["紅油抄手", "Chili Oil Dumplings", "地瓜球", "Sweet Potato Balls", "米血糕", "Blood Cake", "大腸包小腸", "Small Sausage Wrapped in Big Sausage"];
-    const foodItemsEN = ["Guo tie", "Beef Noodles", "Chicken Cutlet", "Scallion Pancake", "Chili Oil Dumplings", "Sweet Potato Balls", "Blood Cake", "Small Sausage Wrapped in Big Sausage"];
-    const foodItemsTW = ["鍋貼", "牛肉麵", "炸雞排", "蔥抓餅", "紅油抄手", "地瓜球", "米血糕", "大腸包小腸",];
-
-
-    if (!Array.isArray(foodItems)) {
-        return <p>Food items is not an array!</p>;
+    const blogRandomNumber = (min, max) => {
+        min = 1;
+        max = 10;
+        return Math.floor(Math.random() * (max - min + 1)) + min;
     }
 
 
@@ -145,16 +141,9 @@ const HomePage = () => {
                     </CentralisingContainer>
                 </CoverPictureContainer>
 
-
-
-
                 <AboutSection >
-
-
                     <AboutTextContainer>
-
                         <AboutText isVisible={isVisible1Final} data-text="Hi." delay={0}> Hi.
-
                         </AboutText>
                         <AboutText ref={targetRef} isVisible={isVisible1Final} delay={0.8} data-text="I'm doing an internship in Taiwan.">
                             I'm doing an internship in Taiwan.
@@ -169,25 +158,64 @@ const HomePage = () => {
                 </AboutSection>
 
                 <QuickLinksSection>
+                    <BlogLinkContainer>
 
-                    <BlogLinkContainer style={{ display: "none" }}>
-                        <BlogLink href={'/blogs'}>Blog</BlogLink>
+                        <TiltComponent colStart={2} colEnd={4} rowStart={2} rowEnd={8} backgroundColor={"blueViolet"} />
+                        <TiltComponent colStart={2} colEnd={4} rowStart={8} rowEnd={30} backgroundColor={"aquamarine"} />
+
+                        <TiltComponent colStart={4} colEnd={20} rowStart={2} rowEnd={18} backgroundColor={"blueViolet"} />
+                        <TiltComponent colStart={4} colEnd={12} rowStart={18} rowEnd={30} backgroundColor={"blueViolet"} />
+                        <TiltComponent colStart={12} colEnd={20} rowStart={18} rowEnd={24} backgroundColor={"aquamarine"} />
+                        <TiltComponent colStart={12} colEnd={28} rowStart={24} rowEnd={30} backgroundColor={"blueViolet"} />
+
+                        <TiltComponent colStart={20} colEnd={28} rowStart={2} rowEnd={5} backgroundColor={"aquamarine"} />
+                        <TiltComponent colStart={20} colEnd={24} rowStart={5} rowEnd={13} backgroundColor={"blueViolet"} />
+                        <TiltComponent colStart={24} colEnd={28} rowStart={5} rowEnd={13} backgroundColor={"blueViolet"} />
+                        <TiltComponent colStart={20} colEnd={28} rowStart={13} rowEnd={21} backgroundColor={"blueViolet"} />
+                        <TiltComponent colStart={20} colEnd={28} rowStart={21} rowEnd={24} backgroundColor={"blueViolet"} />
+
+                        <TiltComponent colStart={28} colEnd={42} rowStart={2} rowEnd={3} backgroundColor={"blueViolet"} />
+                        <TiltComponent colStart={28} colEnd={42} rowStart={3} rowEnd={15} backgroundColor={"aquamarine"}>
+                            <BlogLink fontSize={4} href={'/blogs'}>Blogs</BlogLink>
+                        </TiltComponent>
+                        <TiltComponent colStart={28} colEnd={35} rowStart={15} rowEnd={23} backgroundColor={"blueViolet"} />
+                        <TiltComponent colStart={35} colEnd={42} rowStart={15} rowEnd={23} backgroundColor={"blueViolet"} />
+                        <TiltComponent colStart={28} colEnd={38} rowStart={23} rowEnd={24} backgroundColor={"blueViolet"} />
+                        <TiltComponent colStart={38} colEnd={42} rowStart={23} rowEnd={30} backgroundColor={"blueViolet"} />
+                        <TiltComponent colStart={28} colEnd={38} rowStart={24} rowEnd={30} backgroundColor={"blueViolet"} />
+
+                        <TiltComponent colStart={42} colEnd={48} rowStart={2} rowEnd={6} backgroundColor={"blueViolet"} />
+                        <TiltComponent colStart={42} colEnd={48} rowStart={6} rowEnd={17} backgroundColor={"blueViolet"} />
+                        <TiltComponent colStart={42} colEnd={48} rowStart={17} rowEnd={25} backgroundColor={"blueViolet"} />
+                        <TiltComponent colStart={42} colEnd={48} rowStart={25} rowEnd={30} backgroundColor={"blueViolet"} />
+
+                        <TiltComponent colStart={48} colEnd={50} rowStart={2} rowEnd={10} backgroundColor={"blueViolet"} />
+                        <TiltComponent colStart={48} colEnd={50} rowStart={10} rowEnd={16} backgroundColor={"blueViolet"} />
+                        <TiltComponent colStart={48} colEnd={50} rowStart={16} rowEnd={20} backgroundColor={"blueViolet"} />
+                        <TiltComponent colStart={48} colEnd={50} rowStart={20} rowEnd={30} backgroundColor={"blueViolet"} />
+
+
+
+
+
                     </BlogLinkContainer>
 
 
 
+
+                    {/* Tester for new feature */}
                     <FoodLinkContainer>
                         <FoodConveyorBeltContainer>
                             <FoodConveyorBelt >
                                 <FoodConveyorBeltH1>
-                                    {foodItems.map((foodItem) => (
-                                        <FoodLink href={"/food"}>{foodItem}</FoodLink>
+                                    {foodItems3.map((foodItem) => (
+                                        <FoodLink2 color={foodItem.color} href={"/food"}>{foodItem.name}</FoodLink2>
                                     ))}
                                 </FoodConveyorBeltH1>
 
                                 <FoodConveyorBeltH1>
-                                    {foodItems.map((foodItem) => (
-                                        <FoodLink href={"/food"}>{foodItem}</FoodLink>
+                                    {foodItems3.map((foodItem) => (
+                                        <FoodLink2 color={foodItem.color} href={"/food"}>{foodItem.name}</FoodLink2>
                                     ))}
                                 </FoodConveyorBeltH1>
 
@@ -200,28 +228,30 @@ const HomePage = () => {
                         <FoodTitle href="/food">
                             FOOD
                         </FoodTitle>
-
-
                     </FoodTitleContainer>
+
 
 
                     <FoodLinkContainer>
                         <FoodConveyorBeltContainer>
                             <FoodConveyorBelt >
                                 <FoodConveyorBeltH1>
-                                    {foodItems2.map((foodItem) => (
-                                        <FoodLink href={"/food"}>{foodItem}</FoodLink>
+                                    {foodItems4.map((foodItem) => (
+                                        <FoodLink2 color={foodItem.color} href={"/food"}>{foodItem.name}</FoodLink2>
                                     ))}
                                 </FoodConveyorBeltH1>
 
                                 <FoodConveyorBeltH1>
-                                    {foodItems2.map((foodItem) => (
-                                        <FoodLink href={"/food"}>{foodItem}</FoodLink>
+                                    {foodItems4.map((foodItem) => (
+                                        <FoodLink2 color={foodItem.color} href={"/food"}>{foodItem.name}</FoodLink2>
                                     ))}
                                 </FoodConveyorBeltH1>
+
+
                             </FoodConveyorBelt>
                         </FoodConveyorBeltContainer>
                     </FoodLinkContainer>
+
 
                 </QuickLinksSection>
 

@@ -212,6 +212,7 @@ text-align:center;
 color:white;
 margin: 15rem 0 15rem 0;
 
+
 @media only screen and (max-width: 650px){
     margin:5rem 0 5rem 0;
 }
@@ -220,32 +221,74 @@ margin: 15rem 0 15rem 0;
 
 
 export const BlogLinkContainer = styled.div`
+height:100vh;
+padding: 0.5rem;
+margin: 10rem 0 10rem 0;
+transform: translateX(-0rem);
+border: 0.2rem solid #f5f5f5;
 
-padding-bottom: 1rem;
-border-left: none;
-border-right: none;
-background: rgb(243,183,0);
-background: linear-gradient(30deg, rgba(243,183,0,1) 3%, rgba(253,131,1,1) 51%, rgba(246,62,2,1) 79%);
-background-size: 1000% 1000%;
-animation: AnimationName 5s ease infinite;
-@keyframes AnimationName {
-    0%{background-position:0% 50%}
-    50%{background-position:100% 50%}
-    100%{background-position:0% 50%}
+
+
+display: grid;
+grid-gap: 0.5rem;
+grid-template-columns:1fr repeat(50, 1em [col]) 1fr;
+grid-template-rows: 1fr repeat(30, 1em [row]) 1fr;
+
+@media only screen and (max-width: 650px){
+    height:auto;
+    grid-template-columns: 1fr repeat(50, 0.5em [col]) 1fr;
+    grid-template-rows:1fr repeat(30, 0.5em [row]) 1fr;
 }
 
+
 `
+
+export const BlogDecoBox = styled.div`
+grid-column: ${(props) => props.colStart} /  ${(props) => props.colEnd};
+grid-row: ${(props) => props.rowStart} /  ${(props) => props.rowEnd};
+background: ${(props) => props.background};
+
+animation: ${props => props.animationOn ? "ani2" : ""} 10s infinite ${props => props.delay}s;
+@keyframes ani2 {
+    0% {
+        transform: scale(1);
+
+    }
+    20%{
+        transform: scale(1);
+        opacity:1;
+    }
+    50%{
+        transform: scale(0);
+        opacity: 0;
+    }
+    80%{
+        transform: scale(1);
+        opacity:1;
+    }
+    100%{
+        transform: scale(1);
+    }
+}
+`
+
+
 
 export const BlogLink = styled.a`
 color: #f5f5f5;
-font-size: 6rem;
-margin: 0 1rem 0 1rem;
+transform: translate(-50%, 100%);
+font-size: ${props => props.fontSize}rem;
+position: absolute;
 text-decoration:none;
+text-align: center;
+
 
 @media only screen and (max-width: 650px){
-    font-size:7.5rem;
+    font-size:1rem;
 }
 `
+
+
 
 export const FoodLinkContainer = styled.div`
 margin: 3rem 0 3rem 0;
@@ -275,10 +318,10 @@ text-shadow: 0px 0px grey;
 @media only screen and (max-width: 650px){
     font-size:3.8rem;
 }
+`
 
-
-
-
+export const FoodLink2 = styled(FoodLink)`
+color: ${(props) => props.color};
 `
 
 export const FoodConveyorBeltH1 = styled.h1`
@@ -325,10 +368,9 @@ font-weight:700;
 
 position: relative;
 display: inline-block;
-animation: ani 2s infinite alternate ;
 
---blue: #1e90ff;
---white: #ffffff;
+transition: all 0.8s;
+transition-timing-function: ease;
 @keyframes ani{
     0%{
         transform: translate3d(0,0,0);
@@ -353,13 +395,15 @@ animation: ani 2s infinite alternate ;
 }
 
 &:hover {
-    transition-duration: 0.8s;
-    transform: translate3d(0.08em,-0.08em,0);
-    text-shadow: -0.08em 0.08em #29A9FF;
+
+    transform: translate3d(0.16em,-0.16em,0);
+    text-shadow: -0.08em 0.08em #29A9FF, -0.16em 0.16em #AE29FF, -0.24em 0.24em #D95067;
     color: white;
+
   }
 @media only screen and (max-width: 650px){
     font-size:5rem;
+    animation: ani  2s infinite alternate ;
 }
 `
 
