@@ -136,3 +136,5 @@ export const foodItems3 = [
     },
 
 ];
+
+export const BlogItems = ["BLOGS", "BLOGS", "BLOGS", "BLOGS", "BLOGS",]

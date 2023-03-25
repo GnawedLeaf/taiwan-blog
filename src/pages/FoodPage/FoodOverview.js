@@ -5,7 +5,7 @@ const FoodOverview = () => {
 
 
     return (
-        <div>Food Page</div>
+        <h1 style={{ margin: "0", textAlign: "center ", height: "100vh", fontSize: "10rem", transform: "translateY(30%)" }}>Foooooooooooooooooooooooooooooood</h1>
     );
 }
 

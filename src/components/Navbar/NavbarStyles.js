@@ -3,10 +3,11 @@ import styled from "styled-components";
 export const NavLink = styled.a`
 text-decoration: none;
 font-size: 1.2rem;
-color: ${(props) => props.colorChange ? "#f5f5f5" : "#f5f5f5"};
+color: ${(props) => props.colorChange ? "#4a4e69" : "#f5f5f5"};
 font-family: "Lato";
 margin: 0 0.5rem 0 0.5rem;
-transition-duration: 0.5s;
+display: ${(props) => props.colorChange ? "" : "none"};
+transition-duration: 0.3s;
 
 
 `
@@ -15,6 +16,7 @@ display: grid;
 grid-template-columns: repeat(${(props) => props.gridCount}, auto);
 text-align: center;
 width: 50%;
+
 `
 
 export const NavbarContainer = styled.div`
@@ -22,8 +24,10 @@ position: fixed;
 width: 100%;
 padding: 1.1rem;
 z-index:99;
-background: ${(props) => props.colorChange ? "#140726" : "transparent"};
-border-bottom:  ${(props) => props.colorChange ? "none" : "none"};
+background: ${(props) => props.colorChange ? "#f5f5f5" : "transparent"};
+display: ${(props) => props.colorChange ? "" : "none"};
+transition-duration: 0.3s;
+border-bottom:  ${(props) => props.colorChange ? "#4a4e69" : "none"} 0.1rem solid;
 display: inline-flex;
 justify-content: center;
 transition-duration: 0.5s;

@@ -189,20 +189,25 @@ width: 0%;
 
 @keyframes blink-caret {
     0% {border-color: #f5f5f5}
-   90% {border-color: #140726}
+   90% {border-color: transparent}
+   100%{border-color: transparent}
 }
   
 
 @media only screen and (max-width: 650px){
     font-size:1.5rem;
     white-space: normal;
-}
+    animation: ${(props) => props.isVisible ? "typing" : ""} 2s steps(40, end) ${(props) => props.delay}s forwards,
+${(props) => props.isVisible ? "blink-caret" : ""}
 
+@keyframes blink-caret {
+    0% {border-color: #f5f5f5}
+   90% {border-color: #140726}
+}
 
 `
 
 export const AboutTextContainer = styled.div`
-
 padding: 0 2rem 0 2rem;
 `
 
@@ -223,9 +228,8 @@ margin: 15rem 0 15rem 0;
 export const BlogLinkContainer = styled.div`
 height:100vh;
 padding: 0.5rem;
+padding-bottom: 0;
 margin: 10rem 0 10rem 0;
-transform: translateX(-0rem);
-border: 0.2rem solid #f5f5f5;
 
 
 
@@ -234,10 +238,14 @@ grid-gap: 0.5rem;
 grid-template-columns:1fr repeat(50, 1em [col]) 1fr;
 grid-template-rows: 1fr repeat(30, 1em [row]) 1fr;
 
-@media only screen and (max-width: 650px){
+@media only screen and (max-width: 900px){
     height:auto;
-    grid-template-columns: 1fr repeat(50, 0.5em [col]) 1fr;
-    grid-template-rows:1fr repeat(30, 0.5em [row]) 1fr;
+    grid-template-columns: 1fr repeat(50, 0.4em [col]) 1fr;
+    grid-template-rows:1fr repeat(30, 0.2em [row]) 1fr;
+    transform: rotate(90deg);
+    margin-bottom:30rem;
+
+    
 }
 
 
@@ -275,20 +283,90 @@ animation: ${props => props.animationOn ? "ani2" : ""} 10s infinite ${props => p
 
 
 export const BlogLink = styled.a`
-color: #f5f5f5;
-transform: translate(-50%, 100%);
+color: ${props => props.color};
 font-size: ${props => props.fontSize}rem;
-position: absolute;
 text-decoration:none;
 text-align: center;
-
+font-weight:bold;
+position: flex;
 
 @media only screen and (max-width: 650px){
-    font-size:1rem;
+    font-size:${props => props.mobileFontSize}rem;
+}
+
+&:hover{
+    animation: BlogLinkAnimation 5s infinite;
+    @keyframes BlogLinkAnimation {
+        0%{
+            color: ${props => props.color};
+        }
+        25%{
+            color: #FD3456 ;
+        }
+        50%{
+            color: #F5FF63;
+        }
+        75%{
+            color: #29A9FF;
+        }
+        100%{
+            color: ${props => props.color};
+        }
+    }
 }
 `
 
+export const BlogFlyingContainer = styled.div`
+display: flex;
+position: relative;
+width: 100%;
+overflow: hidden;
+`
+export const BigBlogContainer = styled.div`
 
+`
+export const BlogConveyorBelt = styled.div`
+display: flex;
+animation: scrollText2 20s infinite linear;
+@keyframes scrollText2 {
+    from  { transform: translateX(-50%);
+
+     }
+    to { transform: translateX(0%);
+
+     }
+  }
+
+
+`
+
+export const FlyingBlog = styled.div`
+font-size:8rem;
+text-decoration: none;
+color: #f5f5f5;
+font-family: "Prompt", sans-serif;
+font-weight:700;
+
+margin: 0 15rem 0 15rem;
+transform: translate3d(0.16em,0 ,0);
+transition-duration: 0.5s;
+animation: FlyingBlogAni 8s infinite;
+@keyframes FlyingBlogAni {
+    40%{
+        text-shadow: -1.8em 0 rgb(253,52,86,0.8),1.8em 0 rgb(245,255,99,0.8);
+        color: rgb(41,169,255,1);
+    }
+    100%{
+        text-shadow: 0em 0 rgb(253,52,86,0),0em 0 rgb(245,255,99,0);
+        color: #f5f5f5;
+    }
+}
+
+@media only screen and (max-width: 650px){
+    font-size: 5rem;
+}
+
+`
 
 export const FoodLinkContainer = styled.div`
 margin: 3rem 0 3rem 0;
@@ -346,7 +424,7 @@ export const FoodConveyorBelt = styled.div`
 display: flex;
 animation: scrollText 20s  infinite linear;
 @keyframes scrollText {
-    from   { transform: translateX(0%); }
+    from  { transform: translateX(0%); }
     to { transform: translateX(-50%); }
   }
 
