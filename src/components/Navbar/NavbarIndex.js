@@ -11,12 +11,12 @@ const Navbar = (props) => {
     }, [])
 
     return (
-        <NavbarContainer colorChange={props.colorChange}>
+        <NavbarContainer borderColor={props.borderColor} backgroundColor={props.backgroundColor} colorChange={props.colorChange}>
             <NavLinksContainer gridCount={NavbarItems.length}>
                 {NavbarItems.map((item, index) => {
                     return (
                         <div key={index}>
-                            <NavLink colorChange={props.colorChange} href={item.url}>{item.title}</NavLink>
+                            <NavLink linkColor={props.linkColor} colorChange={props.colorChange} href={item.url}>{item.title}</NavLink>
                         </div>
                     )
                 })}

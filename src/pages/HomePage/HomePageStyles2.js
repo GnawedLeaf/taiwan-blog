@@ -53,22 +53,56 @@ justify-content: center;
 @media only screen and (max-width: 650px){
     font-size: 1.5rem;
    }
+`
+
+export const AboutSection = styled.div`
+padding: 0 5rem 0 5rem;
+margin: 10rem 0 10rem 0;
+    display: flex;
+        flex-direction: column;
+        align-items: center
+
 
 `
 
+export const AboutText = styled.div`
+font-size: 1.3rem;
+width:50%;
+margin-top:5rem;
+text-align:left;
+
+@media only screen and (max-width: 650px){
+    width:100%;
+    text-align:left;
+}
+`
+
+
+
+
+
+
+
+
+
+
+
+
 export const LinksSectionContainer = styled.div`
-margin: 5rem 0 5rem 0;
+margin:10rem 0 10rem 0;
+`
+
+export const LinkRowContainer = styled.div`
+margin-top: 5rem;
 padding: 0 5rem 0 5rem;
 display:inline-flex;
-
 @media only screen and (max-width: 650px){
     display:flex;
     flex-direction: column;
     padding: 0 1rem 0 1rem;
-    margin:3rem 0 3rem 0;
+    margin:0;
     align-items: center;
 }
-
 `
 
 export const BlogsLinksContainer = styled.a`
@@ -103,6 +137,24 @@ border-color: #F28482;
 }
 `
 
+export const AboutLinkContainer = styled(BlogsLinksContainer)`
+color: #E5B15A;
+border-color: #E5B15A;
+
+&:hover{
+    background: #E5B15A;
+}
+`
+
+export const DumpLinkContainer = styled(BlogsLinksContainer)`
+color: #DBB7B1;
+border-color: #DBB7B1;
+
+&:hover{
+    background: #DBB7B1;
+}
+`
+
 export const LinkTitle = styled.div`
 font-size:5rem;
 font-weight:bold;
@@ -134,20 +186,22 @@ border: 0.2rem #4A4E69 solid;
 color: #4A4E69;
 padding: 1rem 1rem 2rem 1rem;
 margin: 5rem 5rem 5rem 5rem;
+width:70%;
 
 
 @media only screen and (max-width: 650px){
     padding: 0.5rem 0rem 1rem 0rem;
     margin: 0 0 0 0;
-    width: 90%;
+    width: 80%;
     border: 0.2rem solid;
     border-right: none;
     border-left: none;
     border-bottom: none;
+    margin: 1rem 5rem 5rem 5rem;
 }
 `
 export const CountdownSectionTitle = styled.legend`
-font-size: 2rem;
+font-size: 1.3rem;
 padding: 0 1rem 0 1rem;
 text-align: center;
 
@@ -186,8 +240,13 @@ export const Minutes = styled(CountdownTitles)``
 export const Seconds = styled(CountdownTitles)``
 
 export const CountdownSection = styled.div`
+padding: 0;
 padding: 4rem 0 15rem 0;
-margin: 5rem 0 5rem 0;
+margin: 10rem 0 10rem 0;
+display:flex;
+
+justify-content: center;
+
 
 
 @media only screen and (max-width: 650px){

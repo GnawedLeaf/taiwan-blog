@@ -1,7 +1,7 @@
 import { React, useEffect, useState, useRef } from "react";
 import { BrowserRouter, Route, Link } from "react-router-dom";
 
-import { BigTitle, Container, CoverPictureContainer, CountdownSection, CountdownContainer, Hours, Minutes, Seconds, Days, TopDownLayoutContainer, AboutSection, CountdownSectionTitle, BigTitleSubText, CoverPictureTitlesContainer, CountdownSubtitle, LinksSectionContainer, BlogsLinksContainer, FoodLinksContainer, LinkTitle, LinkSubtitle } from "./HomePageStyles2";
+import { BigTitle, Container, CoverPictureContainer, CountdownSection, CountdownContainer, Hours, Minutes, Seconds, Days, TopDownLayoutContainer, CountdownSectionTitle, BigTitleSubText, CoverPictureTitlesContainer, CountdownSubtitle, LinksSectionContainer, BlogsLinksContainer, FoodLinksContainer, LinkTitle, LinkSubtitle, AboutText, AboutSection, LinkRowContainer, AboutLinkContainer, DumpLinkContainer } from "./HomePageStyles2";
 import coverPictureDesktop from './pictures/hualien_scenery_1.jpg';
 import coverPictureMobile from './pictures/hualien_scenery_1_mobile.jpg';
 import Navbar from "../../components/Navbar/NavbarIndex";
@@ -122,7 +122,7 @@ const HomePage2 = () => {
 
     return (
         <>
-            <Navbar colorChange={navbarChangeColour} />
+            <Navbar linkColor={'#4a4e69'} backgroundColor={"#f5f5f5"} borderColor={"#4a4e69"} colorChange={navbarChangeColour} />
             <Container>
 
                 <CoverPictureContainer backgroundSrc={coverPictureDesktop} ref={navbarTargetRef}>
@@ -133,18 +133,51 @@ const HomePage2 = () => {
                 </CoverPictureContainer>
 
 
-                <LinksSectionContainer>
-                    <BlogsLinksContainer href="/blogs">
-                        <LinkTitle>BLOGS</LinkTitle>
-                        <LinkSubtitle>Highlights Of My Journey</LinkSubtitle>
+                <AboutSection>
+                    <AboutText>
+                        A record of my experiences of my internship in Taiwan till 14 July.
+                    </AboutText>
+                    <AboutText>
+                        I love Taiwan and I want to remember it as much as possible.
+                    </AboutText>
+                    <AboutText>
+                        It's also an excuse to use some cool React effects I've learnt so many sections will be whacky.
+                    </AboutText>
+                    <AboutText>
+                        Enjoy.
+                    </AboutText>
+                </AboutSection>
 
-                    </BlogsLinksContainer>
-                    <FoodLinksContainer href="/food">
-                        <LinkTitle>FOOD</LinkTitle>
-                        <LinkSubtitle>Reviews Of Amazing Food</LinkSubtitle>
-                    </FoodLinksContainer>
+
+                <LinksSectionContainer>
+                    <LinkRowContainer>
+                        <BlogsLinksContainer href="/blogs">
+                            <LinkTitle>BLOGS</LinkTitle>
+                            <LinkSubtitle>Highlights Of My Travels</LinkSubtitle>
+
+                        </BlogsLinksContainer>
+                        <FoodLinksContainer href="/food">
+                            <LinkTitle>FOOD</LinkTitle>
+                            <LinkSubtitle>Reviews Of Amazing Food</LinkSubtitle>
+                        </FoodLinksContainer>
+                    </LinkRowContainer>
+                    <LinkRowContainer>
+                        <AboutLinkContainer href="/about">
+                            <LinkTitle>ABOUT</LinkTitle>
+                            <LinkSubtitle>That's What It's About</LinkSubtitle>
+
+                        </AboutLinkContainer>
+                        <DumpLinkContainer href="/dump">
+                            <LinkTitle>DUMP</LinkTitle>
+                            <LinkSubtitle>A Graveyard Of Ununsed Designs</LinkSubtitle>
+                        </DumpLinkContainer>
+                    </LinkRowContainer>
 
                 </LinksSectionContainer>
+
+
+
+
 
 
 
