@@ -117,9 +117,8 @@ background: #F0EEDF;
 
 width:100%;
 height: 100%;
-transition-duration: 0.3s;
+transition-duration: 0.2s;
 left: ${(props) => props.open ? "0%" : "100%"};
-
 display: flex;
 justify-content: center;
 align-items: center;
@@ -127,11 +126,18 @@ flex-direction: column;
 
 
 
+@media only screen and (max-width: 650px){
+    font-size: ${(props) => props.open ? "1.2rem" : "0rem"};
+
+    width: ${(props) => props.open ? "100%" : "0%"};
+}
+
+
+
 `
 
 export const MobileMenuText = styled.a`
 margin: 1rem 0 1rem 0;
-font-size:1.2rem;
 text-decoration:none;
 color: #333333;
 `
@@ -167,6 +173,6 @@ export const BlogFooter = styled.div`
 grid-row:4;
 width:100%;
 height:5rem;
-border-top: 1px solid #333333;
-background:green;
+border-top: 0.1rem solid #333333;
+
 `
