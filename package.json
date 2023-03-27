@@ -7,11 +7,13 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "gsap": "^3.11.5",
+    "hamburger-react": "^2.5.0",
     "netlify-cli": "^13.2.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-parallax-tilt": "^1.7.118",
     "react-scripts": "5.0.1",
+    "react-simple-typewriter": "^5.0.1",
     "styled-components": "^5.3.8",
     "typewriter-effect": "^2.19.0",
     "web-vitals": "^2.1.4"

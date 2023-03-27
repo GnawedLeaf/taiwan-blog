@@ -5,6 +5,7 @@ import { BigTitle, Container, CoverPictureContainer, CountdownSection, Countdown
 import coverPictureDesktop from './pictures/hualien_scenery_1.jpg';
 import coverPictureMobile from './pictures/hualien_scenery_1_mobile.jpg';
 import Navbar from "../../components/Navbar/NavbarIndex";
+import { Squash as Hamburger } from 'hamburger-react'
 
 
 const HomePage2 = () => {
@@ -119,6 +120,12 @@ const HomePage2 = () => {
 
     //<------------------------------------------------------------------------------------------------------------------>
 
+    const [hamburgerOpen, setHamburgerOpen] = useState(false);
+    const handleBurgerClick = () => {
+        setHamburgerOpen(!hamburgerOpen);
+
+
+    }
 
     return (
         <>
