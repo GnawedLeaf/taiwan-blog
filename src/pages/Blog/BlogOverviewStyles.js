@@ -178,3 +178,41 @@ height:5rem;
 border-top: 0.1rem solid #333333;
 
 `
+
+export const DailyBlogCardsContainer = styled.div`
+
+`
+
+export const DailyBlogImg = styled.img`
+width: 100px;
+height: auto;
+`
+
+
+export const CalenderContainer = styled.div`
+display: flex;
+flex-direction: column;
+align-items: center;
+}
+`
+
+export const Calender = styled.div`
+border: 0.2rem solid #333333;
+height:25rem;
+display: flex;
+flex-wrap: wrap;
+width: 100%;
+max-width: 700px;
+
+@media only screen and (max-width: 650px){
+  
+}
+`
+
+export const CalenderDay = styled.div`
+width: calc(100% / 7);
+box-sizing: border-box;
+border:1px #333333 solid;
+background: ${(props) => props.hasBlog ? "green" : ""};
+height:calc(100% / 5);
+`
