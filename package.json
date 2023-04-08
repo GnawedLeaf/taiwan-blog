@@ -3,9 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@apollo/client": "^3.7.11",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "graphql-request": "^5.2.0",
     "gsap": "^3.11.5",
     "hamburger-react": "^2.5.0",
     "netlify-cli": "^13.2.1",

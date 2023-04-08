@@ -8,7 +8,7 @@ display:grid;
 grid-template-rows:5rem 12rem 1fr 5rem;
 width:100%;
 height:300vh;
-background: #F0EEDF;
+background: #f5f5f5;
 font-family: ;
 `
 
@@ -54,8 +54,9 @@ font-size:1.2rem;
 `
 
 
-export const Icon = styled.div`
+export const Icon = styled.a`
 grid-column:1;
+text-decoration: none;
 border-right: 0.1rem #333333 solid;
     display: flex;
     justify-content: center;
@@ -93,6 +94,7 @@ color: #333333;
 display: inline-flex;
 align-items: center;
 margin: 0 1rem 0 1rem;
+text-decoration: none;
 
 @media only screen and (max-width: 650px){
     margin: 0 0.2rem 0 0.2rem;

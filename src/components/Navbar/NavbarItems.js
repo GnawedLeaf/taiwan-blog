@@ -9,7 +9,7 @@ export const NavbarItems = [
         url: "/food"
     },
     {
-        title: "Icon",
+        title: "~",
         url: "/",
     },
     {

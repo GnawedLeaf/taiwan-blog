@@ -1,11 +1,48 @@
 import React from "react";
-import { useState } from "react";
-import { Typewriter } from 'react-simple-typewriter'
-import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { gql } from '@apollo/client';
+// import { Typewriter } from 'react-simple-typewriter'
+// import { Link } from "react-router-dom";
 import { BigContainer, BlogBigTitle, BlogNavBar, BlogFooter, BlogMainContainer, Icon, Word1, Word2, Word3, CheckboxContainer, Box, DiagonalLine1, DiagonalLine2, HamburgerStyled, HamburgerMenu, MobileMenuContainer, MobileMenuText } from "./BlogOverviewStyles"
 import { Squash as Hamburger } from 'hamburger-react'
+import { GraphQLClient } from 'graphql-request'
+
 
 const BlogsOverview = () => {
+    const graphcms = new GraphQLClient('https://api-ap-northeast-1.hygraph.com/v2/clg7r296t1gd401uigal98mrw/master');
+
+    const BLOG_QUERY = gql`
+    {
+        posts {
+          author {
+            name
+            publishedAt
+          }
+          content {
+            html
+          }
+          coverImage {
+            url
+            createdAt
+          }
+          createdAt
+          slug
+        }
+    }
+      
+      
+    `
+    const [posts, setPosts] = useState([]);
+    useEffect(() => {
+        const fetchData = async () => {
+            const { posts } = await graphcms.request(BLOG_QUERY);
+            setPosts(posts);
+        };
+
+        fetchData();
+    }, []);
+
+
     const [hamburgerOpen, setHamburgerOpen] = useState(false);
     const handleBurgerClick = () => {
         setHamburgerOpen(!hamburgerOpen);
@@ -34,7 +71,7 @@ const BlogsOverview = () => {
                 </MobileMenuContainer>
 
                 <BlogNavBar>
-                    <Icon>~</Icon>
+                    <Icon href={'/'}>~</Icon>
                     <Word1>Feed</Word1>
                     <Word2>Updates</Word2>
                     <Word3>
@@ -75,7 +112,17 @@ const BlogsOverview = () => {
                     MY BLOGS
                 </BlogBigTitle>
                 <BlogMainContainer>
-                    Test
+                    <div>
+                        {posts.map((post) => (
+                            <div key={post.slug}>
+                                <h2>{post.author.name}</h2>
+                                <p>{post.createdAt}</p>
+                                <div dangerouslySetInnerHTML={{ __html: post.content.html }}></div>
+                                {post.coverImage && <img src={post.coverImage.url} alt={post.coverImage.createdAt} />}
+                            </div>
+                        ))}
+
+                    </div>
 
                     {/* <Link to='/blogs/week1'>Week 1</Link> */}
                 </BlogMainContainer>

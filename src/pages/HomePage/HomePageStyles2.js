@@ -39,7 +39,7 @@ left: 50%;
 transform: translate(-50%, -50%);
 `
 export const BigTitle = styled.div`
-font-size: 2.5rem;
+font-size: 3rem;
 @media only screen and (max-width: 650px){
  font-size:2.5rem;
 }
@@ -47,7 +47,7 @@ font-size: 2.5rem;
 
 
 export const BigTitleSubText = styled.div`
-font-size: 1.3rem;
+font-size: 1rem;
 justify-content: center;
 
 @media only screen and (max-width: 650px){
@@ -106,16 +106,18 @@ display:inline-flex;
 `
 
 export const BlogsLinksContainer = styled.a`
-border: 0.25rem #84A59D solid;
+border: 0.20rem #4A4E69 solid;
 margin:0 5rem 0 5rem;
 padding: 1rem 6rem 2rem 6rem;
 text-decoration: none;
-color: #84A59D;
+color: #4A4E69;
 transition-duration: 0.3s;
 &:hover{
     background: #84A59D;
     color: #f5f5f5;
     transform: scale(1.2);
+    border-color: #84A59D;
+    
 }
 
 @media only screen and (max-width: 650px){
@@ -123,35 +125,40 @@ transition-duration: 0.3s;
     width:80%;
     margin:0;
     margin-top:3rem;
+    border: 0.13rem #84A59D solid;
 
 
 }
 `
 
 export const FoodLinksContainer = styled(BlogsLinksContainer)`
-color: #F28482;
-border-color: #F28482;
+color: #4A4E69;
+border-color: #4A4E69;
 
 &:hover{
     background: #F28482;
+    border-color: #F28482;
+    
 }
 `
 
 export const AboutLinkContainer = styled(BlogsLinksContainer)`
-color: #E5B15A;
-border-color: #E5B15A;
+color: #4A4E69;
+border-color: #4A4E69;
 
 &:hover{
     background: #E5B15A;
+    border-color: #E5B15A;
 }
 `
 
 export const DumpLinkContainer = styled(BlogsLinksContainer)`
-color: #DBB7B1;
-border-color: #DBB7B1;
+color: #4A4E69;
+border-color: #4A4E69;
 
 &:hover{
     background: #DBB7B1;
+    border-color: #DBB7B1;
 }
 `
 
@@ -164,7 +171,9 @@ font-weight:bold;
 }
 `
 
-export const LinkSubtitle = styled.div``
+export const LinkSubtitle = styled.div`
+@media only screen
+`
 
 
 

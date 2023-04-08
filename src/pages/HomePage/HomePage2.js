@@ -134,21 +134,22 @@ const HomePage2 = () => {
 
                 <CoverPictureContainer backgroundSrc={coverPictureDesktop} ref={navbarTargetRef}>
                     <CoverPictureTitlesContainer>
-                        <BigTitleSubText>Marcel's</BigTitleSubText>
-                        <BigTitle>Taiwan Adventures</BigTitle>
+
+                        <BigTitle>An Introvert's Guide to Taiwan</BigTitle>
+                        <BigTitleSubText>By Marcel</BigTitleSubText>
                     </CoverPictureTitlesContainer>
                 </CoverPictureContainer>
 
 
                 <AboutSection>
                     <AboutText>
-                        A record of my experiences of my internship in Taiwan till 14 July.
+                        A guide/blog/record of my experiences in Taiwan of whats good and whats shit.
                     </AboutText>
                     <AboutText>
-                        I love Taiwan and I want to remember it as much as possible.
+                        To be honest, I could spend every night and every weekend staying at home and playing games but I wanna force myself to go out.
                     </AboutText>
                     <AboutText>
-                        It's also an excuse to use some cool React effects I've learnt so many sections will be whacky.
+                        It's also an excuse to use some cool React effects I've learnt so some sections might be abit whacky.
                     </AboutText>
                     <AboutText>
                         Enjoy.

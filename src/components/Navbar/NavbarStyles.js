@@ -27,7 +27,7 @@ z-index:99;
 background: ${(props) => props.colorChange ? props.backgroundColor : "transparent"};
 display: ${(props) => props.colorChange ? "" : "none"};
 transition-duration: 0.3s;
-border-bottom:  ${(props) => props.colorChange ? props.borderColor : "none"} 0.1rem solid;
+border-bottom:  ${(props) => props.colorChange ? props.borderColor : "none"} 0.05rem solid;
 display: inline-flex;
 justify-content: center;
 transition-duration: 0.5s;
