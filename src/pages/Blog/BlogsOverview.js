@@ -1,17 +1,16 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { gql } from '@apollo/client';
 // import { Typewriter } from 'react-simple-typewriter'
-// import { Link } from "react-router-dom";
-import { BigContainer, BlogBigTitle, BlogNavBar, BlogFooter, BlogMainContainer, Icon, Word1, Word2, Word3, CheckboxContainer, Box, DiagonalLine1, DiagonalLine2, HamburgerStyled, HamburgerMenu, MobileMenuContainer, MobileMenuText, DailyBlogCardsContainer, DailyBlogImg, CalenderContainer, Calender, CalenderDay } from "./BlogOverviewStyles"
+import { Link, Navigate, useNavigate } from "react-router-dom";
+import { BigContainer, BlogBigTitle, BlogNavBar, BlogFooter, BlogMainContainer, Icon, Word1, Word2, Word3, CheckboxContainer, Box, DiagonalLine1, DiagonalLine2, HamburgerStyled, HamburgerMenu, MobileMenuContainer, MobileMenuText, DailyBlogCardsContainer, DailyBlogImg, CalenderContainer, Calender, CalenderDay, CalenderDayLabel, Carousel, CarouselItem, Inner, CarouselTitleHolder, CalenderMonthHeader, CalenderDayTitle } from "./BlogOverviewStyles"
 import { Squash as Hamburger } from 'hamburger-react'
 import { GraphQLClient } from 'graphql-request'
-import DailyBlogCard from './DailyBlogs/DailyBlogCard'
-import DailyBlogPost from "./DailyBlogs/DailyBlogPost";
+import { BLOG_QUERY } from "../../backend/blogQuery";
 
 
 
-const BlogsOverview = () => {
+
+const BlogsOverview = (props) => {
 
     const [janArray, setJanArray] = useState(Array(31).fill());
     const [febArray, setFebArray] = useState(Array(28).fill());
@@ -19,40 +18,11 @@ const BlogsOverview = () => {
     const [aprArray, setAprArray] = useState(Array(30).fill());
     const [mayArray, setMayArray] = useState(Array(31).fill());
     const [junArray, setJunArray] = useState(Array(30).fill());
-    const [julyArray, setJulyArray] = useState(Array(31).fill());
-    const [monthsContainer, setMonthsContainer] = useState([janArray, febArray, marArray, aprArray, mayArray, junArray, julyArray]);
-
+    const [julArray, setjulArray] = useState(Array(31).fill());
+    const [monthsContainer, setMonthsContainer] = useState([janArray, febArray, marArray, aprArray, mayArray, junArray, julArray]);
 
     const graphcms = new GraphQLClient('https://api-ap-northeast-1.hygraph.com/v2/clg7r296t1gd401uigal98mrw/master');
 
-    const BLOG_QUERY = gql`
-    {
-        posts {
-          slug
-          title
-          date
-          coverImage {
-            url
-            createdAt
-          }
-          postImage {
-            height
-            width
-            url(transformation: {image: {resize: {height: 225, width: 400}}})
-          }
-          content {
-            html
-          }
-          author {
-            name
-            publishedAt
-          }
-
-        }
-      }
-      
-      
-    `
     const [posts, setPosts] = useState([]);
     const [mainPosts, setMainPosts] = useState([]);
 
@@ -61,10 +31,12 @@ const BlogsOverview = () => {
             const { posts } = await graphcms.request(BLOG_QUERY);
 
             //filter out all the slugs with "blog" , "daily" will be used for the calender 
+            const mainBlogArray = posts.filter((post) => !post.slug.includes("daily"));
+            const dailyArray = posts.filter((post) => post.slug.includes("daily"));
 
-            setPosts(posts);
+            setPosts(dailyArray);
 
-            //console.log("posts: ", posts)
+            setMainPosts(mainBlogArray);
         };
         fetchData();
 
@@ -72,16 +44,37 @@ const BlogsOverview = () => {
 
     useEffect(() => {
         sortBlogsIntoCalender(posts);
+
     }, [posts])
 
     //update the month container everytime one of the months updates
     useEffect(() => {
-        setMonthsContainer([janArray, febArray, marArray, aprArray, mayArray, junArray, julyArray])
-    }, [janArray, febArray, marArray, aprArray, mayArray, junArray, julyArray])
+        setMonthsContainer([janArray, febArray, marArray, aprArray, mayArray, junArray, julArray])
+
+
+    }, [janArray, febArray, marArray, aprArray, mayArray, junArray, julArray, posts])
+
+    //Lifting state up to App level
+    useEffect(() => {
+        console.log("blog level", monthsContainer)
+        props.onData(monthsContainer)
+    }, [monthsContainer])
+
+
 
 
     const sortBlogsIntoCalender = (posts) => {
         if (posts) {
+            const monthArrays = {
+                "01": [...janArray],
+                "02": [...febArray],
+                "03": [...marArray],
+                "04": [...aprArray],
+                "05": [...mayArray],
+                "06": [...junArray],
+                "07": [...julArray],
+            };
+
             for (let i = 0; i < posts.length; i++) {
                 const rawDate = posts[i].date;
                 const year = rawDate.substring(0, 4);
@@ -89,77 +82,24 @@ const BlogsOverview = () => {
                 const day = rawDate.substring(8, 10);
                 const dateObject = { year, month, day };
 
-                switch (dateObject.month) {
-                    case "01": {
-                        const updatedArray = [...janArray];
-                        updatedArray[dateObject.day - 1] = posts[i]
-                        console.log("within switch statement: ", updatedArray)
-                        setJanArray(updatedArray)
-                        console.log(janArray)
-                        // if (!janArray[dateObject.day - 1]) {
-                        //     i--;
-                        // }
-                    }
-                    case "02": {
-                        const updatedArray = [...febArray];
-                        updatedArray[dateObject.day - 1] = posts[i];
-                        setFebArray(updatedArray);
-                        console.log(febArray);
-                        break;
-                    }
-                    case "03": {
-                        const updatedArray = [...marArray];
-                        updatedArray[dateObject.day - 1] = posts[i];
-                        console.log("within switch statement: ", updatedArray)
-                        setMarArray(updatedArray);
-
-
-                        break;
-                    }
-                    case "04": {
-                        const updatedArray = [...aprArray];
-                        updatedArray[dateObject.day - 1] = posts[i];
-                        console.log("within switch statement: ", updatedArray)
-                        setAprArray(updatedArray);
-
-                        break;
-                    }
-                    case "05": {
-                        const updatedArray = [...mayArray];
-                        updatedArray[dateObject.day - 1] = posts[i];
-                        setMayArray(updatedArray);
-                        console.log(mayArray);
-                        break;
-                    }
-                    case "06": {
-                        const updatedArray = [...junArray];
-                        updatedArray[dateObject.day - 1] = posts[i];
-                        setJunArray(updatedArray);
-                        console.log(junArray);
-                        break;
-                    }
-                    case "07": {
-                        const updatedArray = [...julyArray];
-                        updatedArray[dateObject.day - 1] = posts[i];
-                        setJulyArray(updatedArray);
-                        console.log(julyArray);
-                        break;
-                    }
-                    default:
-                        break;
-
-                }
+                monthArrays[dateObject.month][dateObject.day - 1] = posts[i];
             }
+
+            setJanArray(monthArrays["01"]);
+            setFebArray(monthArrays["02"]);
+            setMarArray(monthArrays["03"]);
+            setAprArray(monthArrays["04"]);
+            setMayArray(monthArrays["05"]);
+            setJunArray(monthArrays["06"]);
+            setjulArray(monthArrays["07"]);
         }
+    };
 
-
-    }
-
-    useEffect(() => {
-        console.log("within switch statement, APR arra: ", aprArray)
-        console.log("within switch statement, MAR array: ", marArray)
-        console.log(monthsContainer)
-    }, [aprArray, marArray])
+    // useEffect(() => {
+    //     console.log("within switch statement, APR arra: ", aprArray)
+    //     console.log("within switch statement, MAR array: ", marArray)
+    //     console.log(monthsContainer)
+    // }, [aprArray, marArray])
 
 
 
@@ -170,17 +110,33 @@ const BlogsOverview = () => {
     const handleBurgerClick = () => {
         setHamburgerOpen(!hamburgerOpen);
 
-
     }
 
     //Calender thing -------------------------------------------------
 
-    const handleDailyPostClick = () => [
-        console.log("clicked")
-    ]
+    const navigate = useNavigate();
 
+    const handleDailyPostClick = (dayIndex, monthIndex) => {
+        navigate(`/blogs/daily/${dayIndex + 1}-${monthIndex + 1}-2023`)
+    }
 
+    const Calenders = monthsContainer.map((month, monthIndex) => (
+        <>
+            {monthIndex}
+            < Calender >
+                {
+                    month.map((day, dayIndex) => (
+                        <CalenderDay onClick={day && handleDailyPostClick} hasBlog={day} key={dayIndex} feb={monthIndex === 1}>
+                            <CalenderDayLabel hasBlog={day}>
+                                {dayIndex + 1}
+                            </CalenderDayLabel>
+                        </CalenderDay>
+                    ))
+                }
+            </Calender>
+        </>
 
+    ))
 
 
     return (
@@ -247,16 +203,13 @@ const BlogsOverview = () => {
                 <BlogMainContainer>
                     <DailyBlogCardsContainer>
 
-                        {posts.map((post, index) => (
-                            <DailyBlogCard postData={post}>{index}</DailyBlogCard>
-                        ))}
-
 
 
                         <div>
-                            {posts.map((post) => (
+                            {mainPosts.map((post) => (
                                 <div key={post.slug}>
-                                    <h2>{post.author.name}</h2>
+                                    <h1>{post.title}</h1>
+                                    <h3>By: {post.author.name}</h3>
                                     <p>{post.date}</p>
                                     <div dangerouslySetInnerHTML={{ __html: post.content.html }}></div>
                                     {post.coverImage && <img src={post.coverImage.url} alt={post.coverImage.createdAt} style={{ width: "30%" }} />}
@@ -272,20 +225,45 @@ const BlogsOverview = () => {
                     {/* <Link to='/blogs/week1'>Week 1</Link> */}
                 </BlogMainContainer>
                 <CalenderContainer>
-                    {monthsContainer.map((month, index) => (
+
+                    {monthsContainer.map((month, monthIndex) => (
                         <>
-                            {index}
+                            <CalenderMonthHeader>
+                                {monthIndex === 0 ? "Jan" : ""}
+                                {monthIndex === 1 ? "Feb" : ""}
+                                {monthIndex === 2 ? "Mar" : ""}
+                                {monthIndex === 3 ? "Apr" : ""}
+                                {monthIndex === 4 ? "May" : ""}
+                                {monthIndex === 5 ? "Jun" : ""}
+                                {monthIndex === 6 ? "Jul" : ""}
+                            </CalenderMonthHeader>
+
                             < Calender >
                                 {
-                                    month.map((day, index) => (
-                                        <CalenderDay onClick={day && handleDailyPostClick} hasBlog={day} key={index}>{index + 1} {day && day.title}</CalenderDay>
+                                    month.map((day, dayIndex) => (
+                                        <Carousel onClick={() => { day && handleDailyPostClick(dayIndex, monthIndex) }} hasBlog={day} key={dayIndex} feb={monthIndex === 1}>
+                                            <Inner hasBlog={day}>
+                                                <CarouselItem>
+                                                    <CalenderDayLabel hasBlog={day}>
+                                                        {dayIndex + 1}
+                                                    </CalenderDayLabel>
+                                                    <CalenderDayTitle>
+                                                        {day && day.title}
+                                                    </CalenderDayTitle>
+                                                </CarouselItem>
+                                                {/* <CarouselItem>
+                                                    <CarouselTitleHolder>
+                                                        {day && day.title}
+                                                    </CarouselTitleHolder></CarouselItem> */}
+                                            </Inner>
+                                        </Carousel>
+
                                     ))
                                 }
                             </Calender>
                         </>
 
                     ))}
-
                 </CalenderContainer>
 
                 <BlogFooter></BlogFooter>
@@ -295,5 +273,8 @@ const BlogsOverview = () => {
 
     );
 }
+
+
+
 
 export default BlogsOverview;

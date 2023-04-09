@@ -1,14 +1,21 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { NavbarItems } from "./NavbarItems";
-import { NavLink, NavLinksContainer, NavbarContainer } from "./NavbarStyles";
+import { NavLink, NavLinksContainer, NavbarContainer, MobileNavBarContainer, MobileIconContainer, HamburgerContainer, MobileMenuContainer, MobileMenuText } from "./NavbarStyles";
 import { BrowserRouter, Route, Link } from "react-router-dom";
+import { Squash as Hamburger } from 'hamburger-react'
+
 
 
 const Navbar = (props) => {
-
+    const [hamburgerOpen, setHamburgerOpen] = useState(false);
     useEffect(() => {
         console.log(NavbarItems.length)
     }, [])
+
+    const handleBurgerClick = () => {
+        setHamburgerOpen(!hamburgerOpen)
+        console.log(hamburgerOpen)
+    }
 
     return (
         <NavbarContainer borderColor={props.borderColor} backgroundColor={props.backgroundColor} colorChange={props.colorChange}>
@@ -21,6 +28,31 @@ const Navbar = (props) => {
                     )
                 })}
             </NavLinksContainer>
+            <MobileNavBarContainer colorChange={props.colorChange} >
+                <MobileIconContainer href={'/'}>
+                    ~
+                </MobileIconContainer>
+                <HamburgerContainer>
+                    <Hamburger onToggle={handleBurgerClick} color={'#333333'} size={20}></Hamburger>
+                </HamburgerContainer>
+            </MobileNavBarContainer>
+            <MobileMenuContainer open={hamburgerOpen}>
+
+                <MobileMenuText href="/blogs">
+                    Blogs
+                </MobileMenuText>
+
+                <MobileMenuText href="/food">
+                    Food
+                </MobileMenuText>
+                <MobileMenuText href="/about">
+                    About
+                </MobileMenuText>
+                <MobileMenuText href="/dump">
+                    Dump
+                </MobileMenuText>
+            </MobileMenuContainer>
+
         </NavbarContainer>
 
     )
