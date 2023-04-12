@@ -38,6 +38,10 @@ const Navbar = (props) => {
             </MobileNavBarContainer>
             <MobileMenuContainer open={hamburgerOpen}>
 
+                {/* <MobileMenuText href="/">
+                    Home
+                </MobileMenuText> */}
+
                 <MobileMenuText href="/blogs">
                     Blogs
                 </MobileMenuText>

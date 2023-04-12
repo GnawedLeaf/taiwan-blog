@@ -70,7 +70,7 @@ font-size: 1.3rem;
 width:50%;
 margin-top:5rem;
 text-align:left;
-
+color: #4A4E69;
 @media only screen and (max-width: 650px){
     width:100%;
     text-align:left;
@@ -125,7 +125,7 @@ transition-duration: 0.3s;
     width:80%;
     margin:0;
     margin-top:3rem;
-    border: 0.13rem #84A59D solid;
+    border: 0.13rem #4A4E69 solid;
 
 
 }

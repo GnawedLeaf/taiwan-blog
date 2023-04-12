@@ -16,7 +16,7 @@ export const BlogMainContainer = styled.div`
 grid-row:3;
 display: flex;
 justify-content: center;
-border-top: 0.1rem #333333 solid;
+border-top: 0.1rem #22223B solid;
 
 `
 
@@ -25,7 +25,7 @@ grid-row:2;
 font-size:10rem;
 font-weight:600;
 font-family: 'Outfit', sans-serif;
-color: #333333;
+color: #22223B;
 display:flex;
 align-items: center;
 justify-content: center;
@@ -40,7 +40,7 @@ justify-content: center;
 export const BlogNavBar = styled.div`
 grid-row:1;
 width:100%;
-border-bottom: 0.1rem solid #333333;
+border-bottom: 0.1rem solid #22223B;
 display:grid;
 grid-template-columns:5rem 20rem 20rem 1fr;
 grid-gap: 0.5rem;
@@ -57,7 +57,7 @@ font-size:1.2rem;
 export const Icon = styled.a`
 grid-column:1;
 text-decoration: none;
-border-right: 0.1rem #333333 solid;
+border-right: 0.1rem #22223B solid;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -90,7 +90,7 @@ margin-right:0.6rem;
 
 export const CheckboxContainer = styled.a`
 
-color: #333333;
+color: #22223B;
 display: inline-flex;
 align-items: center;
 margin: 0 1rem 0 1rem;
@@ -126,17 +126,13 @@ align-items: center;
 justify-content: center;
 flex-direction: column;
 padding: 5rem 0 5rem 0;
-border-bottom: 0.1rem solid #333333;
-border-left: 0.1rem solid #333333;
-
+border-bottom: 0.1rem solid #22223B;
 left: ${(props) => props.open ? "0%" : "100%"};
 
 
 
 @media only screen and (max-width: 650px){
-    font-size: ${(props) => props.open ? "1.2rem" : "0rem"};
 
-    width: ${(props) => props.open ? "100%" : "0%"};
 }
 
 
@@ -146,7 +142,7 @@ left: ${(props) => props.open ? "0%" : "100%"};
 export const MobileMenuText = styled.a`
 margin: 1rem 0 1rem 0;
 text-decoration:none;
-color: #333333;
+color: #22223B;
 `
 
 export const Box = styled.div`
@@ -154,7 +150,7 @@ export const Box = styled.div`
   padding: 0;
   width: 1.5rem;
   height: 1.5rem;
-  border: 1px solid #333333;
+  border: 1px solid #22223B;
   margin-right:0.5rem;
 `;
 
@@ -180,7 +176,7 @@ export const BlogFooter = styled.div`
 grid-row:4;
 width:100%;
 height:5rem;
-border-top: 0.1rem solid #333333;
+border-top: 0.1rem solid #22223B;
 
 `
 
@@ -221,7 +217,7 @@ margin-top:1rem;
 export const CalenderDay = styled.div`
 width: calc(100% / 7);
 box-sizing: border-box;
-border:1px #333333 solid;
+border:1px #22223B solid;
 // background: ${(props) => props.hasBlog ? "green" : ""};
 height:calc(100% / ${(props) => props.feb ? 4 : 5});
 display: flex;

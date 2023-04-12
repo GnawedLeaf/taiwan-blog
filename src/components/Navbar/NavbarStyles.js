@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const NavLink = styled.a`
+export const Link = styled.a`
 text-decoration: none;
 font-size: 1.2rem;
 color: ${(props) => props.colorChange ? props.linkColor : "#f5f5f5"};
@@ -8,9 +8,41 @@ font-family: "Lato";
 margin: 0 0.5rem 0 0.5rem;
 display: ${(props) => props.colorChange ? "" : "none"};
 transition-duration: 0.3s;
-
-
 `
+export const NavLink = styled.a`
+font-family: 'Jost', sans-serif;
+  text-decoration: none;
+  letter-spacing: 0.1rem;
+  display: inline-block;
+  padding: 0.4rem 0.4rem;
+  font-size:1.05rem;
+  position: relative;
+  display: ${(props) => props.colorChange ? "" : "none"};
+  color: ${(props) => props.colorChange ? props.linkColor : "#f5f5f5"};
+  
+  &:after {
+    background: none repeat scroll 0 0 transparent;
+    bottom: 0;
+    content: "";
+    display: block;
+    height: 2px;
+    left: 50%;
+    position: absolute;
+    background: #22223B;
+    transition: width 0.3s ease 0s, left 0.3s ease 0s;
+    width: 0;
+  }
+  
+  &:hover:after { 
+    width: 100%; 
+    left: 0; 
+  }
+`;
+
+
+
+
+
 export const NavLinksContainer = styled.div`
 display: grid;
 grid-template-columns: repeat(${(props) => props.gridCount}, auto);
@@ -56,7 +88,7 @@ transition-duration: 0.3s;
 export const MobileIconContainer = styled.a`
 text-decoration: none;
 grid-column-start: 2;
-
+color: #22223B;
 display: flex;
 align-items: center;
 justify-content: center;

@@ -18,7 +18,6 @@ export const NavbarItems = [
     },
 
 
-
     {
         title: "Dump",
         url: "/dump",

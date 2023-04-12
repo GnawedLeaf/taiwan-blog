@@ -7,7 +7,7 @@ align-items: center;
 justify-content: center;
 height:100vh;
 font-family: "Jost",sans-serif;
-
+background: #f5f5f5;
 @media only screen and (min-width: 650px){
     position:absolute;
     top:0px;
@@ -29,7 +29,7 @@ text-align:center;
 `
 
 export const Button = styled.button`
-color:#4a4e69;
+color:#22223B;
 font-family: "Jost",sans-serif;
 cursor: pointer;
 margin-top:2rem;
@@ -38,7 +38,14 @@ height:auto;
 padding:1rem;
 
 font-size:1.4rem;
-border:0.1rem solid #4a4e69;
+border:0.1rem solid #22223B;
+
+&:hover{
+    transition: all 0.5s ease-out;
+    color: #f5f5f5;
+    background: #22223B;
+
+}
 
 @media only screen and (max-width: 650px){
     font-size:1.3rem;

@@ -135,7 +135,7 @@ const HomePage2 = () => {
                 <CoverPictureContainer backgroundSrc={coverPictureDesktop} ref={navbarTargetRef}>
                     <CoverPictureTitlesContainer>
 
-                        <BigTitle>An Introvert's Guide to Taiwan</BigTitle>
+                        <BigTitle>A Guide to Taiwan</BigTitle>
                         <BigTitleSubText>By Marcel</BigTitleSubText>
                     </CoverPictureTitlesContainer>
                 </CoverPictureContainer>
