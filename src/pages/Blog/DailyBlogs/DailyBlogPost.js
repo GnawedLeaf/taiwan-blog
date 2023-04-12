@@ -5,13 +5,12 @@ import { useState, useEffect } from "react";
 import { GraphQLClient } from 'graphql-request'
 import { useNavigate } from 'react-router-dom';
 import { serializeFetchParameter } from "@apollo/client";
-import { LoadingContainer, Title, PostContainer, Date, Loading, DotsAnimation, BigContainer, TitleAndLocationContainer, LocationContainer, Location, MainPostContainer, PageNumber, ImageContainer, ContentContainer, Image, ZoomedImageContainer, ZoomedImage, BackButton, Content } from "./DailyBlogPostStyles";
+import { LoadingContainer, Title, PostContainer, Date, Loading, DotsAnimation, BigContainer, TitleAndLocationContainer, LocationContainer, Location, MainPostContainer, PageNumber, ImageContainer, ContentContainer, Image, Content } from "./DailyBlogPostStyles";
 import { BsArrowLeft } from 'react-icons/bs';
 const DailyBlogPost = (props) => {
 
   const graphcms = new GraphQLClient('https://api-ap-northeast-1.hygraph.com/v2/clg7r296t1gd401uigal98mrw/master');
   const [dailyPost, setDailyPost] = useState({})
-  const [seperatedText, setSeperatedText] = useState([""])
   const params = useParams();
   const [firstText, setFirstText] = useState("")
   const [lastText, setLastText] = useState("")
@@ -22,7 +21,6 @@ const DailyBlogPost = (props) => {
     imageUrl: ""
   }])
   const [pageNum, setPageNum] = useState(0);
-  const [openZoomedImage, setOpenZoomedImage] = useState(false);
 
   //Formatting date
   const dateString = params.date; // replace this with your date string
@@ -89,24 +87,17 @@ const DailyBlogPost = (props) => {
   }
 
   const handleGoNextPage = () => {
-    if (pageNum != postContent.length - 1) {
+    if (pageNum !== postContent.length - 1) {
       setPageNum(pageNum + 1)
     }
 
   }
 
   const handleGoPrevPage = () => {
-    if (pageNum != 0) {
+    if (pageNum !== 0) {
       setPageNum(pageNum - 1)
     }
 
-  }
-  const handleOpenZoomedImage = () => {
-    setOpenZoomedImage(true);
-  }
-
-  const handleToggleZoom = () => {
-    setOpenZoomedImage(!openZoomedImage);
   }
 
 
@@ -119,7 +110,7 @@ const DailyBlogPost = (props) => {
         <>
           {postContent.map((page, index) => (
 
-            <PostContainer translateX={pageNum == index ? 0 : pageNum > index ? "-100%" : (index - pageNum) / 3 + "rem"} translateY={pageNum == index ? 0 : (index - pageNum) / 3 + "rem"} opacity={pageNum > index ? "0" : "1"} zIndex={100 - index}>
+            <PostContainer translateX={pageNum === index ? 0 : pageNum > index ? "-100%" : (index - pageNum) / 3 + "rem"} translateY={pageNum === index ? 0 : (index - pageNum) / 3 + "rem"} opacity={pageNum > index ? "0" : "1"} zIndex={100 - index}>
 
               <TitleAndLocationContainer>
                 <Title>{dailyPost.title}</Title>
@@ -132,9 +123,9 @@ const DailyBlogPost = (props) => {
                 <Date>{formattedDate}</Date>
                 <ImageContainer>
 
-                  <Image zoomMode={openZoomedImage} src={page.imageUrl.url}></Image>
+                  <Image src={page.imageUrl.url}></Image>
                 </ImageContainer>
-                <ContentContainer zoomMode={openZoomedImage}>
+                <ContentContainer>
                   <Content>{page.content && page.content.text}</Content>
                 </ContentContainer>
                 <PageNumber>{index + 1}</PageNumber>

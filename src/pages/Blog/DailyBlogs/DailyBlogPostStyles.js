@@ -9,6 +9,7 @@ align-items: center;
 font-family: 'Quicksand', sans-serif;
 font-weight: 500;
 transition-duration: 0.2s;
+
 `
 
 export const PostContainer = styled.div`
@@ -26,6 +27,7 @@ transform-origin: left;
 
 transition: all 0.7s ease, opacity 0.4s ease;
 transform: translate(${props => props.translateX},${props => props.translateY});
+
 
 animation:  1.5s ease forwards;
 @keyframes haha {
@@ -57,13 +59,12 @@ align-items: center;
 
 export const Image = styled.img`
 width: 60%;
-transform: scale(${props => props.zoomMode ? "2" : "1"});
 
   transition: 0.3s ease-in-out;
   
   &:hover {
     //cursor: pointer;
-    ${props => props.zoomMode ? "" : "transform: scale(1.05)"};
+   transform: scale(1.05)
   }
 `
 export const Content = styled.div`
@@ -82,8 +83,6 @@ display: flex;
 justify-content: center;
 align-items: center;
 transition-duration: 1s;
-opacity: ${props => props.zoomMode ? "0" : "1"};
-transform: translateX(${props => props.zoomMode ? "-10%" : "0"});
 
 @media only screen and (max-width: 1200px){
   padding: 0;

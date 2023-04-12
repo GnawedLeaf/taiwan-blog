@@ -21,6 +21,11 @@ export const FontStyles = createGlobalStyle`
   display: none;
 }
 
+::selection {
+  background: #38BBE7;
+  color: #f5f5f5; /* This sets the color of the highlighted text */
+}
+
 body {
   cursor: default;
   overflow-x: hidden;
