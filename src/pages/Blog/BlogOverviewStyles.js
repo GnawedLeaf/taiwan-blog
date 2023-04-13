@@ -7,7 +7,7 @@ export const BigContainer = styled.div`
 display:grid;
 grid-template-rows:5rem 12rem 1fr 5rem;
 width:100%;
-height:300vh;
+height:100vh;
 background: #f5f5f5;
 font-family: ;
 `
@@ -234,7 +234,7 @@ align-items: center;
 export const CalenderDayLabel = styled.div`
 font-family: "Rubik",sans-serif;
 font-weight:600;
-z-index:99;
+
 
 `
 export const CalenderDayTitle = styled.div`

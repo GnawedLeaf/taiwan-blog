@@ -85,7 +85,7 @@ export const EndPostContainer = styled(StartPostContainer)`
 `
 export const EndPostText = styled.div`
 position: absolute;
-font-size:1.1rem;
+
 width:65%;
 text-align: center;
 @media only screen and (max-width: 750px){

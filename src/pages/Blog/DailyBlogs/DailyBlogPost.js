@@ -148,10 +148,10 @@ const DailyBlogPost = (props) => {
 
   const handleTouchEnd = () => {
     const touchDiff = touchStartX - touchEndX;
-    if (touchDiff > 0) {
+    if (touchDiff > 50) {
       //swipe left
       handleGoNextPage();
-    } else if (touchDiff < 0) {
+    } else if (touchDiff < 50) {
       //swiped right
       handleGoPrevPage();
     }
