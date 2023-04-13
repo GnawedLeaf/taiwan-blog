@@ -11,6 +11,94 @@ font-weight: 500;
 transition-duration: 0.2s;
 
 `
+export const StartPostContainer = styled.div`
+width:70%;
+height:80%;
+box-shadow: 10px 12px 13px -2px rgba(0,0,0,0.15);
+position:absolute;
+opacity: ${props => props.opacity};
+z-index: ${props => props.zIndex};
+transform-origin: left;
+background: #f5f5f5;
+transition: all 0.7s ease, opacity 0.4s ease;
+transform: translate(${props => props.translateX},${props => props.translateY});
+display:flex;
+justify-content: center;
+align-items: center;
+
+
+@media only screen and (max-width: 750px){
+  width:20rem;
+  height:35rem;
+  grid-template-rows: 5rem 0.5fr 0.5fr 2rem;
+  grid-template-columns: 1fr;
+  }
+  
+`
+export const StartPostImage = styled.img`
+width: 55%;
+filter: brightness(55%);
+background: rgba(75, 75, 75, 0.51);
+@media only screen and (max-width: 750px){
+  width:16rem;
+}
+
+
+`
+export const StartPostTitle = styled.div`
+color: ${props => props.imageExists ? "#f5f5f5" : "#22223B"} ;
+position: absolute;
+font-size:1.8rem;
+font-weight: 400;
+@media only screen and (max-width: 750px){
+  font-size:1.3rem;
+  font-weight: ${props => props.imageExists ? "300" : "400"} ;
+}
+
+`
+export const StartPostDate = styled.div`
+font-size:1rem;
+position: absolute;
+color: ${props => props.imageExists ? "#f5f5f5" : "#22223B"} ;
+margin-top:4rem;
+@media only screen and (max-width: 750px){
+  font-size:0.5rem;
+  font-weight: ${props => props.imageExists ? "300" : "400"} ;
+  margin-top:3rem;
+}
+
+`
+export const StartPostChineseLabel = styled.div`
+font-size:1.3rem;
+right: 10%;
+top: 10%;
+position:fixed;
+@media only screen and (max-width: 750px){
+  font-size:1rem;
+}
+
+`
+
+export const EndPostContainer = styled(StartPostContainer)`
+
+
+`
+export const EndPostText = styled.div`
+position: absolute;
+font-size:1.1rem;
+width:65%;
+text-align: center;
+@media only screen and (max-width: 750px){
+  text-align: justify;
+}
+
+`
+
+export const EndPostPageNum = styled.div`
+position:absolute;
+bottom:10%;
+`
+
 
 export const PostContainer = styled.div`
 
@@ -29,24 +117,11 @@ transition: all 0.7s ease, opacity 0.4s ease;
 transform: translate(${props => props.translateX},${props => props.translateY});
 
 
-animation:  1.5s ease forwards;
-@keyframes haha {
-  0%{
-    transform: translate(0,0) transform: rotate(0deg);
-    opacity:1;
-  }
-
-  100% {
-    transform: translate(-50%,-50%) rotate(-120deg);
-    opacity:0;
-  }
-
-}
-
 @media only screen and (max-width: 750px){
 width:20rem;
 height:35rem;
-grid-template-columns: 5rem 1fr;
+grid-template-rows: 5rem 0.5fr 0.5fr 2rem;
+grid-template-columns: 1fr;
 }
 `
 export const ImageContainer = styled.div`
@@ -69,6 +144,10 @@ width: 60%;
 `
 export const Content = styled.div`
 width:70%;
+height:5rem;
+white-space: pre-line;
+overflow-y: auto;
+
 @media only screen and (max-width: 750px){
   width:100%;
 }
@@ -110,11 +189,11 @@ grid-row-start: 4;
 display: flex;
 justify-content: flex-end;
 align-items: center;
-padding-right: 1rem;
-padding-bottom: 1rem;
+padding-right: 2rem;
+padding-bottom: 2rem;
 `
 
-export const Date = styled.div`
+export const DateLabel = styled.div`
 grid-row-start: 1;
 letter-spacing: 1px;
 font-size:0.8rem;
@@ -122,6 +201,7 @@ font-size:0.8rem;
     justify-content: flex-end;
     align-items: center;
     padding-right: 2rem;
+    text-align:right;
 `
 
 export const TitleAndLocationContainer = styled.div`
@@ -147,8 +227,7 @@ justify-content: center;
 }
 `
 export const Location = styled.div`
-display: inline-block;
-vertical-align: middle;
+
 font-size:1.3rem;
 `
 
@@ -210,3 +289,81 @@ positon:abosolute;
 z-index:999;
 
 `
+
+export const MobileTitleAndDateContainer = styled.div`
+grid-row-start:1;
+display:grid;
+grid-template-columns: 0.5fr 0.5fr;
+`
+
+export const MobileTitle = styled.div`
+grid-column-start: 1;
+display: flex;
+justify-content: center;
+align-items: center;
+letter-spacing: 1px;
+text-align:center;
+padding: 0rem 0.5rem 0 0.5rem;
+font-size:0.7rem;
+`
+
+export const MobileDate = styled.div`
+grid-column-start: 2;
+display: flex;
+justify-content: center;
+align-items: center;
+letter-spacing: 1px;
+text-align:center;
+padding: 0rem 0rem 0 0.5rem;
+text-align:right;
+font-size:0.7rem;
+`
+
+export const MobileImageContainer = styled.div`
+grid-row-start:2;
+display: flex;
+justify-content: center;
+align-items: center;
+
+`
+
+export const MobileImage = styled.img`
+width: 85%;
+`
+
+export const MobileLocationAndContentContainer = styled.div`
+grid-row-start:3;
+display:grid;
+grid-template-columns: 0.33fr 0.66fr;
+
+`
+
+export const MobileLocation = styled.div`
+grid-column-start: 1;
+
+display: flex;
+justify-content: center;
+align-items: center;
+`
+
+export const MobileContent = styled.div`
+grid-column-start: 2;
+display: flex;
+justify-content: center;
+align-items: center;
+text-align: justify;
+font-size:0.8rem;
+padding: 2rem 1.5rem 2rem 0rem;
+height: 9rem;
+white-space: pre-line;
+overflow-y: auto;
+
+
+`
+
+export const MobilePageNum = styled.div`
+display: flex;
+justify-content: flex-end;
+padding-right:1.2rem;
+`
+

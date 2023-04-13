@@ -22,7 +22,7 @@ export const FontStyles = createGlobalStyle`
 }
 
 ::selection {
-  background: #38BBE7;
+  background:rgba(60, 202, 249, 0.68);
   color: #f5f5f5; /* This sets the color of the highlighted text */
 }
 
