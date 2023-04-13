@@ -218,7 +218,6 @@ export const CalenderDay = styled.div`
 width: calc(100% / 7);
 box-sizing: border-box;
 border:1px #22223B solid;
-// background: ${(props) => props.hasBlog ? "green" : ""};
 height:calc(100% / ${(props) => props.feb ? 4 : 5});
 display: flex;
 justify-content: center;
@@ -272,6 +271,8 @@ margin:1px;
   cursor: ${(props) => props.hasBlog ? "pointer" : "default"};
   background: ${(props) => props.hasBlog ? "#22223B" : ""};
   color: ${(props) => props.hasBlog ? "#f5f5f5" : ""};
+  outline:0.1rem solid ${(props) => props.hasBlog ? "#22223B" : "f5f5f5"};
+
   transform: scale(${(props) => props.hasBlog ? "1.2" : "1"});
   ${CalenderDayTitle}{
     transition-duration: 0.3s;

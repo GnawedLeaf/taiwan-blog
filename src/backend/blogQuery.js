@@ -14,9 +14,6 @@ export const BLOG_QUERY = gql`
       width
       url(transformation: {image: {resize: {height: 225, width: 400}}})
     }
-    content {
-      text
-    }
     author {
       name
       publishedAt
