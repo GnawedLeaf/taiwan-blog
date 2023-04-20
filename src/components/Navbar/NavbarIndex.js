@@ -6,6 +6,10 @@ import { Squash as Hamburger } from 'hamburger-react'
 
 
 
+
+
+
+
 const Navbar = (props) => {
     const [hamburgerOpen, setHamburgerOpen] = useState(false);
     useEffect(() => {
@@ -27,6 +31,7 @@ const Navbar = (props) => {
                         </div>
                     )
                 })}
+
             </NavLinksContainer>
             <MobileNavBarContainer colorChange={props.colorChange} >
                 <MobileIconContainer href={'/'}>

@@ -250,7 +250,7 @@ export const Seconds = styled(CountdownTitles)``
 
 export const CountdownSection = styled.div`
 padding: 0;
-padding: 4rem 0 15rem 0;
+padding: 4rem 0 1rem 0;
 margin: 10rem 0 10rem 0;
 display:flex;
 
@@ -269,6 +269,10 @@ justify-content: center;
 
 export const TopDownLayoutContainer = styled.div`
 
+
+`
+
+export const ToggleContainer = styled.div`
 
 `
 

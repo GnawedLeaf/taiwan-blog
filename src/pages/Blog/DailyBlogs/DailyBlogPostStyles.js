@@ -208,7 +208,7 @@ export const TitleAndLocationContainer = styled.div`
 grid-column-start: 1;
 border-right: 0.1rem solid #B7B7B7;
 display: grid;
-grid-template-rows: 15% 1fr;
+grid-template-rows: 15% 1fr 15%;
 @media only screen and (max-width: 750px){
   grid-template-rows: 10rem 1fr;
   border-right: none;
@@ -221,7 +221,6 @@ font-family: "Inter",sans-serif;
 display: flex;
 align-items: center;
 justify-content: center;
-
 @media only screen and (max-width: 750px){
 
 }

@@ -33,7 +33,7 @@ function App() {
   const [posts, setPosts] = useState([]);
   const [mainPosts, setMainPosts] = useState([]);
   const [dataToBlog, setDataToBlog] = useState({});
-
+  const [otherStyleMode, setOtherStyleMode] = useState(false)
   const graphcms = new GraphQLClient('https://api-ap-northeast-1.hygraph.com/v2/clg7r296t1gd401uigal98mrw/master');
 
 
@@ -101,12 +101,17 @@ function App() {
       setjulArray(monthArrays["07"]);
     }
   };
+
+  const handleChangeStyleMode = (newMode) => {
+    setOtherStyleMode(newMode);
+    console.log("app level otherStyleMode", otherStyleMode)
+  }
   return (
     <>
       <Suspense></Suspense>
       <BrowserRouter>
         <Routes>
-          <Route path='/' element={<HomePage />} />
+          <Route path='/' element={<HomePage onChangeMode={handleChangeStyleMode} styleMode={otherStyleMode} />} />
           <Route path='/*' element={<ErrorPage />} />
           <Route index element={<HomePage />} />
           <Route path='/about' element={<AboutPage />} />

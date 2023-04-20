@@ -1,14 +1,17 @@
 import { React, useEffect, useState, useRef } from "react";
 import { BrowserRouter, Route, Link } from "react-router-dom";
 
-import { BigTitle, Container, CoverPictureContainer, CountdownSection, CountdownContainer, Hours, Minutes, Seconds, Days, TopDownLayoutContainer, CountdownSectionTitle, BigTitleSubText, CoverPictureTitlesContainer, CountdownSubtitle, LinksSectionContainer, BlogsLinksContainer, FoodLinksContainer, LinkTitle, LinkSubtitle, AboutText, AboutSection, LinkRowContainer, AboutLinkContainer, DumpLinkContainer } from "./HomePageStyles2";
+import { BigTitle, Container, CoverPictureContainer, CountdownSection, CountdownContainer, Hours, Minutes, Seconds, Days, TopDownLayoutContainer, CountdownSectionTitle, BigTitleSubText, CoverPictureTitlesContainer, CountdownSubtitle, LinksSectionContainer, BlogsLinksContainer, FoodLinksContainer, LinkTitle, LinkSubtitle, AboutText, AboutSection, LinkRowContainer, AboutLinkContainer, DumpLinkContainer, ToggleContainer } from "./HomePageStyles2";
 import coverPictureDesktop from './pictures/hualien_scenery_1.jpg';
 import coverPictureMobile from './pictures/hualien_scenery_1_mobile.jpg';
 import Navbar from "../../components/Navbar/NavbarIndex";
 import { Squash as Hamburger } from 'hamburger-react'
+import { CgToggleOff, CgToggleOn } from 'react-icons/cg';
 
 
-const HomePage2 = () => {
+const HomePage2 = (props) => {
+
+    console.log("props.otherStyleMode", props.otherStyleMode)
 
 
     //<-------------------------------------Window width detector---------------------------------->
@@ -127,6 +130,19 @@ const HomePage2 = () => {
 
     }
 
+    const handleOtherStyleOn = () => {
+        console.log("props.otherStyleMode", props.otherStyleMode)
+        props.onChangeMode(true)
+
+    }
+
+    const handleOtherStyleOff = () => {
+        console.log("props.otherStyleMode", props.otherStyleMode)
+        props.onChangeMode(false)
+
+    }
+
+
     return (
         <>
             <Navbar linkColor={'#4a4e69'} backgroundColor={"#f5f5f5"} borderColor={"#4a4e69"} colorChange={navbarChangeColour} />
@@ -232,6 +248,11 @@ const HomePage2 = () => {
 
                     </CountdownContainer>
                 </CountdownSection>
+
+                <ToggleContainer>
+                    <CgToggleOff size={'2rem'} onClick={handleOtherStyleOn} style={{ cursor: "pointer", transitionDuration: "0.3s", opacity: props.otherStyleMode ? "0" : '1' }} />
+                    <CgToggleOn size={'2rem'} onClick={handleOtherStyleOff} style={{ cursor: "pointer", transitionDuration: "0.3s", opacity: props.otherStyleMode ? "1" : '0' }} />
+                </ToggleContainer>
             </Container >
         </>
     )
