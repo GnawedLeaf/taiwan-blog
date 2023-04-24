@@ -278,8 +278,8 @@ const DailyBlogPost = (props) => {
 
 
               </EndPostContainer>
-              <MdKeyboardArrowRight size={"2rem"} color={"rgba(34, 34, 59, 0.56)"} style={{ zIndex: "999", position: "fixed", right: "4%", cursor: "pointer", display: pageNum == lastPage ? "none" : "", transitionDuration: "0.3s" }} onClick={handleGoNextPage} />
-              <MdKeyboardArrowLeft size={"2rem"} color={"rgba(34, 34, 59, 0.56)"} style={{ zIndex: "999", position: "fixed", left: "4%", cursor: "pointer", display: pageNum == 0 ? "none" : "", transitionDuration: "0.7s" }} onClick={handleGoPrevPage} />
+              <MdKeyboardArrowRight size={"2rem"} color={"rgba(34, 34, 59, 0.56)"} style={{ padding: "2rem", zIndex: "999", position: "fixed", right: "4%", cursor: "pointer", display: pageNum == lastPage ? "none" : "", transitionDuration: "0.3s" }} onClick={handleGoNextPage} />
+              <MdKeyboardArrowLeft size={"2rem"} color={"rgba(34, 34, 59, 0.56)"} style={{ padding: "2rem", zIndex: "999", position: "fixed", left: "4%", cursor: "pointer", display: pageNum == 0 ? "none" : "", transitionDuration: "0.7s" }} onClick={handleGoPrevPage} />
             </>
           )}
 

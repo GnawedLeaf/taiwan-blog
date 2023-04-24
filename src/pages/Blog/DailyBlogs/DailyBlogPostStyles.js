@@ -134,7 +134,7 @@ align-items: center;
 
 export const Image = styled.img`
 width: 60%;
-
+filter: brightness(85%);
   transition: 0.3s ease-in-out;
   
   &:hover {

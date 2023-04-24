@@ -151,7 +151,7 @@ const HomePage2 = (props) => {
                 <CoverPictureContainer backgroundSrc={coverPictureDesktop} ref={navbarTargetRef}>
                     <CoverPictureTitlesContainer>
 
-                        <BigTitle>A Guide to Taiwan</BigTitle>
+                        <BigTitle>Taiwan Adventures</BigTitle>
                         <BigTitleSubText>By Marcel</BigTitleSubText>
                     </CoverPictureTitlesContainer>
                 </CoverPictureContainer>

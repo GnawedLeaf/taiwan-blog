@@ -1,17 +1,103 @@
-import React from "react";
-import Navbar from "../../components/Navbar/NavbarIndex";
+import { React, Fragment, useState, useRef, useEffect } from "react";
+import Navbar from "../../components/Navbar/NavbarIndex"
+import { VerticalFoodContainer, VerticalFoodBigContainer, BigFoodContainer, FoodHeroTitle, FoodHeroSection, FoodListContainer } from "./FoodOverviewStyles"
 
 const FoodOverview = () => {
 
+  //Prevents scrolling for the first 4 seconds
+  const [scrollEnabled, setScrollEnabled] = useState(true);
+  const disableScroll = () => {
+    document.body.style.overflow = 'hidden';
+  }
+  const enableScroll = () => {
+    document.body.style.overflow = 'auto';
+  }
 
-    return (
-        <>
-            <Navbar linkColor={'#4a4e69'} backgroundColor={"#f5f5f5"} borderColor={"#4a4e69"} colorChange={true} />
-            <h1 style={{ margin: "0", textAlign: "center ", height: "100vh", fontSize: "10rem", transform: "translateY(30%)" }}>Foooooooooooooooooooooooooooooood</h1>
-        </>
+  useEffect(() => {
+    disableScroll();
+    const timeoutId = setTimeout(() => {
+      enableScroll();
+      setScrollEnabled(true);
+    }, 3500);
+    setScrollEnabled(false);
+    return () => clearTimeout(timeoutId);
+  }, []);
 
 
+
+
+
+  //Controls the visibility of the navbar
+  const [navbarVisible, setNavbarVisisble] = useState(false)
+  const navbarRef = useRef(null);
+  useEffect(() => {
+
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setNavbarVisisble(!entry.isIntersecting);
+        if (navbarVisible) {
+          //setIsVisible(true);
+        }
+      },
+      {
+        root: null,
+        rootMargin: '0px 0px 0px 0px',
+        threshold: 0.3,
+      },
     );
+
+    if (navbarRef.current && !navbarVisible) {
+      observer.observe(navbarRef.current);
+    }
+
+    // Cleanup
+    return () => {
+      if (navbarRef.current) {
+        observer.unobserve(navbarRef.current);
+      }
+    };
+  }, []);
+
+
+  //Formatting chinese location to include br
+  const convertToLines = (str) => {
+    const lines = str.split('');
+    return lines.map((line, index) => <Fragment key={index}>{line}<br /></Fragment>);
+  }
+  const FoodNamesArray = ["招牌水餃", "牛肉麵", "滷肉飯", "豬腳便當", "台灣食品", "排骨酥湯", "炸雞排", "招牌鍋貼", "紅油抄手"]
+
+
+  return (
+    <>
+      <Navbar linkColor={'#333333'} backgroundColor={"transparent"} borderColor={"none"} colorChange={navbarVisible} />
+      <BigFoodContainer>
+        <VerticalFoodBigContainer >
+          {FoodNamesArray.map((food, index) => (
+            <VerticalFoodContainer totalIndex={FoodNamesArray.length - 1} index={index} arrayLength={FoodNamesArray.length} style={{ borderLeft: index === 0 ? "0.6vw solid #333333" : "0.3vw solid #333333", borderRight: index === FoodNamesArray.length - 1 ? "0.6vw solid #333333" : "0.3vw solid #333333", color: index === 4 ? "#FF3F3C" : "#333333" }}>
+              {convertToLines(food)}
+            </VerticalFoodContainer>
+          ))}
+        </VerticalFoodBigContainer>
+
+        <FoodHeroSection ref={navbarRef}>
+          <FoodHeroTitle>
+            Food
+          </FoodHeroTitle>
+        </FoodHeroSection>
+        <FoodListContainer>
+
+        </FoodListContainer>
+
+
+      </BigFoodContainer>
+
+
+
+    </>
+
+
+  );
 }
 
 export default FoodOverview;
