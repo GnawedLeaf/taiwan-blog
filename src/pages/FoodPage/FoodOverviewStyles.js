@@ -35,21 +35,21 @@ ${(props) => props.index === props.middleIndex ? `animation 0.8s ${props.mobileM
 @keyframes middle {
     to{
         transform:translateY(-100%);
-        display:none;
+        visibility: hidden;
     }
 }
 
 @keyframes moveLeft{
     100% {
         transform:translateX(-${(props) => props.index * 100}%);
-        display:none;
+        visibility: hidden;
     }
 }
 
 @keyframes moveRight{
     100% {
         transform:translateX(${(props) => props.index * 100}%);
-        display:none;
+        visibility: hidden;
     }
 }
 
@@ -57,21 +57,21 @@ ${(props) => props.index === props.middleIndex ? `animation 0.8s ${props.mobileM
 @keyframes mobileMiddle {
   to{
       transform:translateX(100%);
-      display:none;
+      visibility: hidden;
   }
 }
 
 @keyframes mobileMoveUp{
   100% {
       transform:translateY(-${(props) => props.index * 100}%);
-      display:none;
+      visibility: hidden;
   }
 }
 
 @keyframes mobileMoveDown{
   100% {
       transform:translateY(${(props) => props.index * 100}%);
-      display:none;
+      visibility: hidden;
   }
 }
 `
@@ -105,14 +105,24 @@ align-items: center;
 justify-content: center;
 margin:0;
 padding: 0;
+
+background-image: url(${(props) => props.src});
+background-color: #C6C6C6;
+background-blend-mode: multiply;
+background-position: top center;
+background-size: cover;
+background-repeat: no-repeat;
+background-position-y: 50%;
+background-attachment: fixed;
+
 `
 
 export const FoodHeroTitle = styled.div`
-font-size:10rem;
 font-size:3rem;
 font-weight:600;
 font-family: 'Jost', sans-serif;
 letter-spacing:0.2rem;
+color:#f5f5f5;
 @media only screen and (max-width: 650px){
     font-size:5rem;
     text-align:center;

@@ -40,14 +40,12 @@ height:0vh;
 animation: 3s blogTrans 0.3s forwards;
 @keyframes blogTrans {
     0%{
-      border:0.5rem solid #333333;
       width: 0%;
       height:0vh;
       color:transparent;
       background-color: #333333;
     }
     50%{
-      border:none;
       width: 100%;
       height:100vh;
       color:transparent;

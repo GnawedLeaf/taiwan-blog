@@ -7,6 +7,7 @@ export const BigContainer = styled.div`
 font-family: 'Jost', sans-serif;
 width:100%;
 background: #f5f5f5;
+overflow-x:hidden;
 `
 
 export const BlogMainContainer = styled.div`
@@ -187,9 +188,10 @@ width:100%;
 height:100vh;
 color:transparent;
 font-size:3rem;
-font-weight:400;
+font-weight:600;
+font-family: 'Jost', sans-serif;
 letter-spacing:0.2rem;
-
+z-index:1;
 display:flex;
 justify-content: center;
 align-items: center;
@@ -204,7 +206,7 @@ background-position-y: 30%;
 background-attachment: fixed;
 
 
-animation: 0.5s textAppear 2.6s forwards;
+animation: 0.5s textAppear 2.3s  forwards;
 
 @keyframes textAppear {
   to{
@@ -231,12 +233,13 @@ justify-content: center;
     text-align:center;
 }
 
-animation: 0.5s blogTrans 2.1s forwards;
+animation: 0.5s blogTrans 1.8s ease-in-out forwards;
 
 @keyframes blogTrans {
-  to {
-    transform: translateY(-100%);
-    display:none;
+
+  100%{
+    transform: translateX(-100%);
+    visibility: hidden;
   }
 }
 `
@@ -252,15 +255,13 @@ color: #333333;
 font-family: 'Noto Serif TC', serif;
 font-weight: bold;
 font-size: 6vw;
-animation: 1s textLeft 1s forwards;
-z-index:3;
+animation: 0.7s textLeft 1s ease-in-out forwards;
 
 @keyframes textLeft {
 
   to {
     transform: translateX(100%);
-    display:none;
-
+    visibility: hidden;
   }
 }
 

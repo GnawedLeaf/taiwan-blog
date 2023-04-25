@@ -1,6 +1,7 @@
 import { React, Fragment, useState, useRef, useEffect } from "react";
 import Navbar from "../../components/Navbar/NavbarIndex"
 import { VerticalFoodContainer, VerticalFoodBigContainer, BigFoodContainer, FoodHeroTitle, FoodHeroSection, FoodListContainer } from "./FoodOverviewStyles"
+import foodCoverPicture from "./pictures/foodCoverPicture.jpg"
 
 const FoodOverview = () => {
 
@@ -32,10 +33,10 @@ const FoodOverview = () => {
   //Prevents scrolling while intro animation is playing
   const [scrollEnabled, setScrollEnabled] = useState(true);
   const disableScroll = () => {
-    document.body.style.overflow = 'hidden';
+    document.body.style.overflowY = 'hidden';
   }
   const enableScroll = () => {
-    document.body.style.overflow = 'auto';
+    document.body.style.overflowY = 'auto';
   }
 
   useEffect(() => {
@@ -106,7 +107,7 @@ const FoodOverview = () => {
           ))}
         </VerticalFoodBigContainer>
 
-        <FoodHeroSection ref={navbarRef}>
+        <FoodHeroSection src={foodCoverPicture} ref={navbarRef}>
           <FoodHeroTitle>
             Food
           </FoodHeroTitle>

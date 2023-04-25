@@ -145,10 +145,10 @@ const HomePage2 = (props) => {
   //Prevents scrolling while intro animation is playing
   const [scrollEnabled, setScrollEnabled] = useState(true);
   const disableScroll = () => {
-    document.body.style.overflow = 'hidden';
+    document.body.style.overflowY = 'hidden';
   }
   const enableScroll = () => {
-    document.body.style.overflow = 'auto';
+    document.body.style.overflowY = 'auto';
   }
 
   useEffect(() => {
