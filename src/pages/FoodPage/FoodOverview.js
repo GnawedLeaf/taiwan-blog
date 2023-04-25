@@ -29,7 +29,7 @@ const FoodOverview = () => {
 
 
 
-  //Prevents scrolling for the first 4 seconds
+  //Prevents scrolling while intro animation is playing
   const [scrollEnabled, setScrollEnabled] = useState(true);
   const disableScroll = () => {
     document.body.style.overflow = 'hidden';
@@ -43,7 +43,7 @@ const FoodOverview = () => {
     const timeoutId = setTimeout(() => {
       enableScroll();
       setScrollEnabled(true);
-    }, (FoodNamesArray.length / 2 * 100 + 3000));
+    }, (FoodNamesArray.length / 2 * 100 + 2000));
     setScrollEnabled(false);
     return () => clearTimeout(timeoutId);
   }, []);
@@ -90,7 +90,7 @@ const FoodOverview = () => {
     const lines = str.split('');
     return lines.map((line, index) => <Fragment key={index}>{line}<br /></Fragment>);
   }
-  const FoodNamesArray = ["招牌水餃", "牛肉麵", "滷肉飯", "牛肉麵", "滷肉飯", "牛肉麵", "滷肉飯", "招牌水餃", "牛肉麵"]
+  const FoodNamesArray = ["招牌水餃", "牛肉麵", "滷肉飯", "豬腳便當", "台灣食品", "排骨酥湯", "炸雞排", "招牌鍋貼", "紅油抄手"]
   const FoodNamesArray2 = ["KINGMETA", "COIN", "NFT", "豬腳便當", "台灣食品", "排骨酥湯", "炸雞排", "招牌鍋貼", "紅油抄手"]
 
 

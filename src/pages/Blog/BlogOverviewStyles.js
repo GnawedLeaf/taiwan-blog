@@ -4,10 +4,9 @@ import styled from "styled-components";
 
 
 export const BigContainer = styled.div`
-
+font-family: 'Jost', sans-serif;
 width:100%;
 background: #f5f5f5;
-font-family: ;
 `
 
 export const BlogMainContainer = styled.div`
@@ -17,22 +16,7 @@ justify-content: center;
 
 `
 
-export const BlogBigTitle = styled.div`
 
-font-size:3rem;
-font-weight:600;
-font-family: 'Jost', sans-serif;
-color: #22223B;
-display:flex;
-align-items: center;
-justify-content: center;
-height:100vh;
-@media only screen and (max-width: 650px){
-    font-size:5rem;
-    text-align:center;
-}
-
-`
 
 
 export const BlogFooter = styled.div`
@@ -58,7 +42,7 @@ display: flex;
 flex-direction: row;
 justify-content: center;
 height:100vh;
-margin-top: 70vh;
+margin-top: 10vh;
 `
 
 export const CalenderContainer = styled.div`
@@ -66,6 +50,9 @@ padding:2%;
 text-align:center;
 transition-duration: 0.3s;
 margin-top: 10vh;
+display: flex;
+flex-direction: column;
+align-items: center;
 `
 
 export const Calender = styled.div`
@@ -81,7 +68,7 @@ margin-top:1rem;
   height:20rem;
   width:85%;
   height:13rem;
-  margin: 1rem 0.5rem 0rem 0.5rem;
+  margin-top:1rem;
 }
 `
 
@@ -193,5 +180,89 @@ color:#22223B;
 @media only screen and (max-width: 650px){
   font-size:4rem;
 }
+
+`
+export const BlogTransitionPlaceholder = styled.div`
+width:100%;
+height:100vh;
+color:transparent;
+font-size:3rem;
+font-weight:400;
+letter-spacing:0.2rem;
+
+display:flex;
+justify-content: center;
+align-items: center;
+
+background-image: url(${(props) => props.src});
+background-color: #C6C6C6;
+background-blend-mode: multiply;
+background-position: top center;
+background-size: cover;
+background-repeat: no-repeat;
+background-position-y: 30%;
+background-attachment: fixed;
+
+
+animation: 0.5s textAppear 2.6s forwards;
+
+@keyframes textAppear {
+  to{
+    color:#f5f5f5;
+  }
+}
+`
+
+export const BlogTransitionContainer = styled.div`
+position:absolute;
+width: 100%;
+height:100vh;
+z-index:2;
+background:#f5f5f5;
+
+
+display:flex;
+align-items: center;
+justify-content: center;
+
+
+@media only screen and (max-width: 650px){
+    font-size:5rem;
+    text-align:center;
+}
+
+animation: 0.5s blogTrans 2.1s forwards;
+
+@keyframes blogTrans {
+  to {
+    transform: translateY(-100%);
+    display:none;
+  }
+}
+`
+
+
+export const TransitionText = styled.div`
+border:0.5vw solid #333333;
+border-right:none;
+width:100%;
+text-align:center;
+padding: 1rem 0 1rem 0;
+color: #333333;
+font-family: 'Noto Serif TC', serif;
+font-weight: bold;
+font-size: 6vw;
+animation: 1s textLeft 1s forwards;
+z-index:3;
+
+@keyframes textLeft {
+
+  to {
+    transform: translateX(100%);
+    display:none;
+
+  }
+}
+
 
 `

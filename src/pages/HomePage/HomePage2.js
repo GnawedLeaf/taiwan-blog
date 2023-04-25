@@ -1,7 +1,7 @@
 import { React, useEffect, useState, useRef } from "react";
 import { BrowserRouter, Route, Link } from "react-router-dom";
 
-import { BigTitle, Container, CoverPictureContainer, CountdownSection, CountdownContainer, Hours, Minutes, Seconds, Days, TopDownLayoutContainer, CountdownSectionTitle, BigTitleSubText, CoverPictureTitlesContainer, CountdownSubtitle, LinksSectionContainer, BlogsLinksContainer, FoodLinksContainer, LinkTitle, LinkSubtitle, AboutText, AboutSection, LinkRowContainer, AboutLinkContainer, DumpLinkContainer, ToggleContainer } from "./HomePageStyles2";
+import { BigTitle, Container, CoverPictureContainer, CountdownSection, CountdownContainer, Hours, Minutes, Seconds, Days, TopDownLayoutContainer, CountdownSectionTitle, BigTitleSubText, CoverPictureTitlesContainer, CountdownSubtitle, LinksSectionContainer, BlogsLinksContainer, FoodLinksContainer, LinkTitle, LinkSubtitle, AboutText, AboutSection, LinkRowContainer, AboutLinkContainer, DumpLinkContainer, ToggleContainer, CoverPicturePlaceholder } from "./HomePageStyles2";
 import coverPictureDesktop from './pictures/hualien_scenery_1.jpg';
 import coverPictureMobile from './pictures/hualien_scenery_1_mobile.jpg';
 import Navbar from "../../components/Navbar/NavbarIndex";
@@ -142,30 +142,46 @@ const HomePage2 = (props) => {
 
   }
 
+  //Prevents scrolling while intro animation is playing
+  const [scrollEnabled, setScrollEnabled] = useState(true);
+  const disableScroll = () => {
+    document.body.style.overflow = 'hidden';
+  }
+  const enableScroll = () => {
+    document.body.style.overflow = 'auto';
+  }
+
+  useEffect(() => {
+    disableScroll();
+    const timeoutId = setTimeout(() => {
+      enableScroll();
+      setScrollEnabled(true);
+    }, (2000));
+    setScrollEnabled(false);
+    return () => clearTimeout(timeoutId);
+  }, []);
+
+
 
   return (
     <>
       <Navbar linkColor={'#4a4e69'} backgroundColor={"#f5f5f5"} borderColor={"#4a4e69"} colorChange={navbarChangeColour} />
       <Container>
+        <CoverPicturePlaceholder>
+          <CoverPictureContainer backgroundSrc={coverPictureDesktop} ref={navbarTargetRef}>
+            <CoverPictureTitlesContainer>
 
-        <CoverPictureContainer backgroundSrc={coverPictureDesktop} ref={navbarTargetRef}>
-          <CoverPictureTitlesContainer>
+              <BigTitle>Taiwan Adventures</BigTitle>
+              <BigTitleSubText>By Marcel</BigTitleSubText>
+            </CoverPictureTitlesContainer>
+          </CoverPictureContainer>
+        </CoverPicturePlaceholder>
 
-            <BigTitle>Taiwan Adventures</BigTitle>
-            <BigTitleSubText>By Marcel</BigTitleSubText>
-          </CoverPictureTitlesContainer>
-        </CoverPictureContainer>
 
 
         <AboutSection>
           <AboutText>
-            A guide/blog/record of my experiences in Taiwan of whats good and whats shit.
-          </AboutText>
-          <AboutText>
-            To be honest, I could spend every night and every weekend staying at home and playing games but I wanna force myself to go out.
-          </AboutText>
-          <AboutText>
-            It's also an excuse to use some cool React effects I've learnt so some sections might be abit whacky.
+            A guide/blog/record of my experiences in Taiwan of whats good and whats shit. To be honest, I could spend every night and every weekend staying at home and playing games but I wanna force myself to go out. It's also an excuse to use some cool React effects I've learnt so some sections might be abit whacky.
           </AboutText>
           <AboutText>
             Enjoy.

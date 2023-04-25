@@ -2,13 +2,12 @@ import React from "react";
 import { useState, useEffect, useRef } from "react";
 // import { Typewriter } from 'react-simple-typewriter'
 import { Link, Navigate, useAsyncError, useNavigate } from "react-router-dom";
-import { BigContainer, BlogBigTitle, BlogNavBar, BlogFooter, BlogMainContainer, Icon, Word1, Word2, Word3, CheckboxContainer, Box, DiagonalLine1, DiagonalLine2, HamburgerStyled, HamburgerMenu, MobileMenuContainer, MobileMenuText, DailyBlogCardsContainer, DailyBlogImg, BigCalenderContainer, Calender, CalenderDay, CalenderDayLabel, Carousel, CarouselItem, Inner, CarouselTitleHolder, CalenderMonthHeader, CalenderDayTitle, CalenderContainer } from "./BlogOverviewStyles"
+import { BigContainer, BlogTransitionPlaceholder, BlogNavBar, BlogFooter, BlogMainContainer, Icon, Word1, Word2, Word3, CheckboxContainer, Box, DiagonalLine1, DiagonalLine2, HamburgerStyled, HamburgerMenu, MobileMenuContainer, MobileMenuText, DailyBlogCardsContainer, DailyBlogImg, BigCalenderContainer, Calender, CalenderDay, CalenderDayLabel, Carousel, CarouselItem, Inner, CarouselTitleHolder, CalenderMonthHeader, CalenderDayTitle, CalenderContainer, BlogTransitionContainer, TransitionText } from "./BlogOverviewStyles"
 import { Squash as Hamburger } from 'hamburger-react'
 import { GraphQLClient } from 'graphql-request'
 import { BLOG_QUERY } from "../../backend/blogQuery";
 import Navbar from "../../components/Navbar/NavbarIndex";
-
-
+import coverPicture from "./pictures/blogCoverPicture.jpg"
 
 
 const BlogsOverview = (props) => {
@@ -187,20 +186,76 @@ const BlogsOverview = (props) => {
 
   }, [scrollPercentage])
 
+  //Controls the visibility of the navbar
+  const [navbarVisible, setNavbarVisisble] = useState(false)
+  const navbarRef = useRef(null);
+  useEffect(() => {
+
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setNavbarVisisble(!entry.isIntersecting);
+        if (navbarVisible) {
+          //setIsVisible(true);
+        }
+      },
+      {
+        root: null,
+        rootMargin: '0px 0px 0px 0px',
+        threshold: 0.3,
+      },
+    );
+
+    if (navbarRef.current && !navbarVisible) {
+      observer.observe(navbarRef.current);
+    }
+
+    // Cleanup
+    return () => {
+      if (navbarRef.current) {
+        observer.unobserve(navbarRef.current);
+      }
+    };
+  }, []);
+
+
+  //Prevents scrolling while intro animation is playing
+  const [scrollEnabled, setScrollEnabled] = useState(true);
+  const disableScroll = () => {
+    document.body.style.overflow = 'hidden';
+  }
+  const enableScroll = () => {
+    document.body.style.overflow = 'auto';
+  }
+
+  useEffect(() => {
+    disableScroll();
+    const timeoutId = setTimeout(() => {
+      enableScroll();
+      setScrollEnabled(true);
+    }, (2500));
+    setScrollEnabled(false);
+    return () => clearTimeout(timeoutId);
+  }, []);
+
 
 
 
   return (
     <>
+      <Navbar linkColor={'#4a4e69'} backgroundColor={"transparent"} borderColor={"#4a4e69"} colorChange={navbarVisible} />
       <BigContainer>
 
-        <Navbar linkColor={'#4a4e69'} backgroundColor={"#f5f5f5"} borderColor={"#4a4e69"} colorChange={true} />
+        <BlogTransitionPlaceholder src={coverPicture} >
+          <BlogTransitionContainer >
+            <TransitionText>
+              一個風和日麗的早上...
+            </TransitionText>
 
-
-        <BlogBigTitle >
-          MY BLOGS
-        </BlogBigTitle>
-        <BlogMainContainer>
+          </BlogTransitionContainer>
+          Blogs
+        </BlogTransitionPlaceholder>
+        <BlogMainContainer ref={navbarRef}>
           {/* <DailyBlogCardsContainer>
             <div>
               {mainPosts && mainPosts.map((post) => (

@@ -7,5 +7,6 @@ display:flex;
 justify-content: center;
 align-items: center;
 flex-direction: column;
+font-family: 'Jost', sans-serif;
 
 `

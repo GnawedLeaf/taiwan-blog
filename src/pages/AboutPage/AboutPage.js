@@ -8,7 +8,6 @@ const AboutPage = () => {
         <>
             <Navbar linkColor={'#4a4e69'} backgroundColor={"#f5f5f5"} borderColor={"#4a4e69"} colorChange={true} />
             <Container>
-                <div>About</div>
                 <br />
                 <div>Year 3 Information Engineer and Media Student</div>
                 <div>Nanyang Technological University</div>

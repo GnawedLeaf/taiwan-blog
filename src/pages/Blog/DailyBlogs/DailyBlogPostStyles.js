@@ -339,10 +339,11 @@ grid-template-columns: 0.33fr 0.66fr;
 
 export const MobileLocation = styled.div`
 grid-column-start: 1;
-
 display: flex;
 justify-content: center;
 align-items: center;
+max-height:12rem;
+overflow: scroll;
 `
 
 export const MobileContent = styled.div`
@@ -355,7 +356,7 @@ font-size:0.8rem;
 padding: 2rem 1.5rem 2rem 0rem;
 height: 9rem;
 white-space: pre-line;
-overflow-y: auto;
+overflow: scroll;
 
 
 `
