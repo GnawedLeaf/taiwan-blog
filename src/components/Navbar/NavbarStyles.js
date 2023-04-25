@@ -122,4 +122,5 @@ flex-direction: column;
 padding: 5rem 0 5rem 0;
 border-bottom: 0.1rem solid #333333;
 left: ${(props) => props.open ? "0%" : "100%"};
+
 `

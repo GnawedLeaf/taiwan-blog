@@ -10,15 +10,22 @@ overflow:hidden;
 
 export const VerticalFoodContainer = styled.div`
 border: 0.3vw solid #333333;
-width: calc((100% / ${(props) => props.arrayLength}));
-font-size: ${(props) => 10 - props.middleIndex + 2 / 2}vw;
+border-left: ${(props) => props.mobileMode ? "0.3vw solid #333333" : props.index === 0 ? "0.6vw solid #333333" : "0.3vw solid #333333"};
+border-right: ${(props) => props.mobileMode ? "0.3vw solid #333333" : props.index === props.totalIndex ? "0.6vw solid #333333" : "0.3vw solid #333333"};
+border-top: ${(props) => props.mobileMode ? props.index === 0 ? "2vw solid #333333" : "1vw solid #333333" : ""};
+border-bottom: ${(props) => props.mobileMode ? props.index === props.totalIndex ? "2vw solid #333333" : "1vw solid #333333" : ""};
+
+width: ${(props) => props.mobileMode ? `100%` : `calc((100% / ${props.arrayLength}))`} ;
+height: ${(props) => props.mobileMode ? `calc((100% / ${props.arrayLength}))` : `100%`};
+font-size: ${(props) => props.mobileMode ? 15 - props.middleIndex + 2 / 2 : 10 - props.middleIndex + 2 / 2}vw;
 color: ${(props) => props.index === props.middleIndex ? "#FF3F3C" : "#333333"};
+${(props) => props.mobileMode ? "display: flex; align-items: center; justify-content: center;" : ""};
 font-weight:bold;
 font-family: 'Lato', sans-serif;
 text-align:center;
 background: #f5f5f5;
 ${(props) => props.index < props.middleIndex ? `z-index: ${2 - props.index}` : ""};
-${(props) => props.index === props.middleIndex ? "animation 0.8s middle 1s forwards" : props.index < props.middleIndex ? `animation: 2s moveLeft ${(props.middleIndex - props.index) * 0.3 + 1.6}s forwards` : `animation: 2s moveRight ${(props.index - props.middleIndex) * 0.3 + 1.6}s forwards`};
+${(props) => props.index === props.middleIndex ? `animation 0.8s ${props.mobileMode ? "mobileMiddle" : "middle"} 1s forwards` : props.index < props.middleIndex ? `animation: 2s ${props.mobileMode ? props.shutterMode === "spiral" ? "moveLeft" : "mobileMoveUp" : props.shutterMode === "vertical" ? "middle" : "moveLeft"} ${(props.middleIndex - props.index) * 0.2 + 1.6}s forwards` : `animation: 2s ${props.mobileMode ? props.shutterMode === "spiral" ? "moveRight" : "mobileMoveDown" : props.shutterMode === "vertical" ? "middle" : "moveRight"} ${(props.index - props.middleIndex) * 0.2 + 1.6}s forwards`};
 
 
 
@@ -42,6 +49,28 @@ ${(props) => props.index === props.middleIndex ? "animation 0.8s middle 1s forwa
         display:none;
     }
 }
+
+
+@keyframes mobileMiddle {
+  to{
+      transform:translateX(100%);
+      display:none;
+  }
+}
+
+@keyframes mobileMoveUp{
+  100% {
+      transform:translateY(-${(props) => props.index * 100}%);
+      display:none;
+  }
+}
+
+@keyframes mobileMoveDown{
+  100% {
+      transform:translateY(${(props) => props.index * 100}%);
+      display:none;
+  }
+}
 `
 
 
@@ -53,6 +82,8 @@ overflow:hidden;
 height:100vh;
 z-index:99;
 position:absolute;
+flex-direction: ${(props) => props.mobileMode ? "column" : "row"};
+
 
 @keyframes goAway {
     from {
@@ -69,6 +100,8 @@ height:100vh;
 display: flex;
 align-items: center;
 justify-content: center;
+margin:0;
+padding: 0;
 `
 
 export const FoodHeroTitle = styled.div`

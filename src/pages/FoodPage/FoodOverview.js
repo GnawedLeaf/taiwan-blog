@@ -4,23 +4,30 @@ import { VerticalFoodContainer, VerticalFoodBigContainer, BigFoodContainer, Food
 
 const FoodOverview = () => {
 
+  const [shutterMode, setShutterMode] = useState("side")
+  // "side": Original Mode 
+  // "vertical": All shutters go upward
+  // "spiral": For mobile
 
   //<-------------------------------------Window width detector---------------------------------->
-  const useWindowWidth = () => {
-    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
-    useEffect(() => {
-      const handleWindowResize = () => {
-        setWindowWidth(window.innerWidth);
-      };
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
-      window.addEventListener('resize', handleWindowResize);
-      //Return is meant to remove the handler after its done
-      return () => window.removeEventListener('resize', handleWindowResize);
-    }, []);
+  useEffect(() => {
+    const handleWindowResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
 
-    return windowWidth;
-  };
+    window.addEventListener('resize', handleWindowResize);
+    //Return is meant to remove the handler after its done
+    return () => window.removeEventListener('resize', handleWindowResize);
+  }, []);
+
+  const isMobile = windowWidth <= 650;
+
+
+
+
 
   //Prevents scrolling for the first 4 seconds
   const [scrollEnabled, setScrollEnabled] = useState(true);
@@ -91,10 +98,10 @@ const FoodOverview = () => {
     <>
       <Navbar linkColor={'#333333'} backgroundColor={"transparent"} borderColor={"none"} colorChange={navbarVisible} />
       <BigFoodContainer>
-        <VerticalFoodBigContainer >
+        <VerticalFoodBigContainer mobileMode={isMobile} >
           {FoodNamesArray.map((food, index) => (
-            <VerticalFoodContainer middleIndex={Math.floor(FoodNamesArray.length / 2)} totalIndex={FoodNamesArray.length - 1} index={index} arrayLength={FoodNamesArray.length} style={{ borderLeft: index === 0 ? "0.6vw solid #333333" : "0.3vw solid #333333", borderRight: index === FoodNamesArray.length - 1 ? "0.6vw solid #333333" : "0.3vw solid #333333" }}>
-              {convertToLines(food)}
+            <VerticalFoodContainer shutterMode={shutterMode} mobileMode={isMobile} middleIndex={Math.floor(FoodNamesArray.length / 2)} totalIndex={FoodNamesArray.length - 1} index={index} arrayLength={FoodNamesArray.length} style={{ borderLeft: index === 0 ? "0.6vw solid #333333" : "0.3vw solid #333333", borderRight: index === FoodNamesArray.length - 1 ? "0.6vw solid #333333" : "0.3vw solid #333333" }}>
+              {isMobile ? food : convertToLines(food)}
             </VerticalFoodContainer>
           ))}
         </VerticalFoodBigContainer>
