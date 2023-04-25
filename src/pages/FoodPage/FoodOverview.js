@@ -4,6 +4,24 @@ import { VerticalFoodContainer, VerticalFoodBigContainer, BigFoodContainer, Food
 
 const FoodOverview = () => {
 
+
+  //<-------------------------------------Window width detector---------------------------------->
+  const useWindowWidth = () => {
+    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+    useEffect(() => {
+      const handleWindowResize = () => {
+        setWindowWidth(window.innerWidth);
+      };
+
+      window.addEventListener('resize', handleWindowResize);
+      //Return is meant to remove the handler after its done
+      return () => window.removeEventListener('resize', handleWindowResize);
+    }, []);
+
+    return windowWidth;
+  };
+
   //Prevents scrolling for the first 4 seconds
   const [scrollEnabled, setScrollEnabled] = useState(true);
   const disableScroll = () => {
@@ -18,7 +36,7 @@ const FoodOverview = () => {
     const timeoutId = setTimeout(() => {
       enableScroll();
       setScrollEnabled(true);
-    }, 3500);
+    }, (FoodNamesArray.length / 2 * 100 + 3000));
     setScrollEnabled(false);
     return () => clearTimeout(timeoutId);
   }, []);
@@ -65,7 +83,8 @@ const FoodOverview = () => {
     const lines = str.split('');
     return lines.map((line, index) => <Fragment key={index}>{line}<br /></Fragment>);
   }
-  const FoodNamesArray = ["招牌水餃", "牛肉麵", "滷肉飯", "豬腳便當", "台灣食品", "排骨酥湯", "炸雞排", "招牌鍋貼", "紅油抄手"]
+  const FoodNamesArray = ["招牌水餃", "牛肉麵", "滷肉飯", "牛肉麵", "滷肉飯", "牛肉麵", "滷肉飯", "招牌水餃", "牛肉麵"]
+  const FoodNamesArray2 = ["KINGMETA", "COIN", "NFT", "豬腳便當", "台灣食品", "排骨酥湯", "炸雞排", "招牌鍋貼", "紅油抄手"]
 
 
   return (
@@ -74,7 +93,7 @@ const FoodOverview = () => {
       <BigFoodContainer>
         <VerticalFoodBigContainer >
           {FoodNamesArray.map((food, index) => (
-            <VerticalFoodContainer totalIndex={FoodNamesArray.length - 1} index={index} arrayLength={FoodNamesArray.length} style={{ borderLeft: index === 0 ? "0.6vw solid #333333" : "0.3vw solid #333333", borderRight: index === FoodNamesArray.length - 1 ? "0.6vw solid #333333" : "0.3vw solid #333333", color: index === 4 ? "#FF3F3C" : "#333333" }}>
+            <VerticalFoodContainer middleIndex={Math.floor(FoodNamesArray.length / 2)} totalIndex={FoodNamesArray.length - 1} index={index} arrayLength={FoodNamesArray.length} style={{ borderLeft: index === 0 ? "0.6vw solid #333333" : "0.3vw solid #333333", borderRight: index === FoodNamesArray.length - 1 ? "0.6vw solid #333333" : "0.3vw solid #333333" }}>
               {convertToLines(food)}
             </VerticalFoodContainer>
           ))}

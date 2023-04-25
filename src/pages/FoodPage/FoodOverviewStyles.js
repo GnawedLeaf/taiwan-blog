@@ -11,14 +11,16 @@ overflow:hidden;
 export const VerticalFoodContainer = styled.div`
 border: 0.3vw solid #333333;
 width: calc((100% / ${(props) => props.arrayLength}));
-font-size: 8vw;
-color: #333333;
+font-size: ${(props) => 10 - props.middleIndex + 2 / 2}vw;
+color: ${(props) => props.index === props.middleIndex ? "#FF3F3C" : "#333333"};
 font-weight:bold;
-font-family: 'Noto Serif TC', serif;
+font-family: 'Lato', sans-serif;
 text-align:center;
 background: #f5f5f5;
-${(props) => props.index < 4 ? `z-index: ${5 - props.index}` : ""};
-${(props) => props.index === 4 ? "animation 0.8s middle 1s forwards" : props.index < 4 ? `animation: 2s moveLeft ${(props.totalIndex - props.index) * 0.3 + 0.5}s forwards` : `animation: 2s moveRight ${props.index * 0.3 + 0.5}s forwards`};
+${(props) => props.index < props.middleIndex ? `z-index: ${2 - props.index}` : ""};
+${(props) => props.index === props.middleIndex ? "animation 0.8s middle 1s forwards" : props.index < props.middleIndex ? `animation: 2s moveLeft ${(props.middleIndex - props.index) * 0.3 + 1.6}s forwards` : `animation: 2s moveRight ${(props.index - props.middleIndex) * 0.3 + 1.6}s forwards`};
+
+
 
 @keyframes middle {
     to{
@@ -46,11 +48,11 @@ ${(props) => props.index === 4 ? "animation 0.8s middle 1s forwards" : props.ind
 export const VerticalFoodBigContainer = styled.div`
 display:flex;
 width:100%;
+max-width:100%;
 overflow:hidden;
 height:100vh;
 z-index:99;
 position:absolute;
-animation: 0.1s goAway 4s forwards;
 
 @keyframes goAway {
     from {
