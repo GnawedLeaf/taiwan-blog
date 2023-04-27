@@ -239,8 +239,7 @@ const BlogsOverview = (props) => {
   }, []);
 
 
-
-
+  const wordArray = ["一個風和日麗的早上..."]
   return (
     <>
       <Navbar linkColor={'#4a4e69'} backgroundColor={"transparent"} borderColor={"#4a4e69"} colorChange={navbarVisible} />
@@ -248,9 +247,13 @@ const BlogsOverview = (props) => {
 
         <BlogTransitionPlaceholder src={coverPicture} >
           <BlogTransitionContainer >
-            <TransitionText>
-              一個風和日麗的早上...
-            </TransitionText>
+            {wordArray.map((word, index) => (
+              <TransitionText index={index} totalIndex={wordArray.length - 1} length={wordArray.length} middleIndex={Math.floor(wordArray.length / 2)} mobileMode={false}>
+                {word}
+              </TransitionText>
+            ))}
+
+
 
           </BlogTransitionContainer>
           Blogs

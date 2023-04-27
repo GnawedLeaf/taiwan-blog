@@ -52,6 +52,7 @@ margin-bottom:-1rem;
 
 @media only screen and (max-width: 650px){
     font-size: 1rem;
+    margin-bottom:0.3rem;
    }
 
 `

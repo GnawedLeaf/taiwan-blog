@@ -2,6 +2,7 @@ import { React, Fragment, useState, useRef, useEffect } from "react";
 import Navbar from "../../components/Navbar/NavbarIndex"
 import { VerticalFoodContainer, VerticalFoodBigContainer, BigFoodContainer, FoodHeroTitle, FoodHeroSection, FoodListContainer } from "./FoodOverviewStyles"
 import foodCoverPicture from "./pictures/foodCoverPicture.jpg"
+import SlidingTransition from "../../components/SlidingTransitionComponent/SlidingTransition"
 
 const FoodOverview = () => {
 
@@ -86,6 +87,8 @@ const FoodOverview = () => {
   }, []);
 
 
+
+
   //Formatting chinese location to include br
   const convertToLines = (str) => {
     const lines = str.split('');
@@ -99,13 +102,7 @@ const FoodOverview = () => {
     <>
       <Navbar linkColor={'#333333'} backgroundColor={"transparent"} borderColor={"none"} colorChange={navbarVisible} />
       <BigFoodContainer>
-        <VerticalFoodBigContainer mobileMode={isMobile} >
-          {FoodNamesArray.map((food, index) => (
-            <VerticalFoodContainer shutterMode={shutterMode} mobileMode={isMobile} middleIndex={Math.floor(FoodNamesArray.length / 2)} totalIndex={FoodNamesArray.length - 1} index={index} arrayLength={FoodNamesArray.length} style={{ borderLeft: index === 0 ? "0.6vw solid #333333" : "0.3vw solid #333333", borderRight: index === FoodNamesArray.length - 1 ? "0.6vw solid #333333" : "0.3vw solid #333333" }}>
-              {isMobile ? food : convertToLines(food)}
-            </VerticalFoodContainer>
-          ))}
-        </VerticalFoodBigContainer>
+        <SlidingTransition shutterMode={shutterMode} inputArray={FoodNamesArray} />
 
         <FoodHeroSection src={foodCoverPicture} ref={navbarRef}>
           <FoodHeroTitle>

@@ -146,6 +146,7 @@ const DumpPage = () => {
           <CentralisingContainer>
             <BigTitleSubText>Welcome to</BigTitleSubText>
             <BigTitle>THE DUMP</BigTitle>
+            <BigTitleSubText>A graveyard of unused designs</BigTitleSubText>
 
           </CentralisingContainer>
         </CoverPictureContainer>

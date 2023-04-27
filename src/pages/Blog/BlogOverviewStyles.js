@@ -6,7 +6,7 @@ import styled from "styled-components";
 export const BigContainer = styled.div`
 font-family: 'Jost', sans-serif;
 width:100%;
-background: #f5f5f5;
+background:#FFFAF1;
 overflow-x:hidden;
 `
 
@@ -220,12 +220,14 @@ position:absolute;
 width: 100%;
 height:100vh;
 z-index:2;
-background:#f5f5f5;
+background:transparent;
 
 
 display:flex;
 align-items: center;
 justify-content: center;
+flex-direction: column;
+
 
 
 @media only screen and (max-width: 650px){
@@ -233,8 +235,7 @@ justify-content: center;
     text-align:center;
 }
 
-animation: 0.5s blogTrans 1.8s ease-in-out forwards;
-
+//animation: 0.5s blogTrans 1.8s ease-in-out forwards;
 @keyframes blogTrans {
 
   100%{
@@ -246,16 +247,27 @@ animation: 0.5s blogTrans 1.8s ease-in-out forwards;
 
 
 export const TransitionText = styled.div`
-border:0.5vw solid #333333;
-border-right:none;
-width:100%;
-text-align:center;
-padding: 1rem 0 1rem 0;
 color: #333333;
+background:#FFFAF1;
 font-family: 'Noto Serif TC', serif;
 font-weight: bold;
-font-size: 6vw;
-animation: 0.7s textLeft 1s ease-in-out forwards;
+//font-size: ${(props) => props.mobileMode ? 15 - props.middleIndex + 2 / 2 : 10 - props.middleIndex}vw;
+font-size: 7vw;
+margin: 1vw 0vw;
+
+display: flex;
+align-items: center;
+justify-content: center;
+
+border:0.5vw solid #333333;
+border-right:none;
+// height: calc(100%/${(props) => props.length});
+
+width:100%;
+text-align:center;
+
+
+// animation: 0.7s textLeft 1s ease-in-out forwards;
 
 @keyframes textLeft {
 
