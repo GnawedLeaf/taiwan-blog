@@ -23,8 +23,8 @@ color: #F28482;
 font-size: 4rem;
 text-align:center;
 @media only screen and (min-width: 650px){
-    font-size: 10rem;
-    font-weight:bold;
+    font-size: 7rem;
+    font-weight:400;
 }
 `
 

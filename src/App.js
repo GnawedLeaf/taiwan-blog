@@ -16,6 +16,7 @@ import DailyBlogPost from './pages/Blog/DailyBlogs/DailyBlogPost';
 import DailyBlogList from './pages/Blog/DailyBlogs/DailyBlogList';
 import { BLOG_QUERY } from './backend/blogQuery';
 import ErrorPage from './pages/ErrorPage/ErrorPage';
+import LoadingScreen from './components/LoadingComponent/LoadingIndex';
 
 function App() {
   const handlePostData = (posts) => {
@@ -108,34 +109,36 @@ function App() {
   }
   return (
     <>
-      <Suspense></Suspense>
+
       <BrowserRouter>
-        <Routes>
-          <Route path='/' element={<HomePage onChangeMode={handleChangeStyleMode} styleMode={otherStyleMode} />} />
-          <Route path='/*' element={<ErrorPage />} />
-          <Route index element={<HomePage />} />
-          <Route path='/about' element={<AboutPage />} />
-          <Route path='/food' element={<FoodOverview />} />
-          <Route path='/blogs' element={<BlogsOverview dataToBlog={dataToBlog} />} />
-          <Route path='/dump' element={<DumpPage />} />
-          <Route path='/blogs/daily/:date' element={<DailyBlogPost />} />
-          {/* {monthsContainer.map((month, monthIndex) => (
+        <Suspense fallback={<LoadingScreen />}>
+          <Routes>
+            <Route path='/' element={<HomePage onChangeMode={handleChangeStyleMode} styleMode={otherStyleMode} />} />
+            <Route path='/*' element={<ErrorPage />} />
+            <Route index element={<HomePage />} />
+            <Route path='/about' element={<AboutPage />} />
+            <Route path='/food' element={<FoodOverview />} />
+            <Route path='/blogs' element={<BlogsOverview dataToBlog={dataToBlog} />} />
+            <Route path='/dump' element={<DumpPage />} />
+            <Route path='/blogs/daily/:date' element={<DailyBlogPost />} />
+            {/* {monthsContainer.map((month, monthIndex) => (
             month.map((day, dayIndex) => (
               // format for link will be daily/DD-MM-2023
 
               < Route path={`/blogs/daily/${dayIndex + 1}-${monthIndex + 1}-2023`} element={<DailyBlogPost postData={day} />} />
             ))
           ))} */}
-          {/* {posts.map((post, index) => (
+            {/* {posts.map((post, index) => (
             <Route path={`/blogs/daily/${index}`} element={<DailyBlogPost postData={post} />} />
           ))} */}
-          {mainPosts.map((post, index) => (
-            <Route path={`/blogs/main/${index}`} element={<DailyBlogPost postData={post} />} />
-          ))}
-          <Route path='/blogs/daily' element={<DailyBlogList />} />
+            {mainPosts.map((post, index) => (
+              <Route path={`/blogs/main/${index}`} element={<DailyBlogPost postData={post} />} />
+            ))}
+            <Route path='/blogs/daily' element={<DailyBlogList />} />
 
-        </Routes>
-      </BrowserRouter>
+          </Routes>
+        </Suspense>
+      </BrowserRouter >
     </>
 
   )

@@ -1,4 +1,4 @@
-import { React, Fragment, useState, useEffect } from "react";
+import { React, Fragment, useState, useEffect, useRef } from "react";
 import { FoodCardContainer, FoodPicture, ChineseFoodTitle, EngFoodTitle, Price, Location, FoodPictureContainer, InformationContainer, CornerContainer, TransitionContainer, TransitionImage } from "./FoodCardStyles";
 
 const FoodCard = (props) => {
@@ -15,11 +15,45 @@ const FoodCard = (props) => {
   }
 
   useEffect(() => {
-    console.log(foodCardClicked)
   }, [foodCardClicked])
+
+
+  //Intersection Observer
+  const elementRef = useRef(null);
+  const [elementIntersected, setElementIntersected] = useState(false)
+  useEffect(() => {
+    console.log("elementIntersected", elementIntersected)
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          observer.unobserve(entry.target);
+          setElementIntersected(true);
+        }
+        else {
+          setElementIntersected(false)
+        }
+      },
+      {
+        rootMargin: '0px',
+        threshold: 0.4,
+      }
+    );
+
+    observer.observe(elementRef.current);
+
+    return () => {
+      if (elementRef.current) {
+        observer.unobserve(elementRef.current);
+      }
+    };
+
+  }, [elementIntersected]);
+
+
+
   return (
     <>
-      <FoodCardContainer onClick={handleFoodCardClick} clicked={foodCardClicked}>
+      <FoodCardContainer ref={elementRef} seen={elementIntersected} onClick={handleFoodCardClick} clicked={foodCardClicked}>
         <FoodPictureContainer>
           <FoodPicture clicked={foodCardClicked} src={props.data.pictures[0]} />
         </FoodPictureContainer>

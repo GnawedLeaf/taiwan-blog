@@ -12,12 +12,24 @@ display:grid;
 grid-template-rows: 0.5fr 0.6fr;
 box-shadow: 10px 12px 13px -2px rgba(0,0,0,0.15);
 transition-duration:0.4s;
+
+opacity:0;
+transform: translateY( 10%);
+pointer-events: ${(props) => props.clicked ? "none" : "auto"} ;
+animation: ${(props) => props.seen ? "1s FadeUp 0.1s forwards" : ""};
+@keyframes FadeUp {
+  
+  to {
+    opacity:1;
+    transform: translateY(0%);
+  }
+}
+
 &: hover{
   cursor: pointer;
-  transform:translate(-5%,-5%);
+  // transform:translate(-5%,-5%);
+  transform: translateY(-5%);
 }
-pointer-events: ${(props) => props.clicked ? "none" : "auto"} ;
-
 `
 
 export const FoodPictureContainer = styled.div`
@@ -55,7 +67,7 @@ z-index: 999;
 visibility: ${({ clicked }) => (clicked ? 'visible' : 'hidden')};
 opacity: ${({ clicked }) => (clicked ? 1 : 0)};
 cursor:pointer;
-transition-duration: 0.8s;
+transition-duration: 0.4s;
 `
 
 export const TransitionImage = styled.img`

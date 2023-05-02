@@ -10,7 +10,7 @@ const ErrorPage = () => {
     return (
         <Container>
             <BigText>
-                THERES NOTHING HERE...
+                There's Nothing Here...
             </BigText>
             <Button onClick={handleErrorButton}>
                 Back To Home

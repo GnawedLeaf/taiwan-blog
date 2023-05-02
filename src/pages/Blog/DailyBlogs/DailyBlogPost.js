@@ -8,6 +8,8 @@ import { MdKeyboardArrowRight, MdKeyboardArrowLeft } from 'react-icons/md';
 
 import { LoadingContainer, Title, PostContainer, DateLabel, Loading, DotsAnimation, BigContainer, TitleAndLocationContainer, LocationContainer, Location, MainPostContainer, PageNumber, ImageContainer, ContentContainer, Image, Content, MobileTitleAndDateContainer, MobileTitle, MobileDate, MobileImage, MobileLocationAndContentContainer, MobileLocation, MobileContent, MobileImageContainer, MobilePageNum, StartPostContainer, StartPostImage, StartPostTitle, StartPostDate, StartPostChineseLabel, EndPostContainer, EndPostText, EndPostPageNum } from "./DailyBlogPostStyles";
 import { BsArrowLeft } from 'react-icons/bs';
+import LoadingScreen from "../../../components/LoadingComponent/LoadingIndex";
+
 const DailyBlogPost = (props) => {
 
   const graphcms = new GraphQLClient('https://api-ap-northeast-1.hygraph.com/v2/clg7r296t1gd401uigal98mrw/master');
@@ -292,14 +294,7 @@ const DailyBlogPost = (props) => {
 
 
       ) : (
-        <LoadingContainer>
-          <Loading>LOADING
-            <DotsAnimation marginLeft={0.5} delay={0.1}>.</DotsAnimation>
-            <DotsAnimation marginLeft={1.5} delay={0.2}>.</DotsAnimation>
-            <DotsAnimation marginLeft={2.5} delay={0.3}>.</DotsAnimation>
-          </Loading>
-
-        </LoadingContainer>
+        <LoadingScreen />
       )
       }
 
