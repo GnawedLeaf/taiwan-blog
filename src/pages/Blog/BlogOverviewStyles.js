@@ -18,7 +18,7 @@ justify-content: center;
 `
 
 
-
+export const TestContainer = styled.div``
 
 export const BlogFooter = styled.div`
 grid-row:4;

@@ -40,5 +40,11 @@ color:#f5f5f5;
 }
 `
 export const FoodListContainer = styled.div`
-height:100vh;
+
+display:flex;
+padding:3rem;
+align-items: center;
+justify-content: center;
+flex-wrap: wrap;
+flex-direction: row;
 `

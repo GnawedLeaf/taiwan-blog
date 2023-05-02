@@ -3,6 +3,9 @@ import Navbar from "../../components/Navbar/NavbarIndex"
 import { VerticalFoodContainer, VerticalFoodBigContainer, BigFoodContainer, FoodHeroTitle, FoodHeroSection, FoodListContainer } from "./FoodOverviewStyles"
 import foodCoverPicture from "./pictures/foodCoverPicture.jpg"
 import SlidingTransition from "../../components/SlidingTransitionComponent/SlidingTransition"
+import FoodCard from "./FoodCard/FoodCardIndex";
+import { FoodCardData } from "./FoodCard/FoodCardData/FoodCardData"
+
 
 const FoodOverview = () => {
 
@@ -14,6 +17,7 @@ const FoodOverview = () => {
   //<-------------------------------------Window width detector---------------------------------->
 
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
 
   useEffect(() => {
     const handleWindowResize = () => {
@@ -97,6 +101,10 @@ const FoodOverview = () => {
   const FoodNamesArray = ["招牌水餃", "牛肉麵", "滷肉飯", "豬腳便當", "台灣食品", "排骨酥湯", "炸雞排", "招牌鍋貼", "紅油抄手"]
   const FoodNamesArray2 = ["KINGMETA", "COIN", "NFT", "豬腳便當", "台灣食品", "排骨酥湯", "炸雞排", "招牌鍋貼", "紅油抄手"]
 
+  const onFoodCardClick = () => {
+  }
+
+
 
   return (
     <>
@@ -110,6 +118,10 @@ const FoodOverview = () => {
           </FoodHeroTitle>
         </FoodHeroSection>
         <FoodListContainer>
+          {FoodCardData.map((food, index) => (
+            <FoodCard onFoodCardClick={onFoodCardClick} data={food} />
+          ))}
+
 
         </FoodListContainer>
 
