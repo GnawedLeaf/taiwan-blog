@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import { MdKeyboardArrowRight, MdKeyboardArrowLeft } from 'react-icons/md';
 
 import { LoadingContainer, Title, PostContainer, DateLabel, Loading, DotsAnimation, BigContainer, TitleAndLocationContainer, LocationContainer, Location, MainPostContainer, PageNumber, ImageContainer, ContentContainer, Image, Content, MobileTitleAndDateContainer, MobileTitle, MobileDate, MobileImage, MobileLocationAndContentContainer, MobileLocation, MobileContent, MobileImageContainer, MobilePageNum, StartPostContainer, StartPostImage, StartPostTitle, StartPostDate, StartPostChineseLabel, EndPostContainer, EndPostText, EndPostPageNum } from "./DailyBlogPostStyles";
-import { BsArrowLeft } from 'react-icons/bs';
+import { BsArrowLeft, BsArrowLeftCircle } from 'react-icons/bs';
 import LoadingScreen from "../../../components/LoadingComponent/LoadingIndex";
 
 const DailyBlogPost = (props) => {
@@ -118,7 +118,8 @@ const DailyBlogPost = (props) => {
 
 
   const handleGoBackToBlog = () => {
-    navigate(-1)
+    //navigate(-1)
+    navigate('/blogs')
   }
 
   const handleGoNextPage = () => {
@@ -182,7 +183,9 @@ const DailyBlogPost = (props) => {
   return (
     <BigContainer>
 
-      <BsArrowLeft style={{ zIndex: "999", color: "rgba(34, 34, 59, 0.75)", position: "absolute", top: "1rem", left: mobileWindow ? "1rem" : "1.5rem", cursor: "pointer" }} size={mobileWindow ? "1.5rem" : "2rem"} onClick={handleGoBackToBlog} />
+
+
+      <BsArrowLeftCircle style={{ zIndex: "999", color: "rgba(34, 34, 59, 0.75)", position: "absolute", top: "1.5rem", left: mobileWindow ? "1rem" : "1.5rem", cursor: "pointer" }} size={mobileWindow ? "1.5rem" : "2rem"} onClick={handleGoBackToBlog} />
 
       {dailyPost && firstText && postContent ? (
 
@@ -260,7 +263,6 @@ const DailyBlogPost = (props) => {
                   <MainPostContainer>
                     <DateLabel>{formattedDate} <br /> {dayOfWeek}</DateLabel>
                     <ImageContainer>
-
                       <Image src={page.imageUrl.url}></Image>
                     </ImageContainer>
                     <ContentContainer>

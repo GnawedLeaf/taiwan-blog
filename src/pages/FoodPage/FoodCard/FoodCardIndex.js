@@ -14,9 +14,6 @@ const FoodCard = (props) => {
     setFoodCardClicked(true);
   }
 
-  useEffect(() => {
-  }, [foodCardClicked])
-
 
   //Intersection Observer
   const elementRef = useRef(null);
@@ -48,6 +45,12 @@ const FoodCard = (props) => {
     };
 
   }, [elementIntersected]);
+
+
+  //scroll to top on page load
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+  }, []);
 
 
 

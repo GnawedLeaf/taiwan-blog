@@ -233,9 +233,15 @@ const BlogsOverview = (props) => {
     const timeoutId = setTimeout(() => {
       enableScroll();
       setScrollEnabled(true);
-    }, (2500));
+    }, (0));
     setScrollEnabled(false);
     return () => clearTimeout(timeoutId);
+  }, []);
+
+
+  //scroll to top on page load
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
   }, []);
 
 
@@ -283,7 +289,7 @@ const BlogsOverview = (props) => {
 
 
           {monthsContainer && monthsContainer.map((month, monthIndex) => (
-            <CalenderContainer calenderSeen={isVisible} style={{ top: "0", display: monthIndex == 3 ? `` : "none" }}>
+            <CalenderContainer calenderSeen={isVisible} style={{ top: "0", display: monthIndex == 3 || monthIndex == 4 ? `` : "none" }}>
               <CalenderMonthHeader>
                 {monthIndex === 0 ? "Jan" : ""}
                 {monthIndex === 1 ? "Feb" : ""}

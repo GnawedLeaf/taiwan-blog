@@ -109,7 +109,6 @@ function App() {
   }
   return (
     <>
-
       <BrowserRouter>
         <Suspense fallback={<LoadingScreen />}>
           <Routes>
