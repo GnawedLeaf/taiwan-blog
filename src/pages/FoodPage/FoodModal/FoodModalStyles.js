@@ -8,6 +8,15 @@ display:grid;
 grid-template-rows: 0.65fr 0.25fr 0.1fr;
 grid-template-columns: 0.05fr 0.7fr 0.25fr;
 font-family: 'Noto Serif TC', serif;
+
+position:absolute;
+opacity: ${props => props.opacity};
+z-index: ${props => props.zIndex};
+transform-origin: left;
+
+transition: all 0.7s ease, opacity 0.4s ease;
+transform: translate(${props => props.translateX},${props => props.translateY});
+box-shadow: 10px 12px 13px -2px rgba(0,0,0,0.15);
 `
 export const FoodModalPicturesContainer = styled.div`
 grid-row-start: 1;
@@ -42,7 +51,7 @@ border-bottom: 1px solid #333333;
 display: flex;
 align-items: center;
 justify-content: center;
-font-size: 4.7vw;
+font-size: ${(props) => 7 - props.length / 1.5}vw;
 font-weight: 600;
 `
 export const FoodModalPrice = styled.div`
@@ -65,11 +74,18 @@ display: flex;
 align-items: center;
 justify-content: center;
 
+
 `
 export const FoodModalLocationLink = styled.a`
 text-decoration: none;
 color: #333333;
-font-size:1.1vw;
+font-size:1.3vw;
+font-weight:bold;
+transition-duration: 0.4s;
+&:hover{
+  color: #F28482;
+}
+
 `
 
 

@@ -80,7 +80,6 @@ const DailyBlogPost = (props) => {
     const firstObjectWithDate = filteredArray[0];
 
     setDailyPost(firstObjectWithDate);
-
   };
 
 

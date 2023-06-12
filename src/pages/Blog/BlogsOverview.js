@@ -101,11 +101,10 @@ const BlogsOverview = (props) => {
     if (scrollRef !== null) {
       const topPosition = element => element.getBoundingClientRect().top;
       const div1Position = topPosition(scrollRef.current)
-      console.log("div1Position", div1Position)
+
       function handleScroll() {
         const position = window.pageYOffset;
         if (position >= div1Position + 30) {
-          console.log("PAST DIV 1")
           setCalenderContainerSeen(true)
           setScrollPositionTest(position - div1Position);
         }

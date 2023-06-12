@@ -2,13 +2,54 @@ import { React, Fragment, useState, useEffect, useRef } from "react";
 import { FoodCardContainer, FoodPicture, ChineseFoodTitle, EngFoodTitle, Price, Location, FoodPictureContainer, InformationContainer, CornerContainer, TransitionContainer, TransitionImage } from "./FoodCardStyles";
 import FoodModal from "../FoodModal/FoodModalIndex";
 import { BsArrowLeft, BsArrowLeftCircle } from 'react-icons/bs';
-import { foodModalData } from "./FoodCardData/FoodCardData";
+import { MdKeyboardArrowRight, MdKeyboardArrowLeft } from 'react-icons/md';
 
 const FoodCard = (props) => {
+
+
   const convertToLines = (str) => {
     const lines = str.split('');
     return lines.map((line, index) => <Fragment key={index}>{line}<br /></Fragment>);
   }
+
+  const foodData = props.data;
+  const [foodModalArray, setFoodModalArray] = useState([
+    {
+      picture: "",
+      description: "",
+      location: "",
+      locationLink: "",
+      chineseFoodName: "",
+      price: 0,
+    }
+  ]);
+
+  useEffect(() => {
+    if (foodData.foodImages) {
+      const foodModalPictures = foodData.foodImages
+      const foodModalChineseFoodTitles = foodData.chineseFoodTitles
+      const foodModalFoodDescriptions = foodData.foodDescriptions
+      const foodModalFoodPrices = foodData.foodPrices
+      const foodModalLocations = foodData.foodLocations[0].text
+      const foodModalLocationLinks = foodData.foodLocationLinks[0]
+
+      setFoodModalArray(foodModalPictures.map((foodPicture, index) => (
+        {
+          picture: foodPicture.url,
+          description: foodModalFoodDescriptions[index].text,
+          location: foodModalLocations,
+          locationLink: foodModalLocationLinks,
+          chineseFoodName: foodModalChineseFoodTitles[index].text,
+          price: foodModalFoodPrices[index],
+        }
+      )))
+    }
+  }, [foodData])
+
+  useEffect(() => {
+    console.log("foodModalArray", foodModalArray)
+  }, [foodModalArray])
+
 
 
   const [foodCardClicked, setFoodCardClicked] = useState(false);
@@ -39,7 +80,6 @@ const FoodCard = (props) => {
   const elementRef = useRef(null);
   const [elementIntersected, setElementIntersected] = useState(false)
   useEffect(() => {
-    console.log("elementIntersected", elementIntersected)
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -74,27 +114,49 @@ const FoodCard = (props) => {
 
 
 
+  const [pageNum, setPageNum] = useState(0)
+  const [lastPage, setLastPage] = useState(1);
+  useEffect(() => {
+    setLastPage(foodModalArray.length - 1)
+  }, [foodModalArray.length])
+
+  const handleGoNextPage = () => {
+    if (pageNum !== lastPage) {
+      setPageNum(pageNum + 1)
+    }
+
+  }
+
+  const handleGoPrevPage = () => {
+    if (pageNum !== 0) {
+      setPageNum(pageNum - 1)
+    }
+
+  }
+
+
+
 
 
   return (
     <>
-      <FoodCardContainer ref={elementRef} seen={elementIntersected} onClick={handleFoodCardClick} clicked={foodCardClicked}>
+      <FoodCardContainer ref={elementRef} seen={elementIntersected} onClick={handleFoodCardClick} clicked={foodCardClicked} >
         <FoodPictureContainer>
-          <FoodPicture src={props.data.pictures[0]} />
+          <FoodPicture src={foodData.coverImage && foodData.coverImage.url} />
         </FoodPictureContainer>
         <InformationContainer>
           <ChineseFoodTitle>
-            {convertToLines(props.data.cName)}
+            {foodData.cardTitle && convertToLines(foodData.cardTitle)}
           </ChineseFoodTitle>
           <CornerContainer>
             <EngFoodTitle>
-              {props.data.eName}
+              {foodData.englishFoodTitles && foodData.englishFoodTitles[0].text}
             </EngFoodTitle>
             <Price>
-              {props.data.price} NTD
+              {foodData.foodPrices && foodData.foodPrices[0]} NTD
             </Price>
             <Location>
-              {props.data.location}
+              {foodData.foodLocations && foodData.foodLocations[0].text}
             </Location>
           </CornerContainer>
         </InformationContainer>
@@ -102,9 +164,15 @@ const FoodCard = (props) => {
       <TransitionContainer clicked={foodCardClicked} >
         <BsArrowLeftCircle style={{ zIndex: "999", color: "#f5f5f5", position: "absolute", top: "1.5rem", left: mobileWindow ? "1rem" : "1.5rem", cursor: "pointer" }} size={mobileWindow ? "1.5rem" : "2rem"} onClick={() => {
           setFoodCardClicked(false)
+          setPageNum(0);
         }} />
-        {/* <TransitionImage src={props.data.pictures[0]} /> */}
-        <FoodModal foodModalData={foodModalData} />
+
+        {foodModalArray.length > 0 && foodModalArray.map((foodPageData, index) => (
+          <FoodModal pageNum={pageNum} data={foodPageData} key={index} index={index} />
+        ))}
+
+        <MdKeyboardArrowRight size={"2rem"} color={"#f5f5f5"} style={{ padding: "2rem", zIndex: "999", position: "fixed", right: "4%", cursor: "pointer", display: pageNum == lastPage ? "none" : "", transitionDuration: "0.3s" }} onClick={handleGoNextPage} />
+        <MdKeyboardArrowLeft size={"2rem"} color={"#f5f5f5"} style={{ padding: "2rem", zIndex: "999", position: "fixed", left: "4%", cursor: "pointer", display: pageNum == 0 ? "none" : "", transitionDuration: "0.7s" }} onClick={handleGoPrevPage} />
       </TransitionContainer>
     </>
   )

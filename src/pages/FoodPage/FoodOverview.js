@@ -5,9 +5,32 @@ import foodCoverPicture from "./pictures/foodCoverPicture.jpg"
 import SlidingTransition from "../../components/SlidingTransitionComponent/SlidingTransition"
 import FoodCard from "./FoodCard/FoodCardIndex";
 import { FoodCardData } from "./FoodCard/FoodCardData/FoodCardData"
+import { FOOD_QUERY } from "../../backend/foodQuery";
+import { GraphQLClient } from 'graphql-request'
+import { BLOG_QUERY } from "../../backend/blogQuery";
 
 
 const FoodOverview = () => {
+
+  //<-------------------------------------Backend and data handling---------------------------------->
+  const hygraph = new GraphQLClient(
+    'https://ap-northeast-1.cdn.hygraph.com/content/clg7r296t1gd401uigal98mrw/master'
+  );
+  const [foodData, setFoodData] = useState([{}])
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const { foods } = await hygraph.request(FOOD_QUERY);
+      setFoodData(foods);
+    };
+    fetchData();
+
+  }, []);
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+  }, []);
+
 
   const [shutterMode, setShutterMode] = useState("side")
   // "side": Original Mode 
@@ -119,7 +142,7 @@ const FoodOverview = () => {
           </FoodHeroTitle>
         </FoodHeroSection>
         <FoodListContainer>
-          {FoodCardData.map((food, index) => (
+          {foodData && foodData.map((food, index) => (
             <FoodCard onFoodCardClick={onFoodCardClick} data={food} />
           ))}
 

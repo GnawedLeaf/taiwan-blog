@@ -94,11 +94,13 @@ align-items: center;
 border-right:1px solid #333333;
 `
 export const EngFoodTitle = styled.div`
-font-size:1.5vw;
+font-size:1.4vw;
+text-align: right;
+width:80%;
 `
 export const Price = styled.div`
-font-size:0.9vw;`
+font-size:1vw;`
 export const Location = styled.div`
 font-family: 'Noto Serif TC', serif;
-font-size:0.9vw;
+font-size:1vw;
 `

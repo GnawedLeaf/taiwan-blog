@@ -1,32 +1,41 @@
-import { React, Fragment } from "react";
+import { React, Fragment, useEffect } from "react";
 import { FoodModalContainer, FoodModalPicturesContainer, FoodModalDescription, FoodModalLocation, FoodModalBigVerticalTitle, FoodModalPrice, FillerBox, FillerBox2, FoodModalLocationLink, FoodModalPicture } from "./FoodModalStyles";
 
 const FoodModal = (props) => {
 
   const convertToLines = (str) => {
     const lines = str.split('');
-    return lines.map((line, index) => <Fragment key={index}>{line}<br /></Fragment>);
+    const convertedLines = lines.map((line, index) => <Fragment key={index}>{line}<br /></Fragment>);
+    return convertedLines
   }
 
-  return (
-    <FoodModalContainer>
-      <FillerBox />
-      <FillerBox2 />
-      <FoodModalPicturesContainer>
-        <FoodModalPicture src={props.foodModalData[0].picture} />
-      </FoodModalPicturesContainer>
-      <FoodModalDescription>
-        {props.foodModalData[0].description}
-      </FoodModalDescription>
-      <FoodModalLocation>
-        <FoodModalLocationLink href={props.foodModalData[0].locationLink}>
-          {props.foodModalData[0].location}
-        </FoodModalLocationLink>
+  const foodPageData = props.data;
+  const pageNum = props.pageNum;
+  const index = props.index;
+  console.log("index in modal: ", index)
+  console.log("pageNum: ", pageNum)
 
-      </FoodModalLocation>
-      <FoodModalBigVerticalTitle>{convertToLines(props.foodModalData[0].title)}</FoodModalBigVerticalTitle>
-      <FoodModalPrice>{props.foodModalData[0].price}</FoodModalPrice>
-    </FoodModalContainer>
+  return (
+    (foodPageData &&
+      <FoodModalContainer translateX={pageNum === index ? 0 : pageNum > index ? "100%" : -(index - pageNum) / 3 + "rem"} translateY={pageNum === index + 1 ? 0 : (index - pageNum) / 3 + "rem"} opacity={pageNum > index ? "0" : "1"} zIndex={100 - index + 1}>
+        <FillerBox />
+        <FillerBox2 />
+        <FoodModalPicturesContainer>
+          <FoodModalPicture src={foodPageData.picture} />
+        </FoodModalPicturesContainer>
+        <FoodModalDescription>
+          {foodPageData.description}
+        </FoodModalDescription>
+        <FoodModalLocation>
+          <FoodModalLocationLink href={foodPageData.locationLink} target="_blank">
+            {foodPageData.location}
+          </FoodModalLocationLink>
+
+        </FoodModalLocation>
+        <FoodModalBigVerticalTitle length={convertToLines(foodPageData.chineseFoodName).length}>{convertToLines(foodPageData.chineseFoodName)}</FoodModalBigVerticalTitle>
+        <FoodModalPrice>{foodPageData.price}</FoodModalPrice>
+      </FoodModalContainer>)
+
   )
 }
 

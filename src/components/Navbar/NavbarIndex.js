@@ -6,13 +6,9 @@ import { Squash as Hamburger } from 'hamburger-react'
 
 const Navbar = (props) => {
   const [hamburgerOpen, setHamburgerOpen] = useState(false);
-  useEffect(() => {
-    console.log(NavbarItems.length)
-  }, [])
 
   const handleBurgerClick = () => {
     setHamburgerOpen(!hamburgerOpen)
-    console.log(hamburgerOpen)
   }
 
   return (

@@ -76,10 +76,9 @@ max-width:100%;
 overflow:hidden;
 height:100vh;
 z-index:99;
-position:absolute;
+position:fixed;
 flex-direction: ${(props) => props.mobileMode ? "column" : "row"};
-
-
+pointer-events: none; 
 @keyframes goAway {
     from {
         opacity: 1;
@@ -87,6 +86,7 @@ flex-direction: ${(props) => props.mobileMode ? "column" : "row"};
       to {
         opacity: 0;
         display: none;
+        z-index:-100;
       }
 }
 `
