@@ -27,6 +27,10 @@ export const FOOD_QUERY = gql`
     }
     foodPrices
     cardTitle
+    foodDate
+    menu {
+      url
+    }
   }
 }
 

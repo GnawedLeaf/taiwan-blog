@@ -3,6 +3,7 @@ import { FoodCardContainer, FoodPicture, ChineseFoodTitle, EngFoodTitle, Price, 
 import FoodModal from "../FoodModal/FoodModalIndex";
 import { BsArrowLeft, BsArrowLeftCircle } from 'react-icons/bs';
 import { MdKeyboardArrowRight, MdKeyboardArrowLeft } from 'react-icons/md';
+import FoodModalLast from "../FoodModal/FoodModalLast";
 
 const FoodCard = (props) => {
 
@@ -23,6 +24,7 @@ const FoodCard = (props) => {
       price: 0,
     }
   ]);
+  const [menu, setMenu] = useState([""])
 
   useEffect(() => {
     if (foodData.foodImages) {
@@ -44,11 +46,14 @@ const FoodCard = (props) => {
         }
       )))
     }
+    if (foodData.menu) {
+      setMenu(foodData.menu.map((menu, index) => (
+        menu.url
+      )))
+    }
+    console.log("foodData: ", foodData.foodDate)
   }, [foodData])
 
-  useEffect(() => {
-    console.log("foodModalArray", foodModalArray)
-  }, [foodModalArray])
 
 
 
@@ -117,7 +122,7 @@ const FoodCard = (props) => {
   const [pageNum, setPageNum] = useState(0)
   const [lastPage, setLastPage] = useState(1);
   useEffect(() => {
-    setLastPage(foodModalArray.length - 1)
+    setLastPage(foodModalArray.length)
   }, [foodModalArray.length])
 
   const handleGoNextPage = () => {
@@ -152,12 +157,13 @@ const FoodCard = (props) => {
             <EngFoodTitle>
               {foodData.englishFoodTitles && foodData.englishFoodTitles[0].text}
             </EngFoodTitle>
-            <Price>
-              {foodData.foodPrices && foodData.foodPrices[0]} NTD
-            </Price>
+
             <Location>
               {foodData.foodLocations && foodData.foodLocations[0].text}
             </Location>
+            <Price>
+              {foodData.foodDate && foodData.foodDate}
+            </Price>
           </CornerContainer>
         </InformationContainer>
       </FoodCardContainer>
@@ -170,6 +176,8 @@ const FoodCard = (props) => {
         {foodModalArray.length > 0 && foodModalArray.map((foodPageData, index) => (
           <FoodModal pageNum={pageNum} data={foodPageData} key={index} index={index} />
         ))}
+
+        <FoodModalLast pageNum={pageNum} data={menu} index={foodModalArray.length} />
 
         <MdKeyboardArrowRight size={"2rem"} color={"#f5f5f5"} style={{ padding: "2rem", zIndex: "999", position: "fixed", right: "4%", cursor: "pointer", display: pageNum == lastPage ? "none" : "", transitionDuration: "0.3s" }} onClick={handleGoNextPage} />
         <MdKeyboardArrowLeft size={"2rem"} color={"#f5f5f5"} style={{ padding: "2rem", zIndex: "999", position: "fixed", left: "4%", cursor: "pointer", display: pageNum == 0 ? "none" : "", transitionDuration: "0.7s" }} onClick={handleGoPrevPage} />

@@ -12,8 +12,6 @@ const FoodModal = (props) => {
   const foodPageData = props.data;
   const pageNum = props.pageNum;
   const index = props.index;
-  console.log("index in modal: ", index)
-  console.log("pageNum: ", pageNum)
 
   return (
     (foodPageData &&

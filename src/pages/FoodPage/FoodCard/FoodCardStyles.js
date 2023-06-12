@@ -9,7 +9,7 @@ border:1px solid black;
 margin: 4rem 5rem;
 background: #FFFAF1;
 display:grid;
-grid-template-rows: 0.5fr 0.6fr;
+grid-template-rows: 0.6fr 0.6fr;
 box-shadow: 10px 12px 13px -2px rgba(0,0,0,0.15);
 transition-duration:0.4s;
 
@@ -86,7 +86,7 @@ export const ChineseFoodTitle = styled.div`
 grid-column-start:1;
 display:flex;
 font-family: 'Noto Serif TC', serif;
-font-size:1.7vw;
+font-size:1.5vw;
 font-weight:600;
 width:100%;
 justify-content: center;
@@ -99,8 +99,11 @@ text-align: right;
 width:80%;
 `
 export const Price = styled.div`
-font-size:1vw;`
+font-size:0.9vw;
+margin-top:0.5rem;
+`
 export const Location = styled.div`
 font-family: 'Noto Serif TC', serif;
 font-size:1vw;
+margin-top:0.5rem;
 `
