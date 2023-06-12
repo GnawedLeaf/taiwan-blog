@@ -37,13 +37,25 @@ width: 100px;
 height: auto;
 `
 
+export const DailyBlogTitle = styled.div`
+text-align:center;
+font-size:9rem;
+margin-top: 35vh;
+font-family: 'Outfit', sans-serif;
+color: #22223B;
+`
+export const DailyBlogSubtitle = styled.div`
+text-align:center;
+font-size:1.2rem;
+font-family: 'Outfit', sans-serif;
+margin-top: 1rem;
+color: #22223B;
+`
 
 export const BigCalenderContainer = styled.div`
 display: flex;
-flex-direction: row;
+flex-direction: column;
 justify-content: center;
-height:100vh;
-margin-top: 10vh;
 `
 
 export const CalenderContainer = styled.div`

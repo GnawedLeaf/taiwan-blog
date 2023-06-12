@@ -1,5 +1,8 @@
 import { React, Fragment, useState, useEffect, useRef } from "react";
 import { FoodCardContainer, FoodPicture, ChineseFoodTitle, EngFoodTitle, Price, Location, FoodPictureContainer, InformationContainer, CornerContainer, TransitionContainer, TransitionImage } from "./FoodCardStyles";
+import FoodModal from "../FoodModal/FoodModalIndex";
+import { BsArrowLeft, BsArrowLeftCircle } from 'react-icons/bs';
+import { foodModalData } from "./FoodCardData/FoodCardData";
 
 const FoodCard = (props) => {
   const convertToLines = (str) => {
@@ -13,6 +16,23 @@ const FoodCard = (props) => {
     props.onFoodCardClick();
     setFoodCardClicked(true);
   }
+
+  const [mobileWindow, setMobileWindow] = useState(false)
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleWindowResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+    handleWindowResize();
+    window.addEventListener('resize', handleWindowResize);
+
+  }, []);
+
+
+  useEffect(() => {
+    setMobileWindow(windowWidth >= 750 ? false : true)
+  }, [windowWidth, mobileWindow])
 
 
   //Intersection Observer
@@ -54,11 +74,13 @@ const FoodCard = (props) => {
 
 
 
+
+
   return (
     <>
       <FoodCardContainer ref={elementRef} seen={elementIntersected} onClick={handleFoodCardClick} clicked={foodCardClicked}>
         <FoodPictureContainer>
-          <FoodPicture clicked={foodCardClicked} src={props.data.pictures[0]} />
+          <FoodPicture src={props.data.pictures[0]} />
         </FoodPictureContainer>
         <InformationContainer>
           <ChineseFoodTitle>
@@ -77,10 +99,12 @@ const FoodCard = (props) => {
           </CornerContainer>
         </InformationContainer>
       </FoodCardContainer>
-      <TransitionContainer clicked={foodCardClicked} onClick={() => {
-        setFoodCardClicked(false)
-      }}>
-        <TransitionImage src={props.data.pictures[0]} />
+      <TransitionContainer clicked={foodCardClicked} >
+        <BsArrowLeftCircle style={{ zIndex: "999", color: "#f5f5f5", position: "absolute", top: "1.5rem", left: mobileWindow ? "1rem" : "1.5rem", cursor: "pointer" }} size={mobileWindow ? "1.5rem" : "2rem"} onClick={() => {
+          setFoodCardClicked(false)
+        }} />
+        {/* <TransitionImage src={props.data.pictures[0]} /> */}
+        <FoodModal foodModalData={foodModalData} />
       </TransitionContainer>
     </>
   )

@@ -27,8 +27,7 @@ animation: ${(props) => props.seen ? "1s FadeUp 0.1s forwards" : ""};
 
 &: hover{
   cursor: pointer;
-  // transform:translate(-5%,-5%);
-  transform: translateY(-5%);
+  margin-top:2rem;
 }
 `
 
@@ -66,7 +65,6 @@ transition: all 0.3s ease-in-out;
 z-index: 999;
 visibility: ${({ clicked }) => (clicked ? 'visible' : 'hidden')};
 opacity: ${({ clicked }) => (clicked ? 1 : 0)};
-cursor:pointer;
 transition-duration: 0.4s;
 `
 

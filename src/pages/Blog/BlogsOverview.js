@@ -2,7 +2,7 @@ import React from "react";
 import { useState, useEffect, useRef } from "react";
 // import { Typewriter } from 'react-simple-typewriter'
 import { Link, Navigate, useAsyncError, useNavigate } from "react-router-dom";
-import { BigContainer, BlogTransitionPlaceholder, BlogNavBar, BlogFooter, BlogMainContainer, Icon, Word1, Word2, Word3, CheckboxContainer, Box, DiagonalLine1, DiagonalLine2, HamburgerStyled, HamburgerMenu, MobileMenuContainer, MobileMenuText, DailyBlogCardsContainer, DailyBlogImg, BigCalenderContainer, Calender, CalenderDay, CalenderDayLabel, Carousel, CarouselItem, Inner, CarouselTitleHolder, CalenderMonthHeader, CalenderDayTitle, CalenderContainer, BlogTransitionContainer, TransitionText } from "./BlogOverviewStyles"
+import { BigContainer, BlogTransitionPlaceholder, BlogNavBar, BlogFooter, BlogMainContainer, Icon, Word1, Word2, Word3, CheckboxContainer, Box, DiagonalLine1, DiagonalLine2, HamburgerStyled, HamburgerMenu, MobileMenuContainer, MobileMenuText, DailyBlogCardsContainer, DailyBlogImg, BigCalenderContainer, Calender, CalenderDay, CalenderDayLabel, Carousel, CarouselItem, Inner, CarouselTitleHolder, CalenderMonthHeader, CalenderDayTitle, CalenderContainer, BlogTransitionContainer, TransitionText, DailyBlogTitle, DailyBlogSubtitle } from "./BlogOverviewStyles"
 import { Squash as Hamburger } from 'hamburger-react'
 import { GraphQLClient } from 'graphql-request'
 import { BLOG_QUERY } from "../../backend/blogQuery";
@@ -285,11 +285,13 @@ const BlogsOverview = (props) => {
 
           {/* <Link to='/blogs/week1'>Week 1</Link> */}
         </BlogMainContainer>
+        <DailyBlogTitle>Daily Blogs</DailyBlogTitle>
+        <DailyBlogSubtitle>Click on a square to view the blog for that day!</DailyBlogSubtitle>
         <BigCalenderContainer calenderSeen={isVisible} ref={scrollRef}>
 
 
           {monthsContainer && monthsContainer.map((month, monthIndex) => (
-            <CalenderContainer calenderSeen={isVisible} style={{ top: "0", display: monthIndex == 3 || monthIndex == 4 ? `` : "none" }}>
+            <CalenderContainer calenderSeen={isVisible} style={{ top: "0", display: monthIndex == 0 || monthIndex == 1 || monthIndex == 2 ? `none` : `` }}>
               <CalenderMonthHeader>
                 {monthIndex === 0 ? "Jan" : ""}
                 {monthIndex === 1 ? "Feb" : ""}

@@ -102,13 +102,14 @@ const FoodOverview = () => {
   const FoodNamesArray2 = ["KINGMETA", "COIN", "NFT", "豬腳便當", "台灣食品", "排骨酥湯", "炸雞排", "招牌鍋貼", "紅油抄手"]
 
   const onFoodCardClick = () => {
+
   }
 
 
 
   return (
     <>
-      <Navbar linkColor={'#333333'} backgroundColor={"transparent"} borderColor={"none"} colorChange={navbarVisible} />
+      <Navbar linkColor={'#333333'} backgroundColor={"#FFFAF1"} borderColor={"none"} colorChange={navbarVisible} />
       <BigFoodContainer>
         <SlidingTransition shutterMode={shutterMode} inputArray={FoodNamesArray} />
 

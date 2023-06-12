@@ -5,6 +5,7 @@ export const BigFoodContainer = styled.div`
 width:100%;
 font-family: 'Jost', sans-serif;
 overflow:hidden;
+background: #FFFAF1;
 `
 
 

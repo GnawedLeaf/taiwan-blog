@@ -33,3 +33,14 @@ export const FoodCardData = [
     pictures: [picture2],
   },
 ]
+
+export const foodModalData = [
+  {
+    picture: picture2,
+    title: "炸醬麵",
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam iaculis enim augue, in iaculis sem lobortis ut. In iaculis erat accumsan tortor fermentum, a aliquet metus bibendum. Curabitur posuere sagittis mauris, et gravida eros hendrerit eu. Pellentesque varius egestas elit. Integer enim nisi, tempor quis pulvinar ut, dictum vulputate dolor. Pellentesque varius egestas elit. Integer enim nisi, tempor quis pulvinar ut, dictum vulputate dolor.",
+    location: "鬍鬚張魯肉飯(美食文化館)",
+    locationLink: "鬍鬚張魯肉飯(美食文化館)",
+    price: "150",
+  },
+]

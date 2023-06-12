@@ -37,7 +37,7 @@ const HomePage2 = (props) => {
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
 
   useEffect(() => {
-    const countdownDate = new Date('July 14, 2023 00:00:00').getTime();
+    const countdownDate = new Date('July 21, 2023 00:00:00').getTime();
 
     const interval = setInterval(() => {
       const now = new Date().getTime();
@@ -271,7 +271,7 @@ const HomePage2 = (props) => {
           </CountdownContainer>
         </CountdownSection>
 
-        <ToggleContainer>
+        <ToggleContainer style={{ display: "none" }}>
           <CgToggleOff size={'2rem'} onClick={handleOtherStyleOn} style={{ cursor: "pointer", transitionDuration: "0.3s", opacity: props.otherStyleMode ? "0" : '1' }} />
           <CgToggleOn size={'2rem'} onClick={handleOtherStyleOff} style={{ cursor: "pointer", transitionDuration: "0.3s", opacity: props.otherStyleMode ? "1" : '0' }} />
         </ToggleContainer>
