@@ -244,10 +244,10 @@ const BlogsOverview = (props) => {
   }, []);
 
 
-  const wordArray = ["一個風和日麗的早上..."]
+  const wordArray = ["台灣博客"]
   return (
     <>
-      <Navbar linkColor={'#4a4e69'} backgroundColor={"transparent"} borderColor={"#4a4e69"} colorChange={navbarVisible} />
+      <Navbar linkColor={'#4a4e69'} backgroundColor={"#FFFAF1"} borderColor={"none"} colorChange={navbarVisible} />
       <BigContainer>
 
         <BlogTransitionPlaceholder src={coverPicture} >
@@ -257,11 +257,8 @@ const BlogsOverview = (props) => {
                 {word}
               </TransitionText>
             ))}
-
-
-
           </BlogTransitionContainer>
-          Blogs
+
         </BlogTransitionPlaceholder>
         <BlogMainContainer ref={navbarRef}>
           {/* <DailyBlogCardsContainer>

@@ -198,7 +198,7 @@ color:#22223B;
 export const BlogTransitionPlaceholder = styled.div`
 width:100%;
 height:100vh;
-color:transparent;
+color:#f5f5f5;
 font-size:3rem;
 font-weight:600;
 font-family: 'Jost', sans-serif;
@@ -259,25 +259,23 @@ flex-direction: column;
 
 
 export const TransitionText = styled.div`
-color: #333333;
-background:#FFFAF1;
+color: #f5f5f5;
 font-family: 'Noto Serif TC', serif;
 font-weight: bold;
-//font-size: ${(props) => props.mobileMode ? 15 - props.middleIndex + 2 / 2 : 10 - props.middleIndex}vw;
 font-size: 7vw;
 margin: 1vw 0vw;
-
+letter-spacing:0.5rem;
 display: flex;
 align-items: center;
 justify-content: center;
-
-border:0.5vw solid #333333;
-border-right:none;
-// height: calc(100%/${(props) => props.length});
-
-width:100%;
 text-align:center;
+width:100%;
 
+
+//font-size: ${(props) => props.mobileMode ? 15 - props.middleIndex + 2 / 2 : 10 - props.middleIndex}vw;
+//border:0.5vw solid #333333;
+// border-right:none;
+// height: calc(100%/${(props) => props.length});
 
 // animation: 0.7s textLeft 1s ease-in-out forwards;
 

@@ -17,6 +17,8 @@ transform-origin: left;
 transition: all 0.7s ease, opacity 0.4s ease;
 transform: translate(${props => props.translateX},${props => props.translateY});
 box-shadow: 10px 12px 13px -2px rgba(0,0,0,0.15);
+
+color: #22223B;
 `
 export const FoodModalPicturesContainer = styled.div`
 grid-row-start: 1;
@@ -125,6 +127,7 @@ margin-bottom: 1.5rem;
 `
 export const FoodModalLastPicture = styled.img`
 width:55vw;
+height: 60vh;
 background-image: url(${(props) => props.src});
 height: ${(props) => props.src === "" ? "60vh" : ""};
 border: ${(props) => props.src === "" ? "1px solid #333333" : "none"};
@@ -133,4 +136,7 @@ transition-duration: 0.4s;
 &:hover {
   transform: ${(props) => props.src === "" ? "scale(1)" : "scale(1.3) translateY(-1.6rem)"};
 }
+`
+export const PictureNotAvaliable = styled.div`
+
 `

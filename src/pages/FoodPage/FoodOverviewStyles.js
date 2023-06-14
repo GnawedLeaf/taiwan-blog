@@ -30,11 +30,20 @@ background-attachment: fixed;
 `
 
 export const FoodHeroTitle = styled.div`
-font-size:3rem;
-font-weight:600;
-font-family: 'Jost', sans-serif;
-letter-spacing:0.2rem;
-color:#f5f5f5;
+color: #f5f5f5;
+font-family: 'Noto Serif TC', serif;
+font-weight: bold;
+font-size: 7vw;
+margin: 1vw 0vw;
+letter-spacing:0.5rem;
+display: flex;
+align-items: center;
+justify-content: center;
+text-align:center;
+width:100%;
+
+
+
 @media only screen and (max-width: 650px){
     font-size:5rem;
     text-align:center;

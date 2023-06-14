@@ -138,7 +138,7 @@ const FoodOverview = () => {
 
         <FoodHeroSection src={foodCoverPicture} ref={navbarRef}>
           <FoodHeroTitle>
-            Food
+            台灣食品
           </FoodHeroTitle>
         </FoodHeroSection>
         <FoodListContainer>

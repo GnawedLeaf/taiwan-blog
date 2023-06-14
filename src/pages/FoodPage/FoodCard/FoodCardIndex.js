@@ -51,11 +51,7 @@ const FoodCard = (props) => {
         menu.url
       )))
     }
-    console.log("foodData: ", foodData.foodDate)
   }, [foodData])
-
-
-
 
   const [foodCardClicked, setFoodCardClicked] = useState(false);
   const handleFoodCardClick = (food) => {
@@ -140,9 +136,6 @@ const FoodCard = (props) => {
   }
 
 
-
-
-
   return (
     <>
       <FoodCardContainer ref={elementRef} seen={elementIntersected} onClick={handleFoodCardClick} clicked={foodCardClicked} >
@@ -176,8 +169,8 @@ const FoodCard = (props) => {
         {foodModalArray.length > 0 && foodModalArray.map((foodPageData, index) => (
           <FoodModal pageNum={pageNum} data={foodPageData} key={index} index={index} />
         ))}
-
         <FoodModalLast pageNum={pageNum} data={menu} index={foodModalArray.length} />
+
 
         <MdKeyboardArrowRight size={"2rem"} color={"#f5f5f5"} style={{ padding: "2rem", zIndex: "999", position: "fixed", right: "4%", cursor: "pointer", display: pageNum == lastPage ? "none" : "", transitionDuration: "0.3s" }} onClick={handleGoNextPage} />
         <MdKeyboardArrowLeft size={"2rem"} color={"#f5f5f5"} style={{ padding: "2rem", zIndex: "999", position: "fixed", left: "4%", cursor: "pointer", display: pageNum == 0 ? "none" : "", transitionDuration: "0.7s" }} onClick={handleGoPrevPage} />

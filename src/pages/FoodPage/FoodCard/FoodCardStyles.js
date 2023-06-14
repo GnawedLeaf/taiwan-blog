@@ -12,7 +12,7 @@ display:grid;
 grid-template-rows: 0.6fr 0.6fr;
 box-shadow: 10px 12px 13px -2px rgba(0,0,0,0.15);
 transition-duration:0.4s;
-
+color: #22223B;
 opacity:0;
 transform: translateY( 10%);
 pointer-events: ${(props) => props.clicked ? "none" : "auto"} ;
@@ -47,7 +47,7 @@ grid-template-columns:0.25fr 0.75fr;
 
 `
 export const FoodPicture = styled.img`
-width:90%;
+width:85%;
 background-image: url(${(props) => props.src});
 `
 
